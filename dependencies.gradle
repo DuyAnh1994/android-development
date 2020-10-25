@@ -84,11 +84,11 @@ ext {
     def okhttpLoggingVersion = "4.7.2"
     def converterMoshiVersion = "2.6.2"
     networkDependencies = [
-            "retrofit"               : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            "retrofitGsonConverter"  : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            "retrofit"              : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            "retrofitGsonConverter" : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             "retrofitConverterMoshi": "com.squareup.retrofit2:converter-moshi:$converterMoshiVersion",
-            "retrofitRxJava"         : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
-            "logging"                : "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion"
+            "retrofitRxJava"        : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            "logging"               : "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion"
     ]
 
 
@@ -100,6 +100,17 @@ ext {
     rxDependencies = [
             "rxJava"   : "io.reactivex.rxjava3:rxjava:$rxJavaVersion",
             "rxAndroid": "io.reactivex.rxjava3:rxandroid:$rxAndroidVersion"
+    ]
+
+
+    /**
+     * Koin
+     */
+    def koinVersion = "2.1.6"
+    koinDependencies = [
+            "koin"         : "org.koin:koin-android:$koinVersion",
+            "koinScope"    : "org.koin:koin-android-scope:$koinVersion",
+            "koinViewModel": "org.koin:koin-android-viewmodel:$koinVersion"
     ]
 
 

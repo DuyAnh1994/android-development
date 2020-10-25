@@ -68,6 +68,15 @@ dependencies {
     implementation rootProject.ext.networkDependencies.retrofitRxJava
     implementation rootProject.ext.networkDependencies.logging
 
+    implementation rootProject.ext.hiltDependencies.hilt
+    kapt rootProject.ext.hiltDependencies.compilerHilt_kapt
+    implementation rootProject.ext.hiltDependencies.viewmodel
+    kapt rootProject.ext.hiltDependencies.compilerViewModel_kapt
+
+    implementation rootProject.ext.koinDependencies.koin
+    implementation rootProject.ext.koinDependencies.koinScope
+    implementation rootProject.ext.koinDependencies.koinViewModel
+
     implementation rootProject.ext.coroutinesDependencies.core
     implementation rootProject.ext.coroutinesDependencies.android
 
@@ -75,11 +84,6 @@ dependencies {
     implementation rootProject.ext.dimenDependencies.ssp
 
     implementation rootProject.ext.glideDependency.runtime
-
-    implementation rootProject.ext.hiltDependencies.hilt
-    kapt rootProject.ext.hiltDependencies.compilerHilt_kapt
-    implementation rootProject.ext.hiltDependencies.viewmodel
-    kapt rootProject.ext.hiltDependencies.compilerViewModel_kapt
 
     implementation rootProject.ext.exoPlayerDependencies.exoplayer
 }
