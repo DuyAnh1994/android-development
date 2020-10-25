@@ -1,21 +1,6 @@
-package com.dev.anhnd.android_mvvm_di.di.module
+package com.dev.anhnd.android_mvvm_di.di.hilt.module
 
-import com.dev.anhnd.android_mvvm_di.BuildConfig
-import com.dev.anhnd.android_mvvm_di.data.remote.ApiHelper
-import com.dev.anhnd.android_mvvm_di.data.remote.ApiHelperImpl
-import com.dev.anhnd.android_mvvm_di.data.remote.ApiService
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Singleton
-
-
+/*
 @Module
 @InstallIn(ApplicationComponent::class)
 class ApplicationModule {
@@ -55,4 +40,4 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
-}
+}*/

@@ -10,15 +10,19 @@ import com.dev.anhnd.mybase.activity.BaseActivity
 import com.dev.anhnd.mybase.adapter.BaseAdapter
 import com.dev.anhnd.mybase.utils.app.observer
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.viewmodel.compat.SharedViewModelCompat.getSharedViewModel
+import org.koin.android.viewmodel.compat.SharedViewModelCompat.sharedViewModel
+import org.koin.android.viewmodel.ext.android.getViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
 
     private val adapter by lazy {
         BaseAdapter<User>(R.layout.item_user)
     }
-    private val mainVM: MainViewModel by viewModels()
+    private val mainVM: MainViewModel by viewModel()
+
 
 
     override fun getLayoutId(): Int = R.layout.activity_main
@@ -28,6 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun observerViewModel() {
+
         observer(mainVM.user) {
             it?.let { event ->
                 when (event.status) {

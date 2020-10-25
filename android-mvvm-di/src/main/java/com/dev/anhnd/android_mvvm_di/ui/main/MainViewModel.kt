@@ -1,6 +1,5 @@
 package com.dev.anhnd.android_mvvm_di.ui.main
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +9,8 @@ import com.dev.anhnd.android_mvvm_di.repository.MainRepository
 import com.dev.anhnd.android_mvvm_di.utils.Event
 import kotlinx.coroutines.launch
 
-class MainViewModel @ViewModelInject constructor(
+//class MainViewModel @ViewModelInject constructor(
+class MainViewModel constructor(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
