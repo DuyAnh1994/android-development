@@ -3,6 +3,9 @@
 apply from: 'dependencies.gradle'
 
 buildscript {
+    ext {
+        kotlin_version = '1.4.10'
+    }
     def kotlin_version = "1.4.10"
     def hiltVersion = "2.28-alpha"
     repositories {
