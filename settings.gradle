@@ -1,3 +1,4 @@
+include ':android-algorithm'
 include ':android-mvvm-di'
 include ':android-mybase'
 include ':android-navigation-component'
