@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.dev.anhnd.mybase.activity.BaseActivity
 import com.dev.anhnd.mybase.model.IBase
 
-abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<ViewDataBinding>> : Fragment(),
+abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragment(),
     IBase {
 
     @Suppress("UNCHECKED_CAST")

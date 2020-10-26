@@ -54,7 +54,7 @@ ext {
             "pagingRxJava"      : "androidx.paging:paging-rxjava2:$pagingVersion",
             "navigationFragment": "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
             "navigationUI"      : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
-            "pager"             : "androidx.viewpager2:viewpager2:$viewPagerVersion"
+            "viewpager"             : "androidx.viewpager2:viewpager2:$viewPagerVersion"
     ]
 
     /**
