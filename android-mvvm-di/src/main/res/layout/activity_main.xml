@@ -5,6 +5,15 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dev.anhnd.android_mvvm_di.ui.main.MainViewModel" />
+
+        <variable
+            name="status"
+            type="com.dev.anhnd.android_mvvm_di.utils.Status" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,10 +29,13 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_user" />
 
+        <!--            android:visibility="gone"-->
+
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

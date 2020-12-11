@@ -1,7 +1,7 @@
 package com.dev.anhnd.mediaplayer
 
 import com.dev.anhnd.mediaplayer.databinding.ActivityMainBinding
-import com.dev.anhnd.mybase.activity.BaseActivity
+import com.dev.anhnd.mybase.BaseActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -32,6 +32,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         TabLayoutMediator(binding.tabLayout, binding.viewpager) { tab, position ->
             tab.text = String.format(adapterViewPager.getTitle(position))
         }.attach()
+    }
+
+    override fun initView() {
+
     }
 
     override fun observerViewModel() {

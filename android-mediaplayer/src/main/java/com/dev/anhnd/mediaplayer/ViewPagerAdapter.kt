@@ -14,10 +14,10 @@ class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStat
 
     override fun createFragment(position: Int): Fragment = fragments[position]
 
+    fun getTitle(position: Int) = titles[position]
+
     fun addFragment(fragment: Fragment, title: String, position: Int) {
         fragments.add(position, fragment)
         titles.add(position, title)
     }
-
-    fun getTitle(position: Int) = titles[position]
 }

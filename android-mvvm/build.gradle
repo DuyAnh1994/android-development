@@ -58,6 +58,11 @@ dependencies {
     implementation rootProject.ext.androidXDependencies.lifeCycleExtension
     implementation rootProject.ext.androidXDependencies.navigationFragment
     implementation rootProject.ext.androidXDependencies.navigationUI
+//    implementation rootProject.ext.androidXDependencies.cameraCore
+//    implementation rootProject.ext.androidXDependencies.camera2
+//    implementation rootProject.ext.androidXDependencies.cameraLifecycle
+    implementation rootProject.ext.androidXDependencies.cameraView
+//    implementation rootProject.ext.androidXDependencies.cameraExtension
 
     implementation rootProject.ext.networkDependencies.retrofit
     implementation rootProject.ext.networkDependencies.retrofitGsonConverter
