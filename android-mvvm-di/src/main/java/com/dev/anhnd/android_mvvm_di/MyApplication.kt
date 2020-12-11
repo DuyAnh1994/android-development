@@ -3,8 +3,7 @@ package com.dev.anhnd.android_mvvm_di
 import com.dev.anhnd.android_mvvm_di.di.koin.module.appModule
 import com.dev.anhnd.android_mvvm_di.di.koin.module.repositoryModule
 import com.dev.anhnd.android_mvvm_di.di.koin.module.viewModelModule
-import com.dev.anhnd.mybase.application.BaseApplication
-import dagger.hilt.android.HiltAndroidApp
+import com.dev.anhnd.mybase.BaseApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

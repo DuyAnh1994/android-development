@@ -51,4 +51,34 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoCoreVersion"
     implementation rootProject.ext.constraintLayoutDependency
     implementation rootProject.ext.materialDependency
+
+    implementation project(':android-mybase')
+
+    implementation rootProject.ext.androidXDependencies.recyclerview
+    implementation rootProject.ext.androidXDependencies.lifeCycle
+    implementation rootProject.ext.androidXDependencies.lifeCycleRuntime
+    implementation rootProject.ext.androidXDependencies.lifeCycleExtension
+    implementation rootProject.ext.androidXDependencies.navigationFragment
+    implementation rootProject.ext.androidXDependencies.navigationUI
+
+    implementation rootProject.ext.networkDependencies.retrofit
+    implementation rootProject.ext.networkDependencies.retrofitGsonConverter
+    implementation rootProject.ext.networkDependencies.retrofitConverterMoshi
+    implementation rootProject.ext.networkDependencies.retrofitRxJava
+    implementation rootProject.ext.networkDependencies.logging
+
+    implementation rootProject.ext.coroutinesDependencies.core
+    implementation rootProject.ext.coroutinesDependencies.android
+
+    implementation rootProject.ext.dimenDependencies.sdp
+    implementation rootProject.ext.dimenDependencies.ssp
+
+    implementation rootProject.ext.glideDependency.runtime
+
+    implementation rootProject.ext.hiltDependencies.hilt
+    kapt rootProject.ext.hiltDependencies.compilerHilt_kapt
+    implementation rootProject.ext.hiltDependencies.viewmodel
+    kapt rootProject.ext.hiltDependencies.compilerViewModel_kapt
+
+    implementation rootProject.ext.exoPlayerDependencies.exoplayer
 }

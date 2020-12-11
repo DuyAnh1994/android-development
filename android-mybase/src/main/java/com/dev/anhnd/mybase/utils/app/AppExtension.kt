@@ -1,18 +1,21 @@
 package com.dev.anhnd.mybase.utils.app
 
+import android.app.Activity
 import android.app.Application
-import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
-import com.dev.anhnd.mybase.activity.BaseActivity
-import com.dev.anhnd.mybase.sharepreference.BasePreference
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import com.dev.anhnd.mybase.BaseActivity
+import com.dev.anhnd.mybase.BasePreference
 
 
 private var appInstance: Application? = null
@@ -33,15 +36,46 @@ fun <T> Class<T>.getPrefData(key: String, defaultValue: T): T =
 
 fun <T> putPrefData(key: String, value: T) = basePreference!!.put(key, value)
 
-fun getAppDrawable(@DrawableRes drawableId: Int, context: Context? = appInstance): Drawable? {
-    context?.let {
-        return ContextCompat.getDrawable(context, drawableId)
-    }
-    return null
+fun <T> AppCompatActivity.observer(liveData: LiveData<T>, onChange: (T?) -> Unit) {
+    liveData.observe(this, Observer(onChange))
 }
 
-fun getAppColor(@ColorRes colorRes: Int): Int {
-    return ResourcesCompat.getColor(getApplication().resources, colorRes, null)
+fun <T> Fragment.observer(liveData: LiveData<T>, onChange: (T?) -> Unit) {
+    liveData.observe(viewLifecycleOwner, Observer(onChange))
+}
+
+fun <E> LiveData<List<E>>.isEmptyList(): Boolean {
+    return value.isNullOrEmpty()
+}
+
+fun <T> MutableLiveData<T>.postSelf() {
+    postValue(this.value)
+}
+
+fun <T> MutableLiveData<T>.setSelf() {
+    value = this.value
+}
+
+fun <E> MutableLiveData<E>.postIfChanged(newValue: E) {
+    if (this.value != newValue) {
+        postValue(this.value)
+    }
+}
+
+fun <E> MutableLiveData<E>.setIfChanged(newValue: E) {
+    if (this.value != newValue) {
+        value = this.value
+    }
+}
+
+fun MutableLiveData<Boolean>.postReverseBoolean() {
+    val currentValue = value ?: false
+    postValue(!currentValue)
+}
+
+fun MutableLiveData<Boolean>.setReverseBoolean() {
+    val currentValue = value ?: false
+    value = !currentValue
 }
 
 fun BaseActivity<*>.openAppSetting(activity: AppCompatActivity, REQ: Int) {
@@ -49,4 +83,46 @@ fun BaseActivity<*>.openAppSetting(activity: AppCompatActivity, REQ: Int) {
     val uri = Uri.fromParts("package", packageName, null)
     intent.data = uri
     activity.startActivityForResult(intent, REQ)
+}
+
+fun Any.runOnMainThread(task: () -> Any?, delayMs: Long = 0L) {
+    Handler(Looper.getMainLooper()).postDelayed({
+        when (this) {
+            is AppCompatActivity -> {
+                runIfNotDestroyed { task() }
+            }
+            is Fragment -> {
+                runIfNotDestroyed { task() }
+            }
+            is Activity -> {
+                runIfNotDestroyed { task() }
+            }
+            else -> {
+                task()
+            }
+        }
+    }, delayMs)
+}
+
+fun Activity.runIfNotDestroyed(task: () -> Any?) {
+    if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            !isDestroyed
+        } else {
+            true
+        }
+    ) {
+        task()
+    }
+}
+
+fun AppCompatActivity.runIfNotDestroyed(task: () -> Any?) {
+    if (this.lifecycle.currentState != Lifecycle.State.DESTROYED) {
+        task()
+    }
+}
+
+fun Fragment.runIfNotDestroyed(task: () -> Any?) {
+    if (this.lifecycle.currentState != Lifecycle.State.DESTROYED) {
+        task()
+    }
 }

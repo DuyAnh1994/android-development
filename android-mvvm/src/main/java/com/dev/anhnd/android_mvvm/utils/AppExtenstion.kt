@@ -1,5 +1,7 @@
 package com.dev.anhnd.android_mvvm.utils
 
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,4 +26,9 @@ suspend fun <T> Call<T>.waitResponse(onError: (Throwable) -> Unit, onHideLoading
             }
         })
     }
+}
+
+@BindingAdapter("ivLoadBackgroundById")
+fun ImageView.imgLoadColorById(id: Int) {
+    setBackgroundResource(id)
 }

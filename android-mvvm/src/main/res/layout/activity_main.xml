@@ -5,20 +5,33 @@
 
     <data>
 
+        <variable
+            name="bindingListener"
+            type="com.dev.anhnd.android_mvvm.ui.main.MainActivity" />
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <!--<androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvUser"
             rvSetFixSize="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_user" />
+            tools:listitem="@layout/item_user" />-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDemo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
