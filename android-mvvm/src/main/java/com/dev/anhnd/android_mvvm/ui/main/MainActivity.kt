@@ -1,14 +1,18 @@
 package com.dev.anhnd.android_mvvm.ui.main
 
+import android.annotation.SuppressLint
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import com.dev.anhnd.android_mvvm.R
 import com.dev.anhnd.android_mvvm.databinding.ActivityMainBinding
+import com.dev.anhnd.android_mvvm.model.News
 import com.dev.anhnd.android_mvvm.model.User
+import com.dev.anhnd.android_mvvm.utils.DataUtils
 import com.dev.anhnd.android_mvvm.utils.InjectorUtils
-import com.dev.anhnd.mybase.activity.BaseActivity
-import com.dev.anhnd.mybase.adapter.BaseAdapter
-import com.dev.anhnd.mybase.utils.app.observer
+import com.dev.anhnd.mybase.BaseActivity
+import com.dev.anhnd.mybase.BaseAdapter
+import com.dev.anhnd.mybase.BaseMultiHolderAdapter
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -21,18 +25,50 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         BaseAdapter<User>(R.layout.item_user)
     }
 
-    override fun getLayoutId(): Int = R.layout.activity_main
-
-    override fun setup() {
-        binding.rvUser.adapter = adapter
-        mainViewModel.fetchUsers()
-    }
-
-    override fun observerViewModel() {
-        observer(mainViewModel.users) {
-            it?.let { users ->
-                adapter.data = users
+    private val adapterMulti by lazy {
+        BaseMultiHolderAdapter<News>(
+            R.layout.item_first,
+            R.layout.item_second,
+            R.layout.item_third).apply {
+            listener = object : ItemNewsListener {
+                override fun onItemClick(v: View, item: News, position: Int) {
+                    Log.d(TAG, "item = ${item}, position = $position")
+                }
             }
         }
     }
+
+    override fun getLayoutId(): Int = R.layout.activity_main
+
+    override fun setup() {
+//        mainViewModel.fetchUsers()
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun initView() {
+//        binding.rvUser.adapter = adapter
+        /*CoroutineScope(Dispatchers.IO).launch {
+            val result = MediaUtils.getAllMedia(t = BaseImage())
+            result?.forEach {
+                Log.d(TAG, "initView: $it")
+            }
+        }*/
+//        supportFragmentManager.beginTransaction()
+//            .add(R.id.constraintRoot, HomeFragment(), HomeFragment::class.java.simpleName)
+//            .addToBackStack( HomeFragment::class.java.simpleName)
+//            .commit()
+
+        binding.rvDemo.adapter = adapterMulti
+        adapterMulti.data = DataUtils.news()
+
+    }
+
+    override fun observerViewModel() {
+//        observer(mainViewModel.users) {
+//            it?.let { users ->
+//                adapter.data = users
+//            }
+//        }
+    }
 }
+

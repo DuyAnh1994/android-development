@@ -1,11 +1,19 @@
 package com.dev.anhnd.android_navigation_component
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.dev.anhnd.android_navigation_component.databinding.ActivityMainBinding
+import com.dev.anhnd.mybase.BaseActivity
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    override fun getLayoutId(): Int = R.layout.activity_main
+
+    override fun setup() {
+    }
+
+    override fun initView() {
+
+    }
+
+    override fun observerViewModel() {
     }
 }

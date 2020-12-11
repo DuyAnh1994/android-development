@@ -59,4 +59,6 @@ dependencies {
     implementation rootProject.ext.coroutinesDependencies.android
     implementation rootProject.ext.glideDependency.runtime
     implementation rootProject.ext.exoPlayerDependencies.exoplayer
+    implementation rootProject.ext.dimenDependencies.sdp
+    implementation rootProject.ext.dimenDependencies.ssp
 }

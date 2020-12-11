@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintRoot"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_215sdp"
+        android:layout_gravity="center"
+        android:background="#F8EF9F">
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

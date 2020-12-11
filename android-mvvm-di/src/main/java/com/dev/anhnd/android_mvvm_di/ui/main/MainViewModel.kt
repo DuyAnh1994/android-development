@@ -1,12 +1,9 @@
 package com.dev.anhnd.android_mvvm_di.ui.main
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dev.anhnd.android_mvvm_di.model.User
 import com.dev.anhnd.android_mvvm_di.repository.MainRepository
-import com.dev.anhnd.android_mvvm_di.utils.Event
 import kotlinx.coroutines.launch
 
 //class MainViewModel @ViewModelInject constructor(
@@ -14,10 +11,11 @@ class MainViewModel constructor(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
+    val user by lazy {
+        mainRepository.users
+    }
 
-    private val _users = MutableLiveData<Event<List<User>>>()
-    val user: LiveData<Event<List<User>>>
-        get() = _users
+    var isLoading = MutableLiveData(false)
 
     init {
         fetchUsers()
@@ -25,13 +23,9 @@ class MainViewModel constructor(
 
     private fun fetchUsers() {
         viewModelScope.launch {
-            _users.postValue(Event.loading(null))
-            mainRepository.getUsers().let {
-                if (it.isSuccessful) {
-                    _users.postValue(Event.success(it.body()))
-                } else {
-                    _users.postValue(Event.error(null, it.errorBody().toString()))
-                }
+            isLoading.postValue(true)
+            mainRepository.getUsers {
+                isLoading.postValue(false)
             }
         }
     }

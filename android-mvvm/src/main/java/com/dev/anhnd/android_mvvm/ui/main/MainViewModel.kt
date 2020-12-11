@@ -2,7 +2,7 @@ package com.dev.anhnd.android_mvvm.ui.main
 
 import androidx.lifecycle.viewModelScope
 import com.dev.anhnd.android_mvvm.repository.MainRepository
-import com.dev.anhnd.mybase.viewmodel.manual.BaseViewModel
+import com.dev.anhnd.mybase.BaseViewModel
 import kotlinx.coroutines.launch
 
 class MainViewModel(

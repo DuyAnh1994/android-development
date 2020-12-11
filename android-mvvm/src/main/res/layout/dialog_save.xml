@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="bindingListener"
+            type="com.dev.anhnd.android_mvvm.ui.dialog.SaveDialog" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintRoot"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_215sdp"
+        android:layout_gravity="center"
+        android:background="#EDEDED">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:hint="input"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->bindingListener.onClickCancel(btCancel)}"
+            android:text="cancel"
+            app:layout_constraintStart_toStartOf="@id/etInput"
+            app:layout_constraintTop_toBottomOf="@id/etInput" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
