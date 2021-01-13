@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dev.anhnd.android_mvvm_di.data.local.notes.Notes" />
+
+        <import type="com.dev.anhnd.android_mvvm_di.ui.notes.list.ListNotesListener" />
+
+        <variable
+            name="item"
+            type="Notes" />
+
+        <variable
+            name="itemListener"
+            type="com.dev.anhnd.android_mvvm_di.ui.notes.list.ListNotesListener" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        deBounceClick="@{()->itemListener.onClickItem(item, itemPosition)}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple_click_square">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:text="@{item.title}"
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

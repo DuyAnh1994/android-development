@@ -1,5 +1,5 @@
 include ':android-algorithm'
-include ':android-mvvm-di'
+include ':android-mvvm-di-hilt'
 include ':android-mybase'
 include ':android-navigation-component'
 include ':android-mvvm'

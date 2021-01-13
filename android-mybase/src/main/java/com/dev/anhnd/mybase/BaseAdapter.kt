@@ -31,6 +31,7 @@ open class BaseAdapter<T : Any>(
         val item: T? = data?.get(holder.adapterPosition)
         holder.binding.setVariable(BR.item, item)
         holder.binding.setVariable(BR.itemListener, listener)
+        holder.binding.setVariable(BR.itemPosition, holder.adapterPosition)
         holder.binding.executePendingBindings()
     }
 

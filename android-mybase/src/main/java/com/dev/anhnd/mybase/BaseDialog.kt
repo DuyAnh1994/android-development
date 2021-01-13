@@ -67,16 +67,6 @@ abstract class BaseDialog<DB : ViewDataBinding> : DialogFragment(), BaseView {
 
     protected open fun dismissCallback() {}
 
-    override fun hideKeyBoard(v: View) {
-        val imm = getApplication().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(v.windowToken, 0)
-    }
-
-    override fun showKeyBoard(v: View) {
-        val imm = getApplication().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT)
-    }
-
     private fun setResolution(dialogInfo: DialogInfo) {
         dialog?.window?.apply {
             setLayout(dialogInfo.width, dialogInfo.height)

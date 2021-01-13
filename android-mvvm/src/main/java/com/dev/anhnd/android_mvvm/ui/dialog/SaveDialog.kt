@@ -9,6 +9,8 @@ import com.dev.anhnd.android_mvvm.R
 import com.dev.anhnd.android_mvvm.databinding.DialogSaveBinding
 import com.dev.anhnd.mybase.BaseDialog
 import com.dev.anhnd.mybase.DialogInfo
+import com.dev.anhnd.mybase.utils.input.hideKeyBoard
+import com.dev.anhnd.mybase.utils.input.showKeyBoard
 
 class SaveDialog : BaseDialog<DialogSaveBinding>() {
 
@@ -66,9 +68,9 @@ class SaveDialog : BaseDialog<DialogSaveBinding>() {
                 requestFocus()
                 isFocusable = true
                 isFocusableInTouchMode = true
+                showKeyBoard(this)
             }
             isShowKeyboard = true
-            showKeyBoard(binding.etInput)
         }
         Handler(Looper.getMainLooper()).postDelayed(runnable, 300)
     }

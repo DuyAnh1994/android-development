@@ -18,7 +18,7 @@ ext {
     androidXAppCompatVersion = "1.2.0"
 
     // Kotlin
-    kotlinVersion = "1.4.10"
+    kotlinVersion = "1.4.21"
 
     // Test
     junitVersion = "4.13.1"
@@ -37,7 +37,7 @@ ext {
      * androidX
      */
     def recyclerViewVersion = "1.1.0"
-    def roomVersion = "2.2.5"
+    def roomVersion = "2.2.6"
     def lifecycleVersion = "2.2.0"
     def navigationVersion = "2.3.1"
     def pagingVersion = "2.1.2"
@@ -46,24 +46,35 @@ ext {
     def cameraViewVersion = "1.0.0-alpha20"
     def cameraExtensionVersion = "1.0.0-alpha20"
     androidXDependencies = [
-            "recyclerview"      : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
-            "room"              : "androidx.room:room-runtime:$roomVersion",
-            "roomRxJava"        : "androidx.room:room-rxjava2:$roomVersion",
-            "roomCompiler"      : "androidx.room:room-compiler:$roomVersion",
-            "lifeCycle"         : "androidx.lifecycle:lifecycle-common:$lifecycleVersion",
+            "recyclerview"           : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
+
+            "room"                   : "androidx.room:room-runtime:$roomVersion",
+            "roomCompiler"           : "androidx.room:room-compiler:$roomVersion",
+            "roomExtensionCoroutines": "androidx.room:room-ktx:$roomVersion",
+
+            /*"lifeCycle"         : "androidx.lifecycle:lifecycle-common:$lifecycleVersion",
             "lifeCycleRuntime"  : "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion",
             "lifeCycleExtension": "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
-            "lifeCycleCompiler" : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
-            "paging"            : "androidx.paging:paging-runtime:$pagingVersion",
-            "pagingRxJava"      : "androidx.paging:paging-rxjava2:$pagingVersion",
-            "navigationFragment": "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
-            "navigationUI"      : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
-            "viewpager"         : "androidx.viewpager2:viewpager2:$viewPagerVersion",
-            "cameraCore"        : "androidx.camera:camerak-core:$cameraXVersion",
-            "camera2"           : "androidx.camera:camera-camera2:$cameraXVersion",
-            "cameraLifecycle"   : "androidx.camera:camera-lifecycle:$cameraXVersion",
-            "cameraView"        : "androidx.camera:camera-view:$cameraViewVersion",
-            "cameraExtension"   : "androidx.camera:camera-extensions:$cameraExtensionVersion",
+            "lifeCycleCompiler" : "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",*/
+
+            "viewModel"              : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            "LiveData"               : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
+            "SavedStateViewModel"    : "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion",
+
+
+            "paging"                 : "androidx.paging:paging-runtime:$pagingVersion",
+            "pagingRxJava"           : "androidx.paging:paging-rxjava2:$pagingVersion",
+
+            "navigationFragment"     : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+            "navigationUI"           : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+
+            "viewpager"              : "androidx.viewpager2:viewpager2:$viewPagerVersion",
+
+            "cameraCore"             : "androidx.camera:camerak-core:$cameraXVersion",
+            "camera2"                : "androidx.camera:camera-camera2:$cameraXVersion",
+            "cameraLifecycle"        : "androidx.camera:camera-lifecycle:$cameraXVersion",
+            "cameraView"             : "androidx.camera:camera-view:$cameraViewVersion",
+            "cameraExtension"        : "androidx.camera:camera-extensions:$cameraExtensionVersion",
     ]
 
     /**

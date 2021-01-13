@@ -1,17 +1,14 @@
 package com.dev.anhnd.mybase
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.InflateException
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -57,16 +54,6 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseVie
     }
 
     protected open fun fixSingleTask(): Boolean = false
-
-    override fun hideKeyBoard(v: View) {
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(v.windowToken, 0)
-    }
-
-    override fun showKeyBoard(v: View) {
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(v, InputMethodManager.SHOW_IMPLICIT)
-    }
 
     fun checkPermission(permissions: Array<String>): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

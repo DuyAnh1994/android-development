@@ -50,9 +50,8 @@ dependencies {
     implementation rootProject.ext.constraintLayoutDependency
     implementation rootProject.ext.materialDependency
 
-    implementation rootProject.ext.androidXDependencies.lifeCycle
-    implementation rootProject.ext.androidXDependencies.lifeCycleRuntime
-    implementation rootProject.ext.androidXDependencies.lifeCycleExtension
+    implementation rootProject.ext.androidXDependencies.viewModel
+    implementation rootProject.ext.androidXDependencies.LiveData
     implementation rootProject.ext.androidXDependencies.navigationFragment
     implementation rootProject.ext.androidXDependencies.navigationUI
     implementation rootProject.ext.coroutinesDependencies.core

@@ -15,15 +15,16 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import com.dev.anhnd.mybase.utils.log.LogDebug
 
-abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragment(), BaseView {
+abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragment(), BaseView, View.OnClickListener {
 
     companion object {
         private val TAG = BaseFragment::class.java.simpleName
     }
+
     //region Properties
     @Suppress("UNCHECKED_CAST")
     val mainActivity by lazy {
-        context as A
+        requireActivity() as A
     }
     protected lateinit var binding: DB
     protected lateinit var screenTransitionManageImp: ScreenTransitionManageImp
@@ -36,9 +37,6 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setup()
-        if (isEnableBackPress()) {
-            setBackPressedDispatcher()
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -46,6 +44,7 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         binding.lifecycleOwner = this
+        binding.setVariable(BR.viewListener, this)
         initBinding()
         return binding.root
     }
@@ -54,6 +53,9 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
                                savedInstanceState: Bundle?) {
         beforeInitView()
         super.onViewCreated(view, savedInstanceState)
+        if (isEnableBackPress()) {
+            setBackPressedDispatcher()
+        }
         screenTransitionManageImp = initScreenTransitionManager()
         initView()
         observerViewModel()
@@ -80,12 +82,10 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
         }
     }
 
-    override fun hideKeyBoard(v: View) {
-        mainActivity.hideKeyBoard(v)
-    }
-
-    override fun showKeyBoard(v: View) {
-        mainActivity.showKeyBoard(v)
+    override fun onClick(v: View?) {
+        v?.let { view ->
+            onViewClick(view.id)
+        }
     }
 
     open fun isEnableBackPress(): Boolean {
@@ -100,7 +100,7 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
         return null
     }
 
-    open fun onBackScreen() {
+    open fun backScreen() {
         navigateUp()
     }
 
@@ -119,7 +119,7 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
 
     fun popBackStack(tag: String) {
         val backTag = if (tag.isEmpty()) javaClass.simpleName else tag
-        mainActivity.supportFragmentManager.popBackStack(
+        requireActivity().supportFragmentManager.popBackStack(
             backTag,
             FragmentManager.POP_BACK_STACK_INCLUSIVE
         )
@@ -156,8 +156,20 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
         }
     }
 
+    fun popBackStack(actionId : Int,popIdFragment: Boolean = false) {
+        try {
+            findNavController().popBackStack(actionId, popIdFragment)
+        }catch (e: IllegalArgumentException) {
+            e.printStackTrace()
+            LogDebug.e(TAG, "${e.message}")
+        }  catch (e: Exception) {
+            e.printStackTrace()
+            LogDebug.e(TAG, "${e.message}")
+        }
+    }
+
     private fun initScreenTransitionManager(): ScreenTransitionManageImp {
-        return ScreenTransitionManageImp(mainActivity.supportFragmentManager, getContainer())
+        return ScreenTransitionManageImp(requireActivity().supportFragmentManager, getContainer())
     }
 
     private fun setBackPressedDispatcher() {

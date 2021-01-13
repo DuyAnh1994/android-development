@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -10,13 +11,15 @@ android {
     buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
-        applicationId "com.dev.anhnd.android_mvvm"
+        applicationId "com.dev.anhnd.android_mvvm_di"
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'BASE_URL', "\"https://5e510330f2c0d300147c034c.mockapi.io/\""
     }
 
     buildTypes {
@@ -33,9 +36,15 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
         viewBinding = true
+    }
+
+    //kotlin DSL
+    configurations.all() {
+        resolutionStrategy.force "org.antlr:antlr4-runtime:4.7.1"
+        resolutionStrategy.force "org.antlr:antlr4-tool:4.7.1"
     }
 }
 
@@ -53,21 +62,33 @@ dependencies {
     implementation project(':android-mybase')
 
     implementation rootProject.ext.androidXDependencies.recyclerview
+
+    implementation rootProject.ext.androidXDependencies.room
+    kapt rootProject.ext.androidXDependencies.roomCompiler
+    implementation rootProject.ext.androidXDependencies.roomExtensionCoroutines
+
+
     implementation rootProject.ext.androidXDependencies.viewModel
     implementation rootProject.ext.androidXDependencies.LiveData
+
     implementation rootProject.ext.androidXDependencies.navigationFragment
     implementation rootProject.ext.androidXDependencies.navigationUI
-//    implementation rootProject.ext.androidXDependencies.cameraCore
-//    implementation rootProject.ext.androidXDependencies.camera2
-//    implementation rootProject.ext.androidXDependencies.cameraLifecycle
-    implementation rootProject.ext.androidXDependencies.cameraView
-//    implementation rootProject.ext.androidXDependencies.cameraExtension
+
 
     implementation rootProject.ext.networkDependencies.retrofit
     implementation rootProject.ext.networkDependencies.retrofitGsonConverter
     implementation rootProject.ext.networkDependencies.retrofitConverterMoshi
     implementation rootProject.ext.networkDependencies.retrofitRxJava
     implementation rootProject.ext.networkDependencies.logging
+
+    implementation rootProject.ext.hiltDependencies.hilt
+    kapt rootProject.ext.hiltDependencies.compilerHilt_kapt
+    implementation rootProject.ext.hiltDependencies.viewmodel
+    kapt rootProject.ext.hiltDependencies.compilerViewModel_kapt
+
+    implementation rootProject.ext.koinDependencies.koin
+    implementation rootProject.ext.koinDependencies.koinScope
+    implementation rootProject.ext.koinDependencies.koinViewModel
 
     implementation rootProject.ext.coroutinesDependencies.core
     implementation rootProject.ext.coroutinesDependencies.android
@@ -76,11 +97,6 @@ dependencies {
     implementation rootProject.ext.dimenDependencies.ssp
 
     implementation rootProject.ext.glideDependency.runtime
-
-    implementation rootProject.ext.hiltDependencies.hilt
-    kapt rootProject.ext.hiltDependencies.compilerHilt_kapt
-    implementation rootProject.ext.hiltDependencies.viewmodel
-    kapt rootProject.ext.hiltDependencies.compilerViewModel_kapt
 
     implementation rootProject.ext.exoPlayerDependencies.exoplayer
 }

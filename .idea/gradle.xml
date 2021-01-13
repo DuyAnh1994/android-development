@@ -16,7 +16,7 @@
             <option value="$PROJECT_DIR$/android-app" />
             <option value="$PROJECT_DIR$/android-mediaplayer" />
             <option value="$PROJECT_DIR$/android-mvvm" />
-            <option value="$PROJECT_DIR$/android-mvvm-di" />
+            <option value="$PROJECT_DIR$/android-mvvm-di-hilt" />
             <option value="$PROJECT_DIR$/android-mybase" />
             <option value="$PROJECT_DIR$/android-navigation-component" />
           </set>

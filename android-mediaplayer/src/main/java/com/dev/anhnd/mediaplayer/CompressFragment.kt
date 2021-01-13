@@ -19,4 +19,3 @@ class CompressFragment : BaseFragment<FragmentCompressBinding, MainActivity>() {
 
     }
 }
-
