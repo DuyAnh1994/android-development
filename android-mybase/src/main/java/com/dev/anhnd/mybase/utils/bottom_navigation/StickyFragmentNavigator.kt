@@ -1,4 +1,4 @@
-package com.dev.anhnd.android_navigation_component
+package com.dev.anhnd.mybase.utils.bottom_navigation
 
 import android.content.Context
 import android.os.Bundle

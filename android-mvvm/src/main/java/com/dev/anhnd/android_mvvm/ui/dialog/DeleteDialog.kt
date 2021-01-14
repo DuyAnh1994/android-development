@@ -1,5 +1,7 @@
 package com.dev.anhnd.android_mvvm.ui.dialog
 
+import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import com.dev.anhnd.android_mvvm.R
 import com.dev.anhnd.android_mvvm.databinding.DialogDeleteBinding
@@ -20,10 +22,10 @@ class DeleteDialog : BaseDialog<DialogDeleteBinding>() {
 
     override fun getRootViewGroup(): ViewGroup = binding.constraintRoot
 
-    override fun setup() {
+    override fun setup(savedInstanceState: Bundle?) {
     }
 
-    override fun initView() {
+    override fun initView(view: View?, savedInstanceState: Bundle?) {
     }
 
     override fun observerViewModel() {

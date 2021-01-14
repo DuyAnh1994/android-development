@@ -1,5 +1,7 @@
 package com.dev.anhnd.android_mvvm_di.ui.notes.add_notes
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.dev.anhnd.android_mvvm_di.R
 import com.dev.anhnd.android_mvvm_di.data.local.notes.Notes
@@ -19,7 +21,7 @@ class AddNotesFragment() : BaseFragment<FragmentAddNotesBinding, MainActivity>()
         binding.viewModel = viewModel
     }
 
-    override fun initView() {
+    override fun initView(view: View?, savedInstanceState: Bundle?) {
 
     }
 
@@ -27,8 +29,8 @@ class AddNotesFragment() : BaseFragment<FragmentAddNotesBinding, MainActivity>()
 
     }
 
-    override fun onViewClick(ViewId: Int) {
-        when (ViewId) {
+    override fun onViewClick(viewId: Int) {
+        when (viewId) {
             R.id.btnInsert -> {
                 viewModel.addNotes(Notes(title = viewModel.liveTextTitle.value!!, content = viewModel.liveTextContent.value!!)) {
                     popBackStack(R.id.listNotesFragment)

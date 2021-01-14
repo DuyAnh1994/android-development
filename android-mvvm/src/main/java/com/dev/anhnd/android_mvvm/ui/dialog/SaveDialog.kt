@@ -1,5 +1,6 @@
 package com.dev.anhnd.android_mvvm.ui.dialog
 
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -30,10 +31,10 @@ class SaveDialog : BaseDialog<DialogSaveBinding>() {
 
     override fun getRootViewGroup(): ViewGroup = binding.constraintRoot
 
-    override fun setup() {
+    override fun setup(savedInstanceState: Bundle?) {
     }
 
-    override fun initView() {
+    override fun initView(view: View?, savedInstanceState: Bundle?) {
         binding.bindingListener = this
         requestFocus()
         binding.etInput.setOnFocusChangeListener { _, hasFocus ->

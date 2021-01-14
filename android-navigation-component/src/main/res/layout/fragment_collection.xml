@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <import type="android.view.View.OnClickListener" />
 
         <variable
@@ -15,7 +14,7 @@
         deBounceClick="@{viewListener::onClick}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#B351AC55">
+        android:background="#F5FDA7">
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

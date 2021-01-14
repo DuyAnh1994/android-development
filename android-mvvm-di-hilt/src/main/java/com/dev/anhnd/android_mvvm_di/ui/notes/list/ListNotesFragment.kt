@@ -1,5 +1,7 @@
 package com.dev.anhnd.android_mvvm_di.ui.notes.list
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.dev.anhnd.android_mvvm_di.R
@@ -37,7 +39,7 @@ class ListNotesFragment : BaseFragment<FragmentListNotesBinding, MainActivity>()
         binding.viewModel = viewModel
     }
 
-    override fun initView() {
+    override fun initView(view: View?, savedInstanceState: Bundle?) {
 
     }
 
@@ -47,8 +49,8 @@ class ListNotesFragment : BaseFragment<FragmentListNotesBinding, MainActivity>()
         }
     }
 
-    override fun onViewClick(ViewId: Int) {
-        when (ViewId) {
+    override fun onViewClick(viewId: Int) {
+        when (viewId) {
             R.id.btnAddNotes -> {
                 navigateTo(R.id.action_listNotesFragment_to_addNotesFragment)
             }

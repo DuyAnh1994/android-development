@@ -8,14 +8,14 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
+import androidx.fragment.app.createViewModelLazy
+import androidx.lifecycle.*
 import com.dev.anhnd.mybase.BaseActivity
 import com.dev.anhnd.mybase.BasePreference
+import kotlin.reflect.KClass
 
 
 private var appInstance: Application? = null
@@ -126,3 +126,10 @@ fun Fragment.runIfNotDestroyed(task: () -> Any?) {
         task()
     }
 }
+
+@MainThread
+inline fun <reified VM : ViewModel> Fragment.shareParentFragmentViewModels(
+    noinline factoryProducer: (() -> ViewModelProvider.Factory)? = null
+) = createViewModelLazy(VM::class, { requireParentFragment().viewModelStore },
+    factoryProducer ?: { requireParentFragment().defaultViewModelProviderFactory })
+

@@ -1,6 +1,7 @@
 package com.dev.anhnd.android_mvvm.ui.main
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
@@ -40,12 +41,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
-    override fun setup() {
+    override fun setup(savedInstanceState: Bundle?) {
 //        mainViewModel.fetchUsers()
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    override fun initView() {
+    override fun initView(view: View?, savedInstanceState: Bundle?) {
 //        binding.rvUser.adapter = adapter
         /*CoroutineScope(Dispatchers.IO).launch {
             val result = MediaUtils.getAllMedia(t = BaseImage())

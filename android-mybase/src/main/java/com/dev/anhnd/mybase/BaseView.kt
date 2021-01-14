@@ -1,5 +1,7 @@
 package com.dev.anhnd.mybase
 
+import android.os.Bundle
+import android.view.View
 import androidx.annotation.LayoutRes
 
 interface BaseView {
@@ -7,15 +9,15 @@ interface BaseView {
     @LayoutRes
     fun getLayoutId(): Int
 
-    fun setup() {}
+    fun setup(savedInstanceState: Bundle?=null) {}
 
     fun initBinding() {}
 
     fun beforeInitView() {}
 
-    fun initView() {}
+    fun initView(view: View? = null, savedInstanceState: Bundle? = null) {}
 
     fun observerViewModel() {}
 
-    fun onViewClick(ViewId:Int) {}
+    fun onViewClick(viewId: Int) {}
 }

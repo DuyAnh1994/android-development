@@ -36,7 +36,7 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
     //region Lifecycle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setup()
+        setup(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -57,7 +57,7 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
             setBackPressedDispatcher()
         }
         screenTransitionManageImp = initScreenTransitionManager()
-        initView()
+        initView(view, savedInstanceState)
         observerViewModel()
     }
 
@@ -156,13 +156,13 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
         }
     }
 
-    fun popBackStack(actionId : Int,popIdFragment: Boolean = false) {
+    fun popBackStack(actionId: Int, popIdFragment: Boolean = false) {
         try {
             findNavController().popBackStack(actionId, popIdFragment)
-        }catch (e: IllegalArgumentException) {
+        } catch (e: IllegalArgumentException) {
             e.printStackTrace()
             LogDebug.e(TAG, "${e.message}")
-        }  catch (e: Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
             LogDebug.e(TAG, "${e.message}")
         }

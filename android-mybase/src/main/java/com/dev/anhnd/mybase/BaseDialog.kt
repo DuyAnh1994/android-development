@@ -3,17 +3,14 @@ package com.dev.anhnd.mybase
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import android.view.animation.BounceInterpolator
-import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import com.dev.anhnd.mybase.utils.app.getApplication
 
 abstract class BaseDialog<DB : ViewDataBinding> : DialogFragment(), BaseView {
 
@@ -27,7 +24,7 @@ abstract class BaseDialog<DB : ViewDataBinding> : DialogFragment(), BaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setup()
+        setup(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -43,7 +40,7 @@ abstract class BaseDialog<DB : ViewDataBinding> : DialogFragment(), BaseView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         beforeInitView()
         super.onViewCreated(view, savedInstanceState)
-        initView()
+        initView(view,savedInstanceState )
         initAnimation()
         observerViewModel()
         dialog?.setCanceledOnTouchOutside(isCheckCancel())

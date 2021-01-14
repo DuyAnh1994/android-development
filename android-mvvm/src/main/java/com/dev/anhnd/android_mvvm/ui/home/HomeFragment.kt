@@ -1,7 +1,8 @@
 package com.dev.anhnd.android_mvvm.ui.home
 
 import android.annotation.SuppressLint
-import android.view.Gravity
+import android.os.Bundle
+import android.view.View
 import com.dev.anhnd.android_mvvm.R
 import com.dev.anhnd.android_mvvm.databinding.FragmentHomeBinding
 import com.dev.anhnd.android_mvvm.ui.dialog.DeleteDialog
@@ -18,11 +19,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, MainActivity>() {
 
     override fun getLayoutId() = R.layout.fragment_home
 
-    override fun setup() {
+    override fun setup(savedInstanceState: Bundle?) {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    override fun initView() {
+    override fun initView(view: View?, savedInstanceState: Bundle?) {
         binding.constraintRoot.setOnTouchListener { v, e ->
             val newLocation = intArrayOf(e.x.toInt(), e.y.toInt())
             dialog.apply {

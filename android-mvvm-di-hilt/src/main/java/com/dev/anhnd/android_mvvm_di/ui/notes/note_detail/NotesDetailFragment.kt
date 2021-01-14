@@ -1,7 +1,8 @@
 package com.dev.anhnd.android_mvvm_di.ui.notes.note_detail
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.dev.anhnd.android_mvvm_di.R
 import com.dev.anhnd.android_mvvm_di.databinding.FragmentNotesDetailBinding
 import com.dev.anhnd.android_mvvm_di.ui.main.MainActivity
@@ -20,7 +21,7 @@ class NotesDetailFragment() : BaseFragment<FragmentNotesDetailBinding, MainActiv
         binding.mainViewModel = mainViewModel
     }
 
-    override fun initView() {
+    override fun initView(view: View?, savedInstanceState: Bundle?) {
 
     }
 
