@@ -22,14 +22,23 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
     }
 
     //region Properties
+    /**
+     * Instance of Activity owner
+     */
     @Suppress("UNCHECKED_CAST")
-    val mainActivity by lazy {
+    val activityOwner by lazy {
         requireActivity() as A
     }
+
+    /**
+     * Binding view
+     */
     protected lateinit var binding: DB
+
+    /**
+     * Manager transition fragment by Fragment Manager
+     */
     protected lateinit var screenTransitionManageImp: ScreenTransitionManageImp
-    private var safeAction = false
-    private var waitingAction: (() -> Unit)? = null
     private lateinit var callback: OnBackPressedCallback
     //endregion
 
@@ -60,20 +69,6 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
         initView(view, savedInstanceState)
         observerViewModel()
     }
-
-    override fun onResume() {
-        super.onResume()
-        safeAction = true
-        if (waitingAction != null) {
-            waitingAction?.invoke()
-            waitingAction = null
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        safeAction = false
-    }
     //endregion
 
     override fun beforeInitView() {
@@ -88,55 +83,54 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
         }
     }
 
+    /**
+     * Handle button back press of device
+     */
     open fun isEnableBackPress(): Boolean {
         return true
     }
 
+    /**
+     * Change color of status bar
+     *
+     * @return color
+     */
     open fun getStatusBarColor(): Int? {
         return null
     }
 
+    /**
+     * State text color of status bar
+     *
+     * @return state text dark or light
+     */
     open fun isDarkText(): Boolean? {
         return null
     }
 
-    open fun backScreen() {
-        navigateUp()
-    }
-
+    /**
+     * Get layout to replace fragment if use Fragment Manager
+     * Should use FrameLayout to replace fragment
+     *
+     * @return R.id.xxx
+     */
     open fun getContainer(): Int {
         return -1
     }
 
+    /**
+     * Handle button back press of device
+     */
     open fun onBackPressed() {
 
     }
 
-    fun safeAction(action: () -> Unit) {
-        if (safeAction) action.invoke()
-        else waitingAction = action
-    }
-
-    fun popBackStack(tag: String) {
-        val backTag = if (tag.isEmpty()) javaClass.simpleName else tag
-        requireActivity().supportFragmentManager.popBackStack(
-            backTag,
-            FragmentManager.POP_BACK_STACK_INCLUSIVE
-        )
-    }
-
-    private fun navigateUp() {
-        try {
-            findNavController().navigateUp()
-        } catch (e: IllegalArgumentException) {
-            e.printStackTrace()
-            LogDebug.e(this::class.java.simpleName, "${e.message}")
-        } catch (e: Exception) {
-            e.printStackTrace()
-            LogDebug.e(this::class.java.simpleName, "${e.message}")
-        }
-    }
-
+    /**
+     * Navigate to screen
+     *
+     * @param actionId R.id.xxx - action navigate in navigation graph
+     * @param args pass bundle with navigation component
+     */
     fun navigateTo(actionId: Int,
                    args: Bundle? = null) {
         try {
@@ -156,9 +150,30 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
         }
     }
 
-    fun popBackStack(actionId: Int, popIdFragment: Boolean = false) {
+    /**
+     * Back to the previous screen
+     */
+    fun backScreen() {
         try {
-            findNavController().popBackStack(actionId, popIdFragment)
+            findNavController().navigateUp()
+        } catch (e: IllegalArgumentException) {
+            e.printStackTrace()
+            LogDebug.e(this::class.java.simpleName, "${e.message}")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LogDebug.e(this::class.java.simpleName, "${e.message}")
+        }
+    }
+
+    /**
+     * Back to one of the previous screens in the back stack
+     *
+     * @param actionId R.id.xxx - id of fragment want navigate to
+     * @param inclusive keep back stack
+     */
+    fun popBackStack(actionId: Int, inclusive: Boolean = false) {
+        try {
+            findNavController().popBackStack(actionId, inclusive)
         } catch (e: IllegalArgumentException) {
             e.printStackTrace()
             LogDebug.e(TAG, "${e.message}")
@@ -166,6 +181,17 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
             e.printStackTrace()
             LogDebug.e(TAG, "${e.message}")
         }
+    }
+
+    /**
+     * Back to the previous screen when use Fragment Manager
+     */
+    fun backScreen(tag: String) {
+        val backTag = if (tag.isEmpty()) javaClass.simpleName else tag
+        requireActivity().supportFragmentManager.popBackStack(
+            backTag,
+            FragmentManager.POP_BACK_STACK_INCLUSIVE
+        )
     }
 
     private fun initScreenTransitionManager(): ScreenTransitionManageImp {

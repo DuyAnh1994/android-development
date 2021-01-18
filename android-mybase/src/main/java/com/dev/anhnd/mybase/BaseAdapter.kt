@@ -11,8 +11,14 @@ open class BaseAdapter<T : Any>(
     @LayoutRes private val resLayout: Int
 ) : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>() {
 
+    /**
+     * Listener action in item of list
+     */
     var listener: ListItemListener? = null
 
+    /**
+     * Current list show in screen
+     */
     var data: List<T>? = null
         set(value) {
             field = value
@@ -29,10 +35,20 @@ open class BaseAdapter<T : Any>(
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         val item: T? = data?.get(holder.adapterPosition)
+        /** ----- Model of list ----- */
         holder.binding.setVariable(BR.item, item)
+
+        /** ----- callback ----- */
         holder.binding.setVariable(BR.itemListener, listener)
+
+        /** ----- position of item in list ----- */
         holder.binding.setVariable(BR.itemPosition, holder.adapterPosition)
         holder.binding.executePendingBindings()
+    }
+
+    override fun onViewDetachedFromWindow(holder: BaseViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        holder.clearAnimation()
     }
 
     class BaseViewHolder(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -46,5 +62,8 @@ open class BaseAdapter<T : Any>(
         holder.clearAnimation()
     }
 
+    /**
+     * All listener of adapter must implement this interface
+     */
     interface ListItemListener
 }

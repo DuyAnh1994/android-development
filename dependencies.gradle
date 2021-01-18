@@ -26,7 +26,7 @@ ext {
     espressoCoreVersion = "3.3.0"
 
     // Library
-    constraintLayoutVersion = "2.0.2"
+    constraintLayoutVersion = "2.0.4"
     materialVersion = "1.2.1"
 
     constraintLayoutDependency = "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
@@ -126,7 +126,7 @@ ext {
     /**
      * Koin
      */
-    def koinVersion = "2.1.6"
+    def koinVersion = "2.2.1"
     koinDependencies = [
             "koin"         : "org.koin:koin-android:$koinVersion",
             "koinScope"    : "org.koin:koin-android-scope:$koinVersion",

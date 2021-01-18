@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/android-mvvm-di-hilt" />
             <option value="$PROJECT_DIR$/android-mybase" />
             <option value="$PROJECT_DIR$/android-navigation-component" />
+            <option value="$PROJECT_DIR$/android-viewpager" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

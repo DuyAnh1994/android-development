@@ -43,6 +43,6 @@ class AddNotesFragment() : BaseFragment<FragmentAddNotesBinding, MainActivity>()
     }
 
     override fun onBackPressed() {
-        backScreen()
+//        backScreen()
     }
 }

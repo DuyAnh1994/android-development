@@ -6,7 +6,7 @@
     app:startDestination="@id/settingFragment">
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.dev.anhnd.android_navigation_component.setting.SettingFragment"
+        android:name="com.dev.anhnd.android_viewpager.setting.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting" >
         <action
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/languageFragment"
-        android:name="com.dev.anhnd.android_navigation_component.language.LanguageFragment"
+        android:name="com.dev.anhnd.android_viewpager.language.LanguageFragment"
         android:label="LanguageFragment"
         tools:layout="@layout/fragment_language" />
 

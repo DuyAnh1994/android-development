@@ -3,11 +3,18 @@
 
     <data>
 
+        <import type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewListener"
+            type="OnClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
         android:id="@+id/constraintRoot"
+        deBounceClick="@{viewListener::onClick}"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>

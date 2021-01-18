@@ -3,6 +3,7 @@ package com.dev.anhnd.mybase
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.annotation.RequiresFeature
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
@@ -19,13 +20,19 @@ open class BaseMultiHolderAdapter<T : BaseMultiHolderModel>(
         const val VIEW_TYPE_DEFAULT = 0
     }
 
+    /**
+     * Listener action in item of list
+     */
+    var listener: ListItemListener? = null
+
+    /**
+     * Current list show in screen
+     */
     var data: List<T>? = null
         set(value) {
             field = value
             notifyDataSetChanged()
         }
-
-    var listener: ListItemListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseMultiViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -36,8 +43,13 @@ open class BaseMultiHolderAdapter<T : BaseMultiHolderModel>(
     override fun onBindViewHolder(holder: BaseMultiViewHolder, position: Int) {
         val item: T? = data?.get(holder.adapterPosition)
         holder.binding.apply {
+            /** ----- Model of list ----- */
             setVariable(BR.item, item)
+
+            /** ----- callback ----- */
             setVariable(BR.itemListener, listener)
+
+            /** ----- position of item in list ----- */
             setVariable(BR.itemPosition, holder.adapterPosition)
             executePendingBindings()
         }
@@ -58,7 +70,13 @@ open class BaseMultiHolderAdapter<T : BaseMultiHolderModel>(
         }
     }
 
-    interface ListItemListener
-
+    /**
+     * Must extend this class if use multi type view holder for list
+     */
     open class BaseMultiHolderModel(open val viewType: Int = VIEW_TYPE_DEFAULT)
+
+    /**
+     * All listener of adapter must implement this interface
+     */
+    interface ListItemListener
 }

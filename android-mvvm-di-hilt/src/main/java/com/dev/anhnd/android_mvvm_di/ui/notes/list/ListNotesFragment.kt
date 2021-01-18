@@ -58,6 +58,6 @@ class ListNotesFragment : BaseFragment<FragmentListNotesBinding, MainActivity>()
     }
 
     override fun onBackPressed() {
-        mainActivity.finish()
+//        mainActivity.finish()
     }
 }

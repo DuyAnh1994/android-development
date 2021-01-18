@@ -1,16 +1,21 @@
 package com.dev.anhnd.mybase.utils.media
 
 import android.content.ContentUris
+import android.content.ContentValues
 import android.database.Cursor
 import android.media.MediaMetadataRetriever
 import android.net.Uri
+import android.os.Build
 import android.provider.MediaStore
+import android.util.Log
 import android.util.Size
 import com.dev.anhnd.mybase.utils.app.getApplication
 import com.dev.anhnd.mybase.utils.log.LogDebug
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.BufferedInputStream
 import java.io.File
+import java.io.FileInputStream
 
 object MediaUtils {
 
@@ -321,5 +326,43 @@ object MediaUtils {
             return size
         }
         return size
+    }
+
+    private fun insertFileToMedia(output: String, name:String): Uri? {
+        val values = ContentValues()
+        values.put(MediaStore.MediaColumns.TITLE, name)
+        values.put(MediaStore.MediaColumns.DISPLAY_NAME, name)
+        values.put(MediaStore.MediaColumns.MIME_TYPE, "audio/*")
+        values.put(MediaStore.MediaColumns.SIZE, File(output).length())
+        values.put(MediaStore.Audio.Media.ARTIST, "none")
+        values.put(MediaStore.Audio.Media.IS_RINGTONE, true)
+        values.put(MediaStore.Audio.Media.IS_NOTIFICATION, true)
+        values.put(MediaStore.Audio.Media.IS_ALARM, true)
+        values.put(MediaStore.Audio.Media.IS_MUSIC, false)
+        val newUri: Uri?
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            values.put(MediaStore.Audio.Media.DATA, output)
+            newUri = getApplication().contentResolver.insert(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, values)
+        } else {
+            newUri = getApplication().contentResolver.insert(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, values)
+            try {
+                getApplication().contentResolver.openOutputStream(newUri!!).use { os ->
+                    val file = File(output)
+                    val size = file.length()
+                    val bytes = ByteArray(size.toInt())
+                    val buf = BufferedInputStream(FileInputStream(file))
+                    buf.read(bytes, 0, bytes.size)
+                    buf.close()
+
+                    os?.write(bytes)
+                    os?.close()
+                    os?.flush()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Log.e(TAG, "Exception: ${e.message}")
+            }
+        }
+        return newUri
     }
 }

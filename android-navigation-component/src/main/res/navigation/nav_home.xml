@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.dev.anhnd.android_navigation_component.home.HomeFragment"
+        android:name="com.dev.anhnd.android_viewpager.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.dev.anhnd.android_navigation_component.about.AboutFragment"
+        android:name="com.dev.anhnd.android_viewpager.about.AboutFragment"
         android:label="AboutFragment"
         tools:layout="@layout/fragment_about" />
 

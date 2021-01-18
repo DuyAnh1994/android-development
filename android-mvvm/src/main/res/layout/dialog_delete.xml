@@ -8,12 +8,21 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintRoot"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_215sdp"
-        android:layout_gravity="center"
-        android:background="#F8EF9F">
+        android:id="@+id/backgroundDialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintRoot"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="@dimen/_215sdp"
+            android:background="#F8EF9F"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

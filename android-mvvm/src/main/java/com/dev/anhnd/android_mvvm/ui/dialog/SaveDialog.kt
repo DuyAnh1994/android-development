@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import com.dev.anhnd.android_mvvm.R
 import com.dev.anhnd.android_mvvm.databinding.DialogSaveBinding
 import com.dev.anhnd.mybase.BaseDialog
-import com.dev.anhnd.mybase.DialogInfo
 import com.dev.anhnd.mybase.utils.input.hideKeyBoard
 import com.dev.anhnd.mybase.utils.input.showKeyBoard
 
@@ -19,17 +18,11 @@ class SaveDialog : BaseDialog<DialogSaveBinding>() {
 
     private var isShowKeyboard = false
 
-    override fun getDialogInfo(): DialogInfo {
-        return DialogInfo(
-            resources.getDimension(R.dimen._250sdp).toInt(),
-            resources.getDimension(R.dimen._215sdp).toInt(),
-            android.R.color.transparent
-        )
-    }
-
     override fun getLayoutId(): Int = R.layout.dialog_save
 
     override fun getRootViewGroup(): ViewGroup = binding.constraintRoot
+
+    override fun getBackgroundDialog() = R.id.backgroundDialog
 
     override fun setup(savedInstanceState: Bundle?) {
     }
@@ -75,4 +68,6 @@ class SaveDialog : BaseDialog<DialogSaveBinding>() {
         }
         Handler(Looper.getMainLooper()).postDelayed(runnable, 300)
     }
+
+
 }

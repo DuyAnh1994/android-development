@@ -9,6 +9,7 @@ import com.dev.anhnd.android_mvvm.R
 import com.dev.anhnd.android_mvvm.databinding.ActivityMainBinding
 import com.dev.anhnd.android_mvvm.model.News
 import com.dev.anhnd.android_mvvm.model.User
+import com.dev.anhnd.android_mvvm.ui.home.HomeFragment
 import com.dev.anhnd.android_mvvm.utils.DataUtils
 import com.dev.anhnd.android_mvvm.utils.InjectorUtils
 import com.dev.anhnd.mybase.BaseActivity
@@ -54,13 +55,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 Log.d(TAG, "initView: $it")
             }
         }*/
-//        supportFragmentManager.beginTransaction()
-//            .add(R.id.constraintRoot, HomeFragment(), HomeFragment::class.java.simpleName)
-//            .addToBackStack( HomeFragment::class.java.simpleName)
-//            .commit()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.constraintRoot, HomeFragment(), HomeFragment::class.java.simpleName)
+            .addToBackStack( HomeFragment::class.java.simpleName)
+            .commit()
 
-        binding.rvDemo.adapter = adapterMulti
-        adapterMulti.data = DataUtils.news()
+//        binding.rvDemo.adapter = adapterMulti
+//        adapterMulti.data = DataUtils.news()
 
     }
 
