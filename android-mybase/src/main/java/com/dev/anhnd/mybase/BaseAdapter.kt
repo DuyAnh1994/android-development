@@ -5,45 +5,39 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-open class BaseAdapter<T : Any>(
-    @LayoutRes private val resLayout: Int
-) : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>() {
+abstract class BaseAdapter<T : Any>(
+    @LayoutRes private val resLayout: Int,
+    diffUtil: BaseDiffCallback<T>
+) : ListAdapter<T, BaseAdapter.BaseViewHolder>(diffUtil) {
 
     /**
      * Listener action in item of list
      */
     var listener: ListItemListener? = null
 
-    /**
-     * Current list show in screen
-     */
-    var data: List<T>? = null
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, resLayout, parent, false)
-        return BaseViewHolder(binding)
+        return BaseViewHolder(DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            resLayout,
+            parent,
+            false
+        ))
     }
 
-    override fun getItemCount() = data?.size ?: 0
-
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        val item: T? = data?.get(holder.adapterPosition)
-        /** ----- Model of list ----- */
-        holder.binding.setVariable(BR.item, item)
-
-        /** ----- callback ----- */
-        holder.binding.setVariable(BR.itemListener, listener)
-
-        /** ----- position of item in list ----- */
-        holder.binding.setVariable(BR.itemPosition, holder.adapterPosition)
-        holder.binding.executePendingBindings()
+        holder.binding.apply {
+            /** ----- item of list ----- */
+            setVariable(BR.item, getItem(position))
+            /** ----- callback of view holder ----- */
+            setVariable(BR.itemListener, listener)
+            /** ----- position of item in list ----- */
+            setVariable(BR.itemPosition, holder.adapterPosition)
+            executePendingBindings()
+        }
     }
 
     override fun onViewDetachedFromWindow(holder: BaseViewHolder) {
@@ -67,3 +61,5 @@ open class BaseAdapter<T : Any>(
      */
     interface ListItemListener
 }
+
+

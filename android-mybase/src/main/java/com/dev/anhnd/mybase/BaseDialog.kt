@@ -57,6 +57,8 @@ abstract class BaseDialog<BD : ViewDataBinding> : DialogFragment(), BaseView, Vi
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        beforeInitView()
+        super.onViewCreated(view, savedInstanceState)
         initAnimation()
         val background: View = view.findViewById(getBackgroundDialog())
         background.setOnClickListener {

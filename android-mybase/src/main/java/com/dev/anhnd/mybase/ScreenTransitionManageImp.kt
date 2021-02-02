@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager
 class ScreenTransitionManageImp(
     private val fragmentManager: FragmentManager,
     private val layoutContainer: Int
-) : IScreenTransitionHelper {
+) : ScreenTransitionHelper {
 
     override fun getScreenCount() = fragmentManager.backStackEntryCount
 

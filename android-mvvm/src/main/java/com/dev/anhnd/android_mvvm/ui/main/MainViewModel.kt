@@ -1,19 +1,10 @@
 package com.dev.anhnd.android_mvvm.ui.main
 
-import androidx.lifecycle.viewModelScope
-import com.dev.anhnd.android_mvvm.repository.MainRepository
+import androidx.hilt.lifecycle.ViewModelInject
+import com.dev.anhnd.android_mvvm.repository.HomeRepository
 import com.dev.anhnd.mybase.BaseViewModel
-import kotlinx.coroutines.launch
 
-class MainViewModel(
-    private val mainRepository: MainRepository
+class MainViewModel @ViewModelInject constructor(
 ) : BaseViewModel() {
 
-    val users = mainRepository.users
-
-    fun fetchUsers() {
-        viewModelScope.launch {
-            mainRepository.fetchUsers({}, {})
-        }
-    }
 }

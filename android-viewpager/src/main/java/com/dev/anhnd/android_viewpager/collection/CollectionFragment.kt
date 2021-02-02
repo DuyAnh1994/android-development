@@ -17,17 +17,17 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding, MainActivity>
     private val TAG = CollectionFragment::class.java.simpleName
     private val mainViewModel by activityViewModels<MainViewModel>()
     private val adapter by lazy {
-        BaseAdapter<Student>(R.layout.item_student).apply {
-            listener = object : CollectionListener {
-                override fun onClickItem(position: Int) {
-                    if (position % 2 == 0) {
-                        (parentFragment as HomeFragment).getViewPager().currentItem = 2
-                    } else {
-                        (parentFragment as HomeFragment).getViewPager().currentItem = 0
-                    }
-                }
-            }
-        }
+//        BaseAdapter<Student>(R.layout.item_student).apply {
+//            listener = object : CollectionListener {
+//                override fun onClickItem(position: Int) {
+//                    if (position % 2 == 0) {
+//                        (parentFragment as HomeFragment).getViewPager().currentItem = 2
+//                    } else {
+//                        (parentFragment as HomeFragment).getViewPager().currentItem = 0
+//                    }
+//                }
+//            }
+//        }
     }
 
     override fun getLayoutId(): Int = R.layout.fragment_collection
@@ -38,7 +38,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding, MainActivity>
 
     override fun initBinding() {
         binding.mainViewModel = mainViewModel
-        binding.adapter = adapter
+//        binding.adapter = adapter
     }
 
     override fun initView(view: View?, savedInstanceState: Bundle?) {
@@ -46,7 +46,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding, MainActivity>
         for (i in 0..20) {
             students.add(Student("Student $i"))
         }
-        adapter.data = students
+//        adapter.data = students
     }
 
     override fun observerViewModel() {

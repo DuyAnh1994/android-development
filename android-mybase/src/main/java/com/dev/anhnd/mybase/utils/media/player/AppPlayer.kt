@@ -1,4 +1,4 @@
-package com.dev.anhnd.mybase.utils.media
+package com.dev.anhnd.mybase.utils.media.player
 
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +9,7 @@ import androidx.lifecycle.*
 import com.dev.anhnd.mybase.utils.app.getApplication
 import com.dev.anhnd.mybase.utils.error.BaseLibraryException
 import com.dev.anhnd.mybase.utils.log.LogDebug
+import com.dev.anhnd.mybase.utils.media.SeekableExtractorsFactory
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.ui.PlayerView

@@ -5,13 +5,13 @@
 
     <data>
 
-        <import type="com.dev.anhnd.android_mvvm.model.News" />
+        <import type="com.dev.anhnd.mybase.BaseMultiHolderAdapter.ModelType" />
 
         <import type="com.dev.anhnd.android_mvvm.ui.main.ItemNewsListener" />
 
         <variable
             name="item"
-            type="News" />
+            type="ModelType" />
 
         <variable
             name="itemListener"
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{item.content}"
+            tv_set_text_by_multi_holder="@{item}"
             android:textSize="@dimen/_20ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

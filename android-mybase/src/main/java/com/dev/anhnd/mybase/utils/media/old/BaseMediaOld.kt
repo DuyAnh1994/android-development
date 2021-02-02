@@ -1,10 +1,9 @@
-package com.dev.anhnd.mybase.utils.media
+package com.dev.anhnd.mybase.utils.media.old
 
 import android.net.Uri
-import android.os.Parcelable
 import android.util.Size
-import kotlinx.android.parcel.Parcelize
 
+@Deprecated(message = "Not support this class, migrate to BaseMedia")
 sealed class BaseMedia(
         open val name: String = "",
         open val nameWithoutExtension: String = "",
@@ -19,7 +18,6 @@ sealed class BaseMedia(
         open val typeMedia: MediaType,
 )
 
-@Parcelize
 data class BaseVideo(
         override val name: String = "",
         override val nameWithoutExtension: String = "",
@@ -46,9 +44,8 @@ data class BaseVideo(
         size = size,
         lastTimeModify = lastTimeModify,
         typeMedia = typeMedia
-), Parcelable
+)
 
-@Parcelize
 data class BaseAudio(
         override val name: String = "",
         override val nameWithoutExtension: String = "",
@@ -74,9 +71,8 @@ data class BaseAudio(
         size = size,
         lastTimeModify = lastTimeModify,
         typeMedia = typeMedia
-), Parcelable
+)
 
-@Parcelize
 data class BaseImage(
         override val name: String = "",
         override val nameWithoutExtension: String = "",
@@ -102,7 +98,7 @@ data class BaseImage(
         size = size,
         lastTimeModify = lastTimeModify,
         typeMedia = typeMedia
-), Parcelable
+)
 
 enum class MediaType {
     VIDEO, AUDIO, IMAGE

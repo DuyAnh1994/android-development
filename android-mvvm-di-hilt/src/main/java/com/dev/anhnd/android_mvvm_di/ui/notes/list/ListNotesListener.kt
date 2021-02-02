@@ -4,5 +4,6 @@ import com.dev.anhnd.android_mvvm_di.data.local.notes.Notes
 import com.dev.anhnd.mybase.BaseAdapter
 
 interface ListNotesListener : BaseAdapter.ListItemListener {
-    fun onClickItem(item: Notes, position:Int)
+    fun onClickItem(item: Notes, position: Int)
+    fun onLongClickItem(item: Notes, position: Int) = true
 }

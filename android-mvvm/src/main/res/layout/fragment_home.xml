@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <import type="android.view.View.OnClickListener" />
 
+        <import type="androidx.recyclerview.widget.RecyclerView.Adapter" />
+
         <variable
             name="viewListener"
             type="OnClickListener" />
+
+        <variable
+            name="adapterMulti"
+            type="Adapter" />
+
+        <variable
+            name="adapter"
+            type="Adapter" />
 
     </data>
 
@@ -15,7 +27,26 @@
         android:id="@+id/constraintRoot"
         deBounceClick="@{viewListener::onClick}"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FADFB8">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvUser"
+            rv_set_adapter="@{adapter}"
+            rv_set_fix_size="@{true}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_photo" />
+
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/rvDemo"-->
+<!--                    rv_set_adapter="@{adapterMulti}"-->
+<!--                    rv_set_fix_size="@{true}"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

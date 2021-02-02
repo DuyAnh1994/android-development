@@ -21,7 +21,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding, MainActivity>() {
     }
 
     override fun initBinding() {
-        binding.mainViewModel = mainViewModel
+//        binding.mainViewModel = mainViewModel
     }
 
     override fun initView(view: View?, savedInstanceState: Bundle?) {

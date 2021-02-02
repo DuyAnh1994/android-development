@@ -1,14 +1,14 @@
-package com.dev.anhnd.mediaplayer
+package com.dev.anhnd.mediaplayer.home
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fm, lifecycle) {
+class HomeViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fm, lifecycle) {
 
-    private val fragments = arrayListOf<Fragment>()
-    private val titles = arrayListOf<String>()
+    val fragments = arrayListOf<Fragment>()
+    val titles = arrayListOf<String>()
 
     override fun getItemCount(): Int = fragments.size
 
@@ -20,4 +20,5 @@ class ViewPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) : FragmentStat
         fragments.add(position, fragment)
         titles.add(position, title)
     }
+
 }

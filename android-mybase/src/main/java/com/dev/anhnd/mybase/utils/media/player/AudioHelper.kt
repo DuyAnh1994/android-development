@@ -1,4 +1,4 @@
-package com.dev.anhnd.mybase.utils.media
+package com.dev.anhnd.mybase.utils.media.player
 
 import android.content.Context
 import android.media.AudioAttributes

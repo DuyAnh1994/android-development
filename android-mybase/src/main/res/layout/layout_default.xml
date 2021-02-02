@@ -13,12 +13,6 @@
         <variable
             name="viewListener"
             type="android.view.View.OnClickListener" />
-        <variable
-            name="listSelected"
-            type="java.util.List" />
-        <variable
-            name="modeSelected"
-            type="androidx.lifecycle.LiveData" />
     </data>
     <LinearLayout
         android:id="@+id/layout_item_main_content"
@@ -37,7 +31,7 @@
             android:layout_height="wrap_content" />
 
         <View
-            android:id="@+id/backgroundDialog"
+            android:id="@+id/dialogBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

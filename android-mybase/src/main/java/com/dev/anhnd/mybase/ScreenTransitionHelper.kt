@@ -5,7 +5,7 @@ import androidx.annotation.AnimRes
 import androidx.annotation.AnimatorRes
 import androidx.fragment.app.Fragment
 
-interface IScreenTransitionHelper {
+interface ScreenTransitionHelper {
 
     fun getScreenCount() : Int
 

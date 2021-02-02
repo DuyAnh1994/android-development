@@ -11,7 +11,7 @@ import com.dev.anhnd.mybase.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NotesDetailFragment() : BaseFragment<FragmentNotesDetailBinding, MainActivity>() {
+class NotesDetailFragment : BaseFragment<FragmentNotesDetailBinding, MainActivity>() {
 
     private val mainViewModel by activityViewModels<MainViewModel>()
 

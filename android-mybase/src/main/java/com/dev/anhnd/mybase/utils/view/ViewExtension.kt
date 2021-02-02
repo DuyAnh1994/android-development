@@ -11,6 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.dev.anhnd.mybase.BaseAdapter
 import com.dev.anhnd.mybase.R
 import com.dev.anhnd.mybase.utils.click.onDebouncedClick
+import java.math.BigDecimal
 
 var options = RequestOptions()
     .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -21,7 +22,7 @@ fun ImageView.loadBackgroundByUrl(url: String) {
     Glide.with(this)
         .load(url)
         .error(R.drawable.default_photo)
-        .apply(options.skipMemoryCache(true))
+        .apply(options.skipMemoryCache(false))
         .centerCrop()
         .into(this)
 }
@@ -71,4 +72,9 @@ fun <T : RecyclerView.ViewHolder> RecyclerView.applyAdapter(applyAdapter: Recycl
 @BindingAdapter("rv_set_fix_size")
 fun RecyclerView.setFixSize(set: Boolean?) {
     setHasFixedSize(set ?: false)
+}
+
+fun Number.scale(numberDigitsAfterComma: Int): Number {
+    return BigDecimal(this.toDouble()).setScale(numberDigitsAfterComma, BigDecimal.ROUND_HALF_EVEN)
+        .toFloat()
 }
