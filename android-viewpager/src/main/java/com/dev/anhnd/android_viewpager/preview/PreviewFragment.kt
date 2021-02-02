@@ -9,7 +9,7 @@ import com.dev.anhnd.android_viewpager.main.MainActivity
 import com.dev.anhnd.android_viewpager.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 
-class PreviewFragment : BaseFragment<FragmentPreviewBinding, MainActivity>() {
+class PreviewFragment : BaseFragment<FragmentPreviewBinding>() {
 
     private val TAG = PreviewFragment::class.java.simpleName
 

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -15,7 +16,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import com.dev.anhnd.mybase.utils.log.LogDebug
 
-abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragment(), BaseView, View.OnClickListener {
+abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.OnClickListener {
 
     companion object {
         private val TAG = BaseFragment::class.java.simpleName
@@ -27,7 +28,7 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
      */
     @Suppress("UNCHECKED_CAST")
     val activityOwner by lazy {
-        requireActivity() as A
+        requireActivity()
     }
 
     /**
@@ -52,10 +53,15 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        binding.lifecycleOwner = this
-        binding.setVariable(BR.viewListener, this)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.setVariable(BR.viewListener, this as View.OnClickListener)
         initBinding()
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        initView()
     }
 
     override fun onViewCreated(view: View,
@@ -66,7 +72,7 @@ abstract class BaseFragment<DB : ViewDataBinding, A : BaseActivity<*>> : Fragmen
             setBackPressedDispatcher()
         }
         screenTransitionManageImp = initScreenTransitionManager()
-        initView(view, savedInstanceState)
+//        initView(view, savedInstanceState)
         observerViewModel()
     }
     //endregion

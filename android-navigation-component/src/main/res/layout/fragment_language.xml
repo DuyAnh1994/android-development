@@ -7,7 +7,7 @@
 
         <import type="android.view.View.OnClickListener" />
 
-        <import type="com.dev.anhnd.android_viewpager.main.MainViewModel" />
+        <import type="com.dev.anhnd.android_navigation_component.main.MainViewModel" />
 
         <variable
             name="viewListener"

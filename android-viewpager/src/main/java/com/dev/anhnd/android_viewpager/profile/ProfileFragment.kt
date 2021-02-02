@@ -10,7 +10,7 @@ import com.dev.anhnd.android_viewpager.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.input.hideKeyBoard
 
-class ProfileFragment : BaseFragment<FragmentProfileBinding, MainActivity>() {
+class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     private val TAG = ProfileFragment::class.java.simpleName
 

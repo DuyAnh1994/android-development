@@ -7,7 +7,7 @@ import com.dev.anhnd.android_navigation_component.databinding.FragmentHomeBindin
 import com.dev.anhnd.android_navigation_component.main.MainActivity
 import com.dev.anhnd.mybase.BaseFragment
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, MainActivity>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val TAG = HomeFragment::class.java.simpleName
 

@@ -5,13 +5,13 @@
 
     <data>
 
-        <import type="com.dev.anhnd.android_mvvm.model.News" />
+        <import type="com.dev.anhnd.mybase.BaseMultiHolderAdapter.ModelType" />
 
         <import type="com.dev.anhnd.android_mvvm.ui.main.ItemNewsListener" />
 
         <variable
             name="item"
-            type="News" />
+            type="ModelType" />
 
         <variable
             name="itemListener"
@@ -29,7 +29,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivImage"
             deBounceClick="@{()->itemListener.onItemClick(ivImage, item, itemPosition)}"
-            ivLoadBackgroundById="@{item.image}"
+            tv_set_image_by_multi_holder="@{item}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="@dimen/_40sdp"

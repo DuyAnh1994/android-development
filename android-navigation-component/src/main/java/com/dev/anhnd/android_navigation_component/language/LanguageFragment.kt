@@ -10,7 +10,7 @@ import com.dev.anhnd.android_navigation_component.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.shareParentFragmentViewModels
 
-class LanguageFragment : BaseFragment<FragmentLanguageBinding, MainActivity>() {
+class LanguageFragment : BaseFragment<FragmentLanguageBinding>() {
 
     private val TAG = LanguageFragment::class.java.simpleName
 //    private val mainViewModel by activityViewModels<MainViewModel>()

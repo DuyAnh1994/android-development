@@ -11,7 +11,7 @@ import com.dev.anhnd.android_navigation_component.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.shareParentFragmentViewModels
 
-class PreviewFragment : BaseFragment<FragmentPreviewBinding, MainActivity>() {
+class PreviewFragment : BaseFragment<FragmentPreviewBinding>() {
 
     private val TAG = PreviewFragment::class.java.simpleName
 

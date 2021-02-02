@@ -81,8 +81,15 @@ class BasePreference(private val PREF_NAME: String, private val application: App
 /**
  * Preference extension
  */
-val LongClass = Long::class.java
-val IntClass = Int::class.java
+
 val StringClass = String::class.java
-val FloatClass = Float::class.java
 val BooleanClass = Boolean::class.java
+val ByteClass = Byte::class.java
+val CharClass = Char::class.java
+val ShortClass = Short::class.java
+val IntClass = Int::class.java
+val LongClass = Long::class.java
+val FloatClass = Float::class.java
+val DoubleClass = Double::class.java
+
+

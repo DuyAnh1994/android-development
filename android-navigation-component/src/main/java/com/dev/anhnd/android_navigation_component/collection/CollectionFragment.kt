@@ -8,7 +8,7 @@ import com.dev.anhnd.android_navigation_component.databinding.FragmentCollection
 import com.dev.anhnd.android_navigation_component.main.MainActivity
 import com.dev.anhnd.mybase.BaseFragment
 
-class CollectionFragment : BaseFragment<FragmentCollectionBinding, MainActivity>() {
+class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 
     private val TAG = CollectionFragment::class.java.simpleName
     override fun getLayoutId(): Int = R.layout.fragment_collection

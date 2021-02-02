@@ -7,7 +7,7 @@ import com.dev.anhnd.android_navigation_component.databinding.FragmentSettingBin
 import com.dev.anhnd.android_navigation_component.main.MainActivity
 import com.dev.anhnd.mybase.BaseFragment
 
-class SettingFragment : BaseFragment<FragmentSettingBinding, MainActivity>() {
+class SettingFragment : BaseFragment<FragmentSettingBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_setting
 

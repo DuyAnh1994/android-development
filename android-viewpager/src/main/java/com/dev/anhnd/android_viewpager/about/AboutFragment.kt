@@ -9,7 +9,7 @@ import com.dev.anhnd.android_viewpager.main.MainActivity
 import com.dev.anhnd.android_viewpager.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 
-class AboutFragment : BaseFragment<FragmentAboutBinding, MainActivity>() {
+class AboutFragment : BaseFragment<FragmentAboutBinding>() {
 
     private val TAG = AboutFragment::class.java.simpleName
     private val mainViewModel by activityViewModels<MainViewModel>()
@@ -21,7 +21,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding, MainActivity>() {
     }
 
     override fun initBinding() {
-        binding.mainViewModel = mainViewModel
+//        binding.mainViewModel = mainViewModel
     }
 
     override fun initView(view: View?, savedInstanceState: Bundle?) {

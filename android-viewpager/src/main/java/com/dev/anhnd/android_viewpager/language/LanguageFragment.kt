@@ -10,7 +10,7 @@ import com.dev.anhnd.android_viewpager.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.observer
 
-class LanguageFragment : BaseFragment<FragmentLanguageBinding, MainActivity>() {
+class LanguageFragment : BaseFragment<FragmentLanguageBinding>() {
 
     private val TAG = LanguageFragment::class.java.simpleName
 

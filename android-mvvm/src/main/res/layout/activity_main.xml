@@ -5,11 +5,6 @@
 
     <data>
 
-        <variable
-            name="bindingListener"
-            type="com.dev.anhnd.android_mvvm.ui.main.MainActivity" />
-
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,21 +13,13 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
-        <!--<androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvUser"
-            rvSetFixSize="true"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_user" />-->
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rvDemo"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
-
-
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

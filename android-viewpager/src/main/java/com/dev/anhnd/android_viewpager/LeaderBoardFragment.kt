@@ -7,7 +7,7 @@ import com.dev.anhnd.android_viewpager.databinding.FragmentLeaderboardBinding
 import com.dev.anhnd.android_viewpager.main.MainActivity
 import com.dev.anhnd.mybase.BaseFragment
 
-class LeaderBoardFragment : BaseFragment<FragmentLeaderboardBinding, MainActivity>() {
+class LeaderBoardFragment : BaseFragment<FragmentLeaderboardBinding>() {
 
     private val TAG = CollectionFragment::class.java.simpleName
     override fun getLayoutId(): Int = R.layout.fragment_leaderboard

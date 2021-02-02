@@ -89,9 +89,11 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseVie
      */
     protected open fun isOnlyPortraitScreen() = true
 
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>,
-                                            grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (checkPermission(permissions)) {
             onAllow?.invoke()
@@ -139,9 +141,11 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseVie
      * @param onDenied callback denied permission
      */
     @SuppressLint("ObsoleteSdkInt")
-    protected fun doRequestPermission(permissions: Array<String>,
-                                      onAllow: () -> Unit = {},
-                                      onDenied: () -> Unit = {}) {
+    protected fun doRequestPermission(
+        permissions: Array<String>,
+        onAllow: () -> Unit = {},
+        onDenied: () -> Unit = {}
+    ) {
         this.onAllow = onAllow
         this.onDenied = onDenied
         if (checkPermission(permissions)) {
@@ -156,13 +160,18 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseVie
     fun setKeyboardVisibilityListener(parent: View, listener: OnKeyboardVisibilityListener) {
         parent.viewTreeObserver.addOnGlobalLayoutListener {
             val defaultKeyboardHeightDP = 100
-            val estimatedKeyboardDP = defaultKeyboardHeightDP + if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                48
-            } else {
-                0
-            }
+            val estimatedKeyboardDP =
+                defaultKeyboardHeightDP + if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    48
+                } else {
+                    0
+                }
             val rect = Rect()
-            val estimatedKeyboardHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, estimatedKeyboardDP.toFloat(), parent.resources.displayMetrics).toInt()
+            val estimatedKeyboardHeight = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                estimatedKeyboardDP.toFloat(),
+                parent.resources.displayMetrics
+            ).toInt()
             parent.getWindowVisibleDisplayFrame(rect)
             val heightDiff = parent.rootView.height - (rect.bottom - rect.top)
             val isShown = heightDiff >= estimatedKeyboardHeight

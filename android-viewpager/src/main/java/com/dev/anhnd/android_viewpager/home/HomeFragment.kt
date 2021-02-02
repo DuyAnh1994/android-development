@@ -11,7 +11,7 @@ import com.dev.anhnd.android_viewpager.setting.SettingFragment
 import com.dev.anhnd.mybase.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
-class HomeFragment : BaseFragment<FragmentHomeBinding, MainActivity>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     companion object {
         private val TAG = HomeFragment::class.java.simpleName

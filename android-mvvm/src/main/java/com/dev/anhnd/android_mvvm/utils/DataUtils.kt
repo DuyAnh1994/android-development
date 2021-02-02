@@ -1,7 +1,11 @@
 package com.dev.anhnd.android_mvvm.utils
 
 import com.dev.anhnd.android_mvvm.R
+import com.dev.anhnd.android_mvvm.model.Color
+import com.dev.anhnd.android_mvvm.model.Image
 import com.dev.anhnd.android_mvvm.model.News
+import com.dev.anhnd.android_mvvm.model.Text
+import com.dev.anhnd.mybase.BaseMultiHolderAdapter
 
 object DataUtils {
 
@@ -38,4 +42,17 @@ object DataUtils {
         }
         return news
     }
+
+    val news = mutableListOf(
+        Text("Some thing 1"),
+        Color(R.color.colorPickerSupernova),
+        Text("Some thing 2"),
+        Image(R.drawable.ic_launcher_background, "https://via.p,laceholder.com/150/92c952"),
+        Text("Some thing 3"),
+        Color(R.color.colorPickerAzureRadiance),
+        Text("Some thing 4"),
+        Image(R.drawable.ic_launcher_foreground, "https://via.placeholder.com/150/771796"),
+        Text("Some thing 5")
+    )
+
 }

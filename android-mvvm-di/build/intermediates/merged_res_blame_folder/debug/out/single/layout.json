@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "F:\\SOLAR\\android-development\\android-mvvm-di\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "F:\\SOLAR\\android-development\\android-mvvm-di\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "F:\\SOLAR\\android-development\\android-mvvm-di\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_user.xml",
+        "source": "F:\\SOLAR\\android-development\\android-mvvm-di\\src\\main\\res\\layout\\item_user.xml"
+    }
+]

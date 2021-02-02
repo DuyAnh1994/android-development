@@ -10,7 +10,7 @@ import com.dev.anhnd.android_navigation_component.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.shareParentFragmentViewModels
 
-class AboutFragment : BaseFragment<FragmentAboutBinding, MainActivity>() {
+class AboutFragment : BaseFragment<FragmentAboutBinding>() {
 
     private val TAG = AboutFragment::class.java.simpleName
 

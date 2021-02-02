@@ -5,18 +5,18 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.DialogInterface
 import android.os.Bundle
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.animation.BounceInterpolator
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 
+@Deprecated(message = "Not support this class, migrate to BaseDialog")
 abstract class BaseDialogOld<DB : ViewDataBinding> : DialogFragment(), BaseView {
-
-    companion object {
-        private val TAG = BaseDialogOld::class.java.simpleName
-    }
 
     protected lateinit var binding: DB
     private var location: IntArray = intArrayOf(-1, -1)
@@ -27,9 +27,7 @@ abstract class BaseDialogOld<DB : ViewDataBinding> : DialogFragment(), BaseView 
         setup(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         binding.lifecycleOwner = this
         setLocation()
@@ -40,7 +38,7 @@ abstract class BaseDialogOld<DB : ViewDataBinding> : DialogFragment(), BaseView 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         beforeInitView()
         super.onViewCreated(view, savedInstanceState)
-        initView(view,savedInstanceState )
+        initView(view, savedInstanceState)
         initAnimation()
         observerViewModel()
         dialog?.setCanceledOnTouchOutside(isCheckCancel())

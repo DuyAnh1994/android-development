@@ -9,33 +9,55 @@
 
         <import type="com.dev.anhnd.android_mvvm_di.ui.notes.list.ListNotesListener" />
 
+        <import type="androidx.lifecycle.MutableLiveData" />
+
+        <import type="java.util.Stack" />
+
         <variable
             name="item"
             type="Notes" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
 
         <variable
             name="itemListener"
             type="com.dev.anhnd.android_mvvm_di.ui.notes.list.ListNotesListener" />
 
         <variable
-            name="itemPosition"
-            type="Integer" />
+            name="liveSelected"
+            type="MutableLiveData&lt;Stack&lt;Notes>>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        deBounceClick="@{()->itemListener.onClickItem(item, itemPosition)}"
+        deBounceClick="@{()->itemListener.onClickItem(itemPosition, item)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/ripple_click_square">
+        android:background="@drawable/ripple_click_square"
+        android:onLongClick="@{()->itemListener.onLongClickItem(itemPosition, item)}"
+        android:padding="@dimen/_5sdp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCover"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@{liveSelected.search(item) == -1 ? @color/red : @color/black}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/red" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="@dimen/_50sdp"
             android:gravity="center_vertical"
             android:paddingStart="@dimen/_20sdp"
             android:paddingEnd="@dimen/_20sdp"
             android:text="@{item.title}"
             android:textSize="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivCover"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Title" />
 

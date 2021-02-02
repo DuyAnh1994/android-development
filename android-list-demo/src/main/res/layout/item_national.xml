@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/fragment_national">
+
+    <data>
+
+        <import type="com.dev.anhnd.android_list_demo.national.National" />
+
+        <import type="com.dev.anhnd.android_list_demo.national.NationalListener" />
+
+        <import type="androidx.lifecycle.MutableLiveData" />
+
+        <import type="java.util.Stack" />
+
+        <variable
+            name="item"
+            type="National" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
+
+        <variable
+            name="itemListener"
+            type="NationalListener" />
+
+        <variable
+            name="liveSelected"
+            type="MutableLiveData&lt;Stack&lt;National>>" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:background="@drawable/ripple_click_square"
+        android:onClick="@{()->itemListener.onClickItem(itemPosition, item)}"
+        android:onLongClick="@{()->itemListener.onLongClickItem(itemPosition, item)}">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivFlag"
+            loadBackground="@{item.flag}"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:text="@{item.name}"
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="@id/ivFlag"
+            app:layout_constraintEnd_toStartOf="@id/ivSelected"
+            app:layout_constraintStart_toEndOf="@id/ivFlag"
+            app:layout_constraintTop_toTopOf="@id/ivFlag"
+            tools:text="Việt Nam" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ivSelected"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:background="@{liveSelected.search(item) != -1 ? @drawable/bg_selected : @drawable/bg_unselected}"
+            android:gravity="center"
+            android:text="@{liveSelected.search(item) == -1 ? @string/empty : String.valueOf(liveSelected.indexOf(item) + 1)}"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/ivFlag"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivFlag"
+            tools:background="@drawable/bg_selected"
+            tools:text="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
