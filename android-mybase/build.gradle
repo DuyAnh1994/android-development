@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
+//    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 
@@ -60,4 +60,9 @@ dependencies {
     implementation rootProject.ext.exoPlayerDependencies.exoplayer
     implementation rootProject.ext.dimenDependencies.sdp
     implementation rootProject.ext.dimenDependencies.ssp
+    implementation rootProject.ext.networkDependencies.retrofit
+    implementation rootProject.ext.networkDependencies.retrofitGsonConverter
+    implementation rootProject.ext.networkDependencies.retrofitConverterMoshi
+    implementation rootProject.ext.networkDependencies.retrofitRxJava
+    implementation rootProject.ext.networkDependencies.logging
 }

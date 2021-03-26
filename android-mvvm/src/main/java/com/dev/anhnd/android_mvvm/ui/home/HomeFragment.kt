@@ -84,6 +84,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun observerViewModel() {
         observer(viewModel.photos) {
+            logd("observerViewModel: ${it?.size}")
 //            adapter.submitList(it)
         }
     }

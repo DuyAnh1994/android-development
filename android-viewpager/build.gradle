@@ -77,6 +77,6 @@ dependencies {
     kapt rootProject.ext.hiltDependencies.compilerViewModel_kapt
 
     implementation rootProject.ext.koinDependencies.koin
-    implementation rootProject.ext.koinDependencies.koinScope
+    implementation rootProject.ext.koinDependencies.koinFragment
     implementation rootProject.ext.koinDependencies.koinViewModel
 }

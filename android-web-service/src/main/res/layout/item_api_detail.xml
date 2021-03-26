@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.dev.anhnd.android_web_service.model.ApiDetail" />
+
+        <variable
+            name="itemListener"
+            type="com.dev.anhnd.android_web_service.ui.movies.ApiDetailListener" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        deBounceClick="@{()->itemListener.onClickItem(itemPosition, item)}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple_click_square"
+        android:padding="@dimen/_5sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.name}"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Get Popular" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

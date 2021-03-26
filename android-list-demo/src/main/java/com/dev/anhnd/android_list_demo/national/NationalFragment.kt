@@ -8,14 +8,14 @@ import com.dev.anhnd.android_list_demo.main.MainActivity
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.observer
 import com.dev.anhnd.mybase.utils.log.logd
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 //@AndroidEntryPoint
 class NationalFragment : BaseFragment<FragmentNationalBinding>() {
 
     //    private val viewModelF by viewModels<NationalViewModel>()
-    private val viewModelF: NationalViewModel by viewModel()
+    private val viewModelF by viewModel<NationalViewModel>()
     private val adapter by lazy {
         NationalAdapter().apply {
             listener = object : NationalListener {
@@ -24,6 +24,7 @@ class NationalFragment : BaseFragment<FragmentNationalBinding>() {
                 }
 
                 override fun onLongClickItem(position: Int, national: National): Boolean {
+
                     remove(national)
                     viewModelF.remove(national)
                     return super.onLongClickItem(position, national)
