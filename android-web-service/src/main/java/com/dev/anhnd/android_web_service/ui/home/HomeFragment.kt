@@ -1,10 +1,9 @@
 package com.dev.anhnd.android_web_service.ui.home
 
 import android.os.Bundle
-import android.view.View
 import com.dev.anhnd.android_web_service.R
 import com.dev.anhnd.android_web_service.databinding.FragmentHomeBinding
-import com.dev.anhnd.android_web_service.model.ApiType
+import com.dev.anhnd.android_web_service.data.model.ApiType
 import com.dev.anhnd.android_web_service.utils.Constant
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.observer
@@ -27,7 +26,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun getLayoutId() = R.layout.fragment_home
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
         viewModelF.getApiTypes()
     }
 
@@ -35,7 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.adapter = adapter
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
 
     }
 

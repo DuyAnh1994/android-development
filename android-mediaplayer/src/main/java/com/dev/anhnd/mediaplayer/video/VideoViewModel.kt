@@ -21,12 +21,12 @@ class VideoViewModel @ViewModelInject constructor(
     fun fetchVideos(clazz: Class<AppVideo>) {
         viewModelDoJob(
             doIn = {
-                mediaRepository.getAllMedia(clazz, onCheckIfAddItem = { currentList, item ->
+                mediaRepository.getAllMedia(clazz, onCheckIfAddItem = { _, item ->
                     if (item.getFileExtension() != "mp4") {
                         return@getAllMedia true
                     }
                     return@getAllMedia false
-                }, onCheckContinueLoad = { currentList, item ->
+                }, onCheckContinueLoad = { currentList, _ ->
                     if (currentList.size > 10) {
                         return@getAllMedia false
                     }

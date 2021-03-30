@@ -24,10 +24,10 @@ class SaveDialog : BaseDialog<DialogSaveBinding>() {
 
     override fun getBackgroundDialog() = R.id.backgroundDialog
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
         binding.bindingListener = this
         requestFocus()
         binding.etInput.setOnFocusChangeListener { _, hasFocus ->

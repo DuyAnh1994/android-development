@@ -1,5 +1,6 @@
 package com.dev.anhnd.android_mvvm.di
 
+/*
 import com.dev.anhnd.android_mvvm.BuildConfig
 import com.dev.anhnd.android_mvvm.data.remote.ApiService
 import dagger.Module
@@ -50,4 +51,4 @@ class ApplicationComponent {
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
-}
+}*/

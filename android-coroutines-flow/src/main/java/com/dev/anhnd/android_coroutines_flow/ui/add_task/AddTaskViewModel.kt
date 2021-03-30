@@ -4,6 +4,4 @@ import androidx.hilt.lifecycle.ViewModelInject
 import com.dev.anhnd.mybase.BaseViewModel
 
 
-class AddTaskViewModel @ViewModelInject constructor() : BaseViewModel() {
-
-}
+class AddTaskViewModel @ViewModelInject constructor() : BaseViewModel()

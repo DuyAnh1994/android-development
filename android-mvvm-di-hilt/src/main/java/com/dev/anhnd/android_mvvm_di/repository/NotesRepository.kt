@@ -19,7 +19,7 @@ class NotesRepository @Inject constructor(private val notesDao: NotesDao) {
 
     fun delete(notes: Notes) = notesDao.delete(notes)
 
-    fun getAllNotes(): Flow<List<Notes>> = notesDao.getAllNotes()
+    fun getAllNotes(): Flow<MutableList<Notes>> = notesDao.getAllNotes()
 
     fun getNotesByTitle(title: String): Flow<List<Notes>> = notesDao.getNotesByTitle(title)
 }

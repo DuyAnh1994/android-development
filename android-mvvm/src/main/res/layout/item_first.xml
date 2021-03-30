@@ -5,13 +5,15 @@
 
     <data>
 
-        <import type="com.dev.anhnd.mybase.BaseMultiHolderAdapter.ModelType" />
+        <import type="com.dev.anhnd.mybase.utils.adapter.BaseMultiHolderAdapter" />
 
         <import type="com.dev.anhnd.android_mvvm.ui.main.ItemNewsListener" />
 
+        <import type="com.dev.anhnd.mybase.utils.adapter.BaseMultiHolderAdapter.BaseModelType" />
+
         <variable
             name="item"
-            type="ModelType" />
+            type="BaseModelType" />
 
         <variable
             name="itemListener"
@@ -23,16 +25,16 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        deBounceClick="@{()->itemListener.onItemClick(tvContent, item, itemPosition)}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvContent"
-            deBounceClick="@{()->itemListener.onItemClick(tvContent, item, itemPosition)}"
+            tv_set_text_by_multi_holder="@{item}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            tv_set_text_by_multi_holder="@{item}"
             android:textSize="@dimen/_20ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

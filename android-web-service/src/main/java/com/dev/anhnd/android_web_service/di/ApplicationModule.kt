@@ -1,7 +1,7 @@
 package com.dev.anhnd.android_web_service.di
 
 import com.dev.anhnd.android_web_service.BuildConfig
-import com.dev.anhnd.android_web_service.data.remote.ApiService
+import com.dev.anhnd.android_web_service.data.source.remote.ApiService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

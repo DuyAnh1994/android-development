@@ -16,7 +16,7 @@ interface NotesDao {
     fun delete(notes: Notes)
 
     @Query("SELECT * FROM notes_table")
-    fun getAllNotes(): Flow<List<Notes>>
+    fun getAllNotes(): Flow<MutableList<Notes>>
 
     @Query("SELECT * FROM notes_table WHERE title = :title")
     fun getNotesByTitle(title: String): Flow<List<Notes>>

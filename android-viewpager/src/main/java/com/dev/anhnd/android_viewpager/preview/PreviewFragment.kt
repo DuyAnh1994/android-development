@@ -1,11 +1,9 @@
 package com.dev.anhnd.android_viewpager.preview
 
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.viewModels
 import com.dev.anhnd.android_viewpager.R
 import com.dev.anhnd.android_viewpager.databinding.FragmentPreviewBinding
-import com.dev.anhnd.android_viewpager.main.MainActivity
 import com.dev.anhnd.android_viewpager.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 
@@ -19,7 +17,7 @@ class PreviewFragment : BaseFragment<FragmentPreviewBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_preview
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
 
     }
 
@@ -27,7 +25,7 @@ class PreviewFragment : BaseFragment<FragmentPreviewBinding>() {
         binding.mainViewModel = mainViewModel
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
     }
 
     override fun observerViewModel() {

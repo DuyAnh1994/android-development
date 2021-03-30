@@ -1,12 +1,10 @@
 package com.dev.anhnd.mediaplayer.image
 
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.viewModels
 import com.dev.anhnd.mediaplayer.R
 import com.dev.anhnd.mediaplayer.databinding.FragmentImageBinding
 import com.dev.anhnd.mediaplayer.home.HomeFragment
-import com.dev.anhnd.mediaplayer.main.MainActivity
 import com.dev.anhnd.mediaplayer.model.AppImage
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.observer
@@ -20,11 +18,11 @@ class ImageFragment : BaseFragment<FragmentImageBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_image
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
         viewModel.fetchImages(AppImage::class.java)
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
 
     }
 

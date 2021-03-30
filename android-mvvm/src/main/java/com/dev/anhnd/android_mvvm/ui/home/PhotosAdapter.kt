@@ -1,10 +1,7 @@
 package com.dev.anhnd.android_mvvm.ui.home
 
-import androidx.annotation.LayoutRes
-import com.dev.anhnd.mybase.BaseListAdapter
-import com.dev.anhnd.mybase.BaseDiffCallback
+import com.dev.anhnd.android_mvvm.R
+import com.dev.anhnd.android_mvvm.model.Photos
+import com.dev.anhnd.mybase.utils.adapter.BaseAdapter
 
-class PhotosAdapter<T : Any>(
-    @LayoutRes private val resLayout: Int,
-    diffUtil: BaseDiffCallback<T>
-) : BaseListAdapter<T>(resLayout, diffUtil)
+class PhotosAdapter : BaseAdapter<Photos>(R.layout.item_photo)

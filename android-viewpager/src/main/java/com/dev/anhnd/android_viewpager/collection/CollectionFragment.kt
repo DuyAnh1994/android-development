@@ -1,12 +1,9 @@
 package com.dev.anhnd.android_viewpager.collection
 
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.dev.anhnd.android_viewpager.R
 import com.dev.anhnd.android_viewpager.databinding.FragmentCollectionBinding
-import com.dev.anhnd.android_viewpager.home.HomeFragment
-import com.dev.anhnd.android_viewpager.main.MainActivity
 import com.dev.anhnd.android_viewpager.main.MainViewModel
 import com.dev.anhnd.android_viewpager.model.Student
 import com.dev.anhnd.mybase.BaseFragment
@@ -31,7 +28,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_collection
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
 
     }
 
@@ -40,7 +37,7 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 //        binding.adapter = adapter
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
         val students = arrayListOf<Student>()
         for (i in 0..20) {
             students.add(Student("Student $i"))

@@ -44,6 +44,20 @@ fun <T> Fragment.observer(liveData: LiveData<T>, onChange: (T?) -> Unit) {
     liveData.observe(viewLifecycleOwner, Observer(onChange))
 }
 
+fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+    observe(
+        lifecycleOwner,
+        object : Observer<T> {
+            override fun onChanged(t: T?) {
+                observer.onChanged(t)
+                removeObserver(this)
+            }
+        }
+    )
+}
+
+fun <T> MutableLiveData<T>.asLiveData() = this as LiveData<T>
+
 fun <E> LiveData<List<E>>.isEmptyList(): Boolean {
     return value.isNullOrEmpty()
 }

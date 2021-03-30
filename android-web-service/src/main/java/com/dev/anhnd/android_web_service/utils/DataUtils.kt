@@ -1,7 +1,7 @@
 package com.dev.anhnd.android_web_service.utils
 
-import com.dev.anhnd.android_web_service.model.ApiDetail
-import com.dev.anhnd.android_web_service.model.ApiType
+import com.dev.anhnd.android_web_service.data.model.ApiDetail
+import com.dev.anhnd.android_web_service.data.model.ApiType
 
 object DataUtils {
     val apiType = mutableListOf(

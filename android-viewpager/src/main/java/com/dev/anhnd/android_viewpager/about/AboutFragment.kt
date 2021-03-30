@@ -1,11 +1,9 @@
 package com.dev.anhnd.android_viewpager.about
 
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.dev.anhnd.android_viewpager.R
 import com.dev.anhnd.android_viewpager.databinding.FragmentAboutBinding
-import com.dev.anhnd.android_viewpager.main.MainActivity
 import com.dev.anhnd.android_viewpager.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 
@@ -16,7 +14,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_about
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
 
     }
 
@@ -24,7 +22,7 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
 //        binding.mainViewModel = mainViewModel
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
 
 
     }

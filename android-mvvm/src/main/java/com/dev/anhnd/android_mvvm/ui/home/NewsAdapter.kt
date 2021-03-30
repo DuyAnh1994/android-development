@@ -1,14 +1,17 @@
 package com.dev.anhnd.android_mvvm.ui.home
 
-import androidx.annotation.LayoutRes
-import androidx.recyclerview.widget.DiffUtil
-import com.dev.anhnd.mybase.BaseDiffCallback
-import com.dev.anhnd.mybase.BaseMultiHolderAdapter
+import com.dev.anhnd.android_mvvm.R
+import com.dev.anhnd.mybase.utils.adapter.BaseMultiHolderAdapter
+import com.dev.anhnd.mybase.utils.adapter.touch.ItemTouchDrag
 
-class NewsAdapter<T : BaseMultiHolderAdapter.ModelType>(
-    @LayoutRes private val resLayout: List<Int>,
-    diffUtil: BaseDiffCallback<T>
-) : BaseMultiHolderAdapter<T>(resLayout, diffUtil) {
+val resLayouts = listOf(
+    R.layout.item_first,
+    R.layout.item_second,
+    R.layout.item_third
+)
+
+@ItemTouchDrag
+class NewsAdapter : BaseMultiHolderAdapter<BaseMultiHolderAdapter.BaseModelType>(resLayouts) {
 
     companion object {
         const val VIEW_TYPE_TEXT = 0
@@ -16,3 +19,4 @@ class NewsAdapter<T : BaseMultiHolderAdapter.ModelType>(
         const val VIEW_TYPE_IMAGE = 2
     }
 }
+

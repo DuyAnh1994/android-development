@@ -7,7 +7,6 @@ import com.dev.anhnd.mybase.BaseApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-//@HiltAndroidApp
 class App : BaseApplication() {
 
     override fun setUp() {

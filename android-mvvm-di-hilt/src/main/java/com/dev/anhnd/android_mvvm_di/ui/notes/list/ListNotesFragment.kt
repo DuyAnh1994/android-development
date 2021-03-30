@@ -1,7 +1,5 @@
 package com.dev.anhnd.android_mvvm_di.ui.notes.list
 
-import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.dev.anhnd.android_mvvm_di.R
@@ -21,7 +19,7 @@ class ListNotesFragment : BaseFragment<FragmentListNotesBinding>() {
         NotesAdapter().apply {
             listener = object : ListNotesListener {
                 override fun onClickItem(position: Int, item: Notes) {
-                    selected(position, item)
+                    select(item)
                 }
 
                 override fun onLongClickItem(position: Int, item: Notes): Boolean {
@@ -40,7 +38,7 @@ class ListNotesFragment : BaseFragment<FragmentListNotesBinding>() {
         binding.viewModel = viewModel
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
 
     }
 

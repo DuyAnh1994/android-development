@@ -1,7 +1,5 @@
 package com.dev.anhnd.mybase
 
-import android.os.Bundle
-import android.view.View
 import androidx.annotation.LayoutRes
 
 interface BaseView {
@@ -19,7 +17,7 @@ interface BaseView {
      *
      * @param savedInstanceState
      */
-    fun setup(savedInstanceState: Bundle? = null) {}
+    fun setup() {}
 
     /**
      * Setup data binding
@@ -37,7 +35,7 @@ interface BaseView {
      * @param view
      * @param savedInstanceState
      */
-    fun initView(view: View? = null, savedInstanceState: Bundle? = null) {}
+    fun initView() {}
 
     /**
      * Call after init view , observer data changed

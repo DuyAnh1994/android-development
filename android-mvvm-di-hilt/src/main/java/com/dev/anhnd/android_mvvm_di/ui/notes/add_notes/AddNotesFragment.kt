@@ -1,12 +1,9 @@
 package com.dev.anhnd.android_mvvm_di.ui.notes.add_notes
 
-import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.viewModels
 import com.dev.anhnd.android_mvvm_di.R
 import com.dev.anhnd.android_mvvm_di.data.local.notes.Notes
 import com.dev.anhnd.android_mvvm_di.databinding.FragmentAddNotesBinding
-import com.dev.anhnd.android_mvvm_di.ui.main.MainActivity
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.input.hideKeyBoard
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +18,7 @@ class AddNotesFragment : BaseFragment<FragmentAddNotesBinding>() {
         binding.viewModel = viewModel
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
 
     }
 

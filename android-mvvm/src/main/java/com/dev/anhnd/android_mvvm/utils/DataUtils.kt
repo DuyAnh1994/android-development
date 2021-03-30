@@ -5,7 +5,6 @@ import com.dev.anhnd.android_mvvm.model.Color
 import com.dev.anhnd.android_mvvm.model.Image
 import com.dev.anhnd.android_mvvm.model.News
 import com.dev.anhnd.android_mvvm.model.Text
-import com.dev.anhnd.mybase.BaseMultiHolderAdapter
 
 object DataUtils {
 
@@ -23,25 +22,25 @@ object DataUtils {
         R.color.colorPickerVictoria,
     )
 
-    fun news(): List<News> {
-        val news = mutableListOf<News>()
-        var colorIndex = 0
-        for (i in 0..9) {
-            when {
-                ((i % 2) == 0) -> {
-                    news.add(News(viewType = 0, content = "content $i"))
-                }
-                ((i % 3) == 0) -> {
-                    news.add(News(viewType = 2, image = R.drawable.ic_launcher_background))
-                }
-                else -> {
-                    news.add(News(viewType = 1, color = colors[colorIndex]))
-                    colorIndex++
-                }
-            }
-        }
-        return news
-    }
+//    fun news(): MutableList<News> {
+//        val news = mutableListOf<News>()
+//        var colorIndex = 0
+//        for (i in 0..9) {
+//            when {
+//                ((i % 2) == 0) -> {
+//                    news.add(News(viewType = 0, content = "content $i"))
+//                }
+//                ((i % 3) == 0) -> {
+//                    news.add(News(viewType = 2, image = R.drawable.ic_launcher_background))
+//                }
+//                else -> {
+//                    news.add(News(viewType = 1, color = colors[colorIndex]))
+//                    colorIndex++
+//                }
+//            }
+//        }
+//        return news
+//    }
 
     val news = mutableListOf(
         Text("Some thing 1"),

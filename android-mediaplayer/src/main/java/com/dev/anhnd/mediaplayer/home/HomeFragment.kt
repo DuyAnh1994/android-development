@@ -1,12 +1,10 @@
 package com.dev.anhnd.mediaplayer.home
 
 import android.os.Bundle
-import android.view.View
 import com.dev.anhnd.mediaplayer.R
 import com.dev.anhnd.mediaplayer.audio.AudioFragment
 import com.dev.anhnd.mediaplayer.databinding.FragmentHomeBinding
 import com.dev.anhnd.mediaplayer.image.ImageFragment
-import com.dev.anhnd.mediaplayer.main.MainActivity
 import com.dev.anhnd.mediaplayer.video.VideoFragment
 import com.dev.anhnd.mybase.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -27,11 +25,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_home
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
 
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
         val viewPagerAdapter by lazy {
             HomeViewPagerAdapter(childFragmentManager, lifecycle).apply {
                 addFragment(imageFragment, "Image", IMAGE_POSITION)

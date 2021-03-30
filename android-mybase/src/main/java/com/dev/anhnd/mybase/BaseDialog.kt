@@ -45,7 +45,7 @@ abstract class BaseDialog<BD : ViewDataBinding> : DialogFragment(), BaseView, Vi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setup(savedInstanceState)
+        setup()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -66,7 +66,7 @@ abstract class BaseDialog<BD : ViewDataBinding> : DialogFragment(), BaseView, Vi
                 dismiss()
             }
         }
-        initView(view, savedInstanceState)
+        initView()
     }
 
     override fun onResume() {

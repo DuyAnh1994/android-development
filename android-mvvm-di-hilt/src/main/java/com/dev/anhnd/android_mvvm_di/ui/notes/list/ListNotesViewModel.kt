@@ -12,7 +12,7 @@ class ListNotesViewModel @ViewModelInject constructor(
     private val notesRepository: NotesRepository
 ) : BaseViewModel() {
 
-    val notes: LiveData<List<Notes>> by lazy {
+    val notes: LiveData<MutableList<Notes>> by lazy {
         notesRepository.getAllNotes().asLiveData()
     }
 

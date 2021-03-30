@@ -48,7 +48,7 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseVie
             binding = DataBindingUtil.setContentView(this, getLayoutId())
             binding.lifecycleOwner = this
             initBinding()
-            initView(savedInstanceState = savedInstanceState)
+            initView()
             observerViewModel()
         } catch (e: InflateException) {
             e.printStackTrace()

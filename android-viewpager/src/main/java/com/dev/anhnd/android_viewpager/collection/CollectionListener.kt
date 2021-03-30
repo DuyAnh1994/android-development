@@ -1,8 +1,8 @@
 package com.dev.anhnd.android_viewpager.collection
 
-import com.dev.anhnd.mybase.BaseListItemListener
+import com.dev.anhnd.mybase.utils.adapter.viewholder.ListItemListener
 
 
-interface CollectionListener : BaseListItemListener {
+interface CollectionListener : ListItemListener {
     fun onClickItem(position:Int)
 }

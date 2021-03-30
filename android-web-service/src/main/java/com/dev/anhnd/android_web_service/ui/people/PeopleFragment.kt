@@ -1,10 +1,9 @@
 package com.dev.anhnd.android_web_service.ui.people
 
 import android.os.Bundle
-import android.view.View
 import com.dev.anhnd.android_web_service.R
 import com.dev.anhnd.android_web_service.databinding.FragmentPeopleBinding
-import com.dev.anhnd.android_web_service.model.ApiDetail
+import com.dev.anhnd.android_web_service.data.model.ApiDetail
 import com.dev.anhnd.android_web_service.ui.movies.ApiDetailAdapter
 import com.dev.anhnd.android_web_service.ui.movies.ApiDetailListener
 import com.dev.anhnd.android_web_service.utils.Constant
@@ -27,7 +26,7 @@ class PeopleFragment : BaseFragment<FragmentPeopleBinding>() {
 
     override fun getLayoutId() = R.layout.fragment_people
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
         viewModelF.getMovieDetail()
     }
 
@@ -35,7 +34,7 @@ class PeopleFragment : BaseFragment<FragmentPeopleBinding>() {
         binding.adapter = adapter
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
 
     }
 

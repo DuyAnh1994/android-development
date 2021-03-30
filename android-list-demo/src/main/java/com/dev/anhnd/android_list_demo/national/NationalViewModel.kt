@@ -5,9 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.dev.anhnd.android_list_demo.utils.DataUtils
 import com.dev.anhnd.mybase.utils.app.postSelf
 
-//@HiltViewModel
-class NationalViewModel constructor(nationalRepository: NationalRepository) : ViewModel() {
-//class NationalViewModel constructor() : ViewModel() {
+class NationalViewModel : ViewModel() {
 
     val liveNationals by lazy {
         MutableLiveData(mutableListOf<National>())
@@ -19,6 +17,9 @@ class NationalViewModel constructor(nationalRepository: NationalRepository) : Vi
 
     fun remove(national: National) {
         liveNationals.value?.remove(national)
+    }
+
+    fun postSelf() {
         liveNationals.postSelf()
     }
 }

@@ -26,6 +26,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             rv_set_adapter="@{adapter}"
+            android:id="@+id/rvNational"
             rv_set_fix_size="@{true}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

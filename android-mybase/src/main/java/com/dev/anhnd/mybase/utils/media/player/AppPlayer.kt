@@ -9,7 +9,7 @@ import androidx.lifecycle.*
 import com.dev.anhnd.mybase.utils.app.getApplication
 import com.dev.anhnd.mybase.utils.error.BaseLibraryException
 import com.dev.anhnd.mybase.utils.log.LogDebug
-import com.dev.anhnd.mybase.utils.media.SeekableExtractorsFactory
+import com.dev.anhnd.mybase.utils.media.SeekAbleExtractorsFactory
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.ui.PlayerView
@@ -129,7 +129,7 @@ class AppPlayer : LifecycleObserver {
             )
         )
         val mediaSource = if (path.endsWith("aac", true) || path.endsWith("amr", true)) {
-            ProgressiveMediaSource.Factory(dataSourceFactory, SeekableExtractorsFactory()).createMediaSource(uri)
+            ProgressiveMediaSource.Factory(dataSourceFactory, SeekAbleExtractorsFactory()).createMediaSource(uri)
         } else {
             ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(uri)
         }

@@ -1,12 +1,10 @@
 package com.dev.anhnd.android_viewpager.home
 
 import android.os.Bundle
-import android.view.View
 import com.dev.anhnd.android_viewpager.R
 import com.dev.anhnd.android_viewpager.about.AboutFragment
 import com.dev.anhnd.android_viewpager.collection.CollectionFragment
 import com.dev.anhnd.android_viewpager.databinding.FragmentHomeBinding
-import com.dev.anhnd.android_viewpager.main.MainActivity
 import com.dev.anhnd.android_viewpager.setting.SettingFragment
 import com.dev.anhnd.mybase.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -34,7 +32,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_home
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
 
     }
 
@@ -42,7 +40,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
         val homeViewPagerAdapter by lazy {
             HomePagerAdapter(childFragmentManager, lifecycle).apply {
                 addFragment(aboutFragment, "About", ABOUT_POSITION)

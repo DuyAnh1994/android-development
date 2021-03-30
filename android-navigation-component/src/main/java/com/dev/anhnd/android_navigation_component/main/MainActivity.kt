@@ -1,7 +1,5 @@
 package com.dev.anhnd.android_navigation_component.main
 
-import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -27,7 +25,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
         setupBottomNavigationBar()
     }
 

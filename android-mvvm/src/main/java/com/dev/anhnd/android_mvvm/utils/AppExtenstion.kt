@@ -6,8 +6,7 @@ import androidx.databinding.BindingAdapter
 import com.dev.anhnd.android_mvvm.model.Color
 import com.dev.anhnd.android_mvvm.model.Image
 import com.dev.anhnd.android_mvvm.model.Text
-import com.dev.anhnd.mybase.BaseMultiHolderAdapter
-import kotlinx.coroutines.flow.Flow
+import com.dev.anhnd.mybase.utils.adapter.BaseMultiHolderAdapter
 import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
@@ -56,21 +55,21 @@ fun ImageView.imgLoadColorById(id: Int) {
 }
 
 @BindingAdapter("tv_set_text_by_multi_holder")
-fun TextView.tvSetTextByMultiHolder(item: BaseMultiHolderAdapter.ModelType) {
+fun TextView.tvSetTextByMultiHolder(item: BaseMultiHolderAdapter.BaseModelType) {
     if (item is Text) {
         text = item.text
     }
 }
 
 @BindingAdapter("tv_set_color_by_multi_holder")
-fun ImageView.ivSetColorByMultiHolder(item: BaseMultiHolderAdapter.ModelType) {
+fun ImageView.ivSetColorByMultiHolder(item: BaseMultiHolderAdapter.BaseModelType) {
     if (item is Color) {
         setBackgroundResource(item.color)
     }
 }
 
 @BindingAdapter("tv_set_image_by_multi_holder")
-fun ImageView.tvSetImageByMultiHolder(item: BaseMultiHolderAdapter.ModelType) {
+fun ImageView.tvSetImageByMultiHolder(item: BaseMultiHolderAdapter.BaseModelType) {
     if (item is Image) {
         setBackgroundResource(item.image)
     }

@@ -4,6 +4,4 @@ import androidx.hilt.lifecycle.ViewModelInject
 import com.dev.anhnd.mybase.BaseViewModel
 
 
-class HomeViewModel @ViewModelInject constructor() : BaseViewModel() {
-
-}
+class HomeViewModel @ViewModelInject constructor() : BaseViewModel()

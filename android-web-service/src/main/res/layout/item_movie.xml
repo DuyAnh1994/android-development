@@ -8,7 +8,7 @@
 
         <variable
             name="item"
-            type="com.dev.anhnd.android_web_service.model.movies.Result" />
+            type="com.dev.anhnd.android_web_service.data.model.movies.Result" />
 
         <variable
             name="itemListener"

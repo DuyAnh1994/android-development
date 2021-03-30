@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.dev.anhnd.android_web_service.model.ApiType" />
+            type="com.dev.anhnd.android_web_service.data.model.ApiType" />
 
         <variable
             name="itemListener"

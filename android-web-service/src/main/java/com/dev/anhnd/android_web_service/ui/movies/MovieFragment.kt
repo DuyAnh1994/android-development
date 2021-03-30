@@ -1,10 +1,9 @@
 package com.dev.anhnd.android_web_service.ui.movies
 
 import android.os.Bundle
-import android.view.View
 import com.dev.anhnd.android_web_service.R
 import com.dev.anhnd.android_web_service.databinding.FragmentMovieBinding
-import com.dev.anhnd.android_web_service.model.ApiDetail
+import com.dev.anhnd.android_web_service.data.model.ApiDetail
 import com.dev.anhnd.android_web_service.utils.Constant
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.observer
@@ -25,7 +24,7 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>() {
 
     override fun getLayoutId() = R.layout.fragment_movie
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
         viewModelF.getMovieDetail()
     }
 
@@ -33,7 +32,7 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>() {
         binding.adapter = adapter
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
 
     }
 

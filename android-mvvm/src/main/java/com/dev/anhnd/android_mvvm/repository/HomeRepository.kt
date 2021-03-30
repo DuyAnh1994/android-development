@@ -9,8 +9,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class HomeRepository @Inject constructor(private val apiService: ApiService) {
+class HomeRepository  constructor(private val apiService: ApiService) {
 
     suspend fun getPhotos() =apiService.getPhotos().waitResponse()
 }

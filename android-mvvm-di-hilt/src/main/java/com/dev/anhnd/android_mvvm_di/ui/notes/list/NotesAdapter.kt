@@ -1,47 +1,10 @@
 package com.dev.anhnd.android_mvvm_di.ui.notes.list
 
-import androidx.lifecycle.MutableLiveData
-import com.dev.anhnd.android_mvvm_di.BR
 import com.dev.anhnd.android_mvvm_di.R
 import com.dev.anhnd.android_mvvm_di.data.local.notes.Notes
-import com.dev.anhnd.mybase.BaseDiffCallback
-import com.dev.anhnd.mybase.BaseListAdapter
-import com.dev.anhnd.mybase.BaseViewHolder
-import com.dev.anhnd.mybase.utils.app.postSelf
-import java.util.*
+import com.dev.anhnd.mybase.utils.adapter.BaseAdapter
 
-class NotesAdapter : BaseListAdapter<Notes>(R.layout.item_notes, NotesDiffUtilsImpl()) {
-
-    var liveSelected = MutableLiveData(Stack<Notes>())
-
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.binding.setVariable(BR.liveSelected, liveSelected)
-        super.onBindViewHolder(holder, position)
-    }
-
-    fun selected(position: Int, item: Notes) {
-        val selected = liveSelected.value ?: Stack()
-        if (selected.search(item) == -1) {
-            selected.add(item)
-        } else {
-            selected.remove(item)
-        }
-        liveSelected.postSelf()
-        notifyItemChanged(position, item)
-        notifyItemRangeChanged(position, itemCount - position, item)
-    }
-}
-
-
-private class NotesDiffUtilsImpl : BaseDiffCallback<Notes>() {
-    override fun areItemsTheSame(oldItem: Notes, newItem: Notes): Boolean {
-        return (oldItem.title == newItem.title)
-    }
-
-    override fun areContentsTheSame(oldItem: Notes, newItem: Notes): Boolean {
-        return oldItem == newItem
-    }
-}
+class NotesAdapter : BaseAdapter<Notes>(R.layout.item_notes)
 
 object DataUtil {
 

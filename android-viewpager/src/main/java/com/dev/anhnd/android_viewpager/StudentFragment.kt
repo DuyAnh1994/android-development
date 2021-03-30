@@ -1,10 +1,8 @@
 package com.dev.anhnd.android_viewpager
 
 import android.os.Bundle
-import android.view.View
 import com.dev.anhnd.android_viewpager.collection.CollectionFragment
 import com.dev.anhnd.android_viewpager.databinding.FragmentStudentBinding
-import com.dev.anhnd.android_viewpager.main.MainActivity
 import com.dev.anhnd.mybase.BaseFragment
 
 class StudentFragment : BaseFragment<FragmentStudentBinding>() {
@@ -12,7 +10,7 @@ class StudentFragment : BaseFragment<FragmentStudentBinding>() {
     private val TAG = CollectionFragment::class.java.simpleName
     override fun getLayoutId(): Int = R.layout.fragment_student
 
-    override fun setup(savedInstanceState: Bundle?) {
+    override fun setup() {
 
     }
 
@@ -20,7 +18,7 @@ class StudentFragment : BaseFragment<FragmentStudentBinding>() {
 
     }
 
-    override fun initView(view: View?, savedInstanceState: Bundle?) {
+    override fun initView() {
 
     }
 

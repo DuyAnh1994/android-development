@@ -24,7 +24,7 @@ abstract class BaseDialogOld<DB : ViewDataBinding> : DialogFragment(), BaseView 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setup(savedInstanceState)
+        setup()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,7 +38,7 @@ abstract class BaseDialogOld<DB : ViewDataBinding> : DialogFragment(), BaseView 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         beforeInitView()
         super.onViewCreated(view, savedInstanceState)
-        initView(view, savedInstanceState)
+        initView()
         initAnimation()
         observerViewModel()
         dialog?.setCanceledOnTouchOutside(isCheckCancel())

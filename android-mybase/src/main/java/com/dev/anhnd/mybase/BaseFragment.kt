@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import com.dev.anhnd.mybase.utils.log.LogDebug
+import com.dev.anhnd.mybase.utils.transition.ScreenTransitionManageImp
 
 abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.OnClickListener {
 
@@ -46,7 +46,7 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
     //region Lifecycle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setup(savedInstanceState)
+        setup()
     }
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -61,6 +61,7 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setHasOptionsMenu(isAttachMenuToFragment())
         initView()
     }
 
@@ -112,6 +113,10 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
      */
     open fun isDarkText(): Boolean? {
         return null
+    }
+
+    open fun isAttachMenuToFragment(): Boolean {
+        return false
     }
 
     /**
