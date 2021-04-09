@@ -30,6 +30,11 @@ abstract class BaseDialog<BD : ViewDataBinding> : DialogFragment(), BaseView, Vi
     protected lateinit var binding: BD
 
     /**
+     * Inflate layout root
+     */
+    private lateinit var myInflater: LayoutInflater
+
+    /**
      * Listener when dismiss dialog
      */
     private val dismissListener: DialogInterface.OnDismissListener? = null
@@ -49,7 +54,10 @@ abstract class BaseDialog<BD : ViewDataBinding> : DialogFragment(), BaseView, Vi
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(LayoutInflater.from(context), getLayoutId(), container, false)
+        if (!::myInflater.isInitialized) {
+            myInflater = LayoutInflater.from(requireActivity())
+        }
+        binding = DataBindingUtil.inflate(myInflater, getLayoutId(), container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(BR.viewListener, this)
         initBinding()

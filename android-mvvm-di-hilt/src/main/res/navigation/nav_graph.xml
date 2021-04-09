@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listNotesFragment"
-        android:name="com.dev.anhnd.android_mvvm_di.ui.notes.list.ListNotesFragment"
+        android:name="com.dev.anhnd.android_mvvm_di_hilt.ui.notes.list.ListNotesFragment"
         android:label="ListNotesFragment"
         tools:layout="@layout/fragment_list_notes">
         <action
@@ -20,13 +20,13 @@
 
     <fragment
         android:id="@+id/addNotesFragment"
-        android:name="com.dev.anhnd.android_mvvm_di.ui.notes.add_notes.AddNotesFragment"
+        android:name="com.dev.anhnd.android_mvvm_di_hilt.ui.notes.add_notes.AddNotesFragment"
         android:label="AddNotesFragment"
         tools:layout="@layout/fragment_add_notes" />
 
     <fragment
         android:id="@+id/NotesDetailFragment"
-        android:name="com.dev.anhnd.android_mvvm_di.ui.notes.note_detail.NotesDetailFragment"
+        android:name="com.dev.anhnd.android_mvvm_di_hilt.ui.notes.note_detail.NotesDetailFragment"
         android:label="NotesDetailFragment"
         tools:layout="@layout/fragment_notes_detail" />
 </navigation>

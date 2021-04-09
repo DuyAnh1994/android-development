@@ -1,3 +1,4 @@
+include ':android-background-task'
 include ':android-web-service'
 include ':android-web-view'
 include ':android-list-demo'

@@ -7,9 +7,9 @@
 
         <import type="android.view.View" />
 
-        <import type="com.dev.anhnd.android_mvvm_di.ui.notes.note_detail.NotesDetailViewModel" />
+        <import type="com.dev.anhnd.android_mvvm_di_hilt.ui.notes.note_detail.NotesDetailViewModel" />
 
-        <import type="com.dev.anhnd.android_mvvm_di.ui.main.MainViewModel" />
+        <import type="com.dev.anhnd.android_mvvm_di_hilt.ui.main.MainViewModel" />
 
         <variable
             name="viewModel"

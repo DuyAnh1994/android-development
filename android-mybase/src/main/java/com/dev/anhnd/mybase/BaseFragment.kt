@@ -37,6 +37,11 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
     protected lateinit var binding: DB
 
     /**
+     * Inflate layout root
+     */
+    private lateinit var myInflater: LayoutInflater
+
+    /**
      * Manager transition fragment by Fragment Manager
      */
     protected lateinit var screenTransitionManageImp: ScreenTransitionManageImp
@@ -52,7 +57,10 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+        if (!::myInflater.isInitialized) {
+            myInflater = LayoutInflater.from(activityOwner)
+        }
+        binding = DataBindingUtil.inflate(myInflater, getLayoutId(), container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(BR.viewListener, this as View.OnClickListener)
         initBinding()
@@ -115,6 +123,9 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
         return null
     }
 
+    /**
+     * Set menu in fragment
+     */
     open fun isAttachMenuToFragment(): Boolean {
         return false
     }
@@ -199,14 +210,14 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
      */
     fun backScreen(tag: String) {
         val backTag = if (tag.isEmpty()) javaClass.simpleName else tag
-        requireActivity().supportFragmentManager.popBackStack(
+        activityOwner.supportFragmentManager.popBackStack(
             backTag,
             FragmentManager.POP_BACK_STACK_INCLUSIVE
         )
     }
 
     private fun initScreenTransitionManager(): ScreenTransitionManageImp {
-        return ScreenTransitionManageImp(requireActivity().supportFragmentManager, getContainer())
+        return ScreenTransitionManageImp(activityOwner.supportFragmentManager, getContainer())
     }
 
     private fun setBackPressedDispatcher() {
@@ -215,7 +226,7 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
                 onBackPressed()
             }
         }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        activityOwner.onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     private fun setStatusColor(color: Int = Color.BLACK, state: Boolean = true) {

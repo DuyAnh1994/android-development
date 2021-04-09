@@ -6,7 +6,7 @@
 
         <import type="android.view.View" />
 
-        <import type="com.dev.anhnd.android_mvvm_di.ui.notes.add_notes.AddNotesViewModel" />
+        <import type="com.dev.anhnd.android_mvvm_di_hilt.ui.notes.add_notes.AddNotesViewModel" />
 
         <import type="android.view.View.OnClickListener" />
 

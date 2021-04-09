@@ -5,9 +5,9 @@
 
     <data>
 
-        <import type="com.dev.anhnd.android_mvvm_di.data.local.notes.Notes" />
+        <import type="com.dev.anhnd.android_mvvm_di_hilt.data.source.local.entity.Notes" />
 
-        <import type="com.dev.anhnd.android_mvvm_di.ui.notes.list.ListNotesListener" />
+        <import type="com.dev.anhnd.android_mvvm_di_hilt.ui.notes.list.ListNotesListener" />
 
         <import type="androidx.lifecycle.MutableLiveData" />
 
@@ -23,10 +23,10 @@
 
         <variable
             name="itemListener"
-            type="com.dev.anhnd.android_mvvm_di.ui.notes.list.ListNotesListener" />
+            type="ListNotesListener" />
 
         <variable
-            name="liveSelected"
+            name="liveSelect"
             type="MutableLiveData&lt;Stack&lt;Notes>>" />
     </data>
 
@@ -42,7 +42,7 @@
             android:id="@+id/ivCover"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:background="@{liveSelected.search(item) == -1 ? @color/red : @color/black}"
+            android:background="@{liveSelect.search(item) == -1 ? @color/red : @color/black}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

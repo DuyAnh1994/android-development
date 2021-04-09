@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dev.anhnd.mybase.BR
 import com.dev.anhnd.mybase.utils.adapter.touch.*
 import com.dev.anhnd.mybase.utils.adapter.viewholder.BaseDiffUtilCallback
-import com.dev.anhnd.mybase.utils.adapter.viewholder.ListItemListener
 import com.dev.anhnd.mybase.utils.adapter.viewholder.BaseViewHolder
+import com.dev.anhnd.mybase.utils.adapter.viewholder.ListItemListener
 import com.dev.anhnd.mybase.utils.app.postSelf
 import java.util.*
 

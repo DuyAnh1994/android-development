@@ -65,4 +65,8 @@ dependencies {
     implementation rootProject.ext.networkDependencies.retrofitConverterMoshi
     implementation rootProject.ext.networkDependencies.retrofitRxJava
     implementation rootProject.ext.networkDependencies.logging
+    implementation rootProject.ext.hiltDependencies.hilt
+    kapt rootProject.ext.hiltDependencies.compilerHilt_kapt
+    implementation rootProject.ext.hiltDependencies.viewmodel
+    kapt rootProject.ext.hiltDependencies.compilerViewModel_kapt
 }

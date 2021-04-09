@@ -9,11 +9,11 @@
 
         <import type="androidx.recyclerview.widget.RecyclerView.Adapter" />
 
-        <import type="com.dev.anhnd.android_mvvm_di.ui.notes.list.ListNotesViewModel" />
+        <import type="com.dev.anhnd.android_mvvm_di_hilt.ui.notes.list.ListNotesViewModel" />
 
         <import type="android.view.View.OnClickListener" />
 
-        <import type="com.dev.anhnd.android_mvvm_di.ui.main.MainViewModel" />
+        <import type="com.dev.anhnd.android_mvvm_di_hilt.ui.main.MainViewModel" />
 
         <variable
             name="viewListener"
