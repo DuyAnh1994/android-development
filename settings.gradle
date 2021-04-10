@@ -10,5 +10,4 @@ include ':android-mybase'
 include ':android-navigation-component'
 include ':android-mvvm'
 include ':android-mediaplayer'
-include ':android-app'
 rootProject.name = "AndroidDevelopment"
