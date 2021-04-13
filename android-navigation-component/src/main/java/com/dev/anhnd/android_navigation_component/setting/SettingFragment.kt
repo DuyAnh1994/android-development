@@ -1,15 +1,20 @@
 package com.dev.anhnd.android_navigation_component.setting
 
-import android.os.Bundle
 import com.dev.anhnd.android_navigation_component.R
 import com.dev.anhnd.android_navigation_component.databinding.FragmentSettingBinding
-import com.dev.anhnd.mybase.BaseFragment
+import com.dev.anhnd.android_navigation_component.main.BaseMainFragment
+import com.dev.anhnd.mybase.utils.log.logd
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
 
-class SettingFragment : BaseFragment<FragmentSettingBinding>() {
+@AndroidEntryPoint
+@WithFragmentBindings
+class SettingFragment : BaseMainFragment<FragmentSettingBinding>() {
 
     override fun getLayoutId(): Int = R.layout.fragment_setting
 
     override fun setup() {
+        logd("setup: ")
     }
 
     override fun initBinding() {
@@ -25,9 +30,14 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>() {
 
     override fun onViewClick(viewId: Int) {
         when (viewId) {
-            R.id.constraint -> {
-                navigateTo(R.id.action_settingFragment_to_languageFragment)
+            R.id.btnAbout -> {
+                mainViewModel.hideMenu()
+                navigateTo(R.id.action_settingFragment_to_nav_graph)
             }
         }
+    }
+
+    override fun onBackPressed() {
+        activityOwner.finish()
     }
 }

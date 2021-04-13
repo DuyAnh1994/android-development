@@ -2,19 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_setting"
-    app:startDestination="@id/settingFragment">
+    android:id="@+id/nav_like"
+    app:startDestination="@id/likeFragment">
 
     <include app:graph="@navigation/nav_graph" />
 
     <fragment
-        android:id="@+id/settingFragment"
-        android:name="com.dev.anhnd.android_navigation_component.setting.SettingFragment"
-        android:label="SettingFragment"
-        tools:layout="@layout/fragment_setting">
+        android:name="com.dev.anhnd.android_navigation_component.like.LikeFragment"
+        android:id="@+id/likeFragment"
+        android:label="LikeFragment"
+        tools:layout="@layout/fragment_like" >
         <action
-            android:id="@+id/action_settingFragment_to_nav_graph"
+            android:id="@+id/action_likeFragment_to_nav_graph"
             app:destination="@id/nav_graph" />
     </fragment>
 
 </navigation>
+
+

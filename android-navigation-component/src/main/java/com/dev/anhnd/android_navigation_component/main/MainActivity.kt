@@ -1,95 +1,65 @@
 package com.dev.anhnd.android_navigation_component.main
 
+import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.dev.anhnd.android_navigation_component.R
+import com.dev.anhnd.android_navigation_component.camera.CameraFragment
+import com.dev.anhnd.android_navigation_component.dashboard.DashboardFragment
 import com.dev.anhnd.android_navigation_component.databinding.ActivityMainBinding
 import com.dev.anhnd.mybase.BaseActivity
 import com.dev.anhnd.mybase.utils.app.observer
-import com.dev.anhnd.mybase.utils.bottom_navigation.setupWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private val TAG = MainActivity::class.java.simpleName
-    private var currentNavController: LiveData<NavController>? = null
-    var startingPosition: Int = 1
-    private var oldPosition: Int = 1
+    companion object {
+        private val TAG = MainActivity::class.java.simpleName
+        private const val CAMERA_POSITION = 0
+        private const val MAIN_POSITION = 1
+        private const val DASHBOARD_POSITION = 2
+    }
 
-    private val enterAnim = R.anim.slide_exit_right_to_left
-    private val exitAnim = R.anim.slide_enter_left_to_right
-    private val popEnterAnim = R.anim.slide_pop_exit_left_to_right
-    private val popExitAnim = R.anim.slide_pop_enter_right_to_left
+    private val mainViewModel by viewModels<MainViewModel>()
+    private val cameraFragment = CameraFragment()
+    private val mainFragment = MainFragment()
+    private val dashboardFragment = DashboardFragment()
 
-    var navGraphIds = listOf<Int>()
+    var currentNavController: LiveData<NavController>? = null
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
-    override fun initView() {
-        setupBottomNavigationBar()
+    override fun initBinding() {
+        binding.mainViewModel = mainViewModel
     }
 
-    /*  private fun getNavOption(newPosition: Int): NavOptions? {
-          var navOptions: NavOptions? = null
-          val navController = currentNavController?.value!!
-          Log.d(TAG, "oldPosition: $oldPosition    newPosition:$newPosition")
-          if (oldPosition < newPosition) {
-              navOptions = NavOptions.Builder()
-                  .setLaunchSingleTop(true)
-                  .setEnterAnim(enterAnim)
-                  .setExitAnim(exitAnim)
-                  .setPopEnterAnim(popEnterAnim)
-                  .setPopExitAnim(popExitAnim)
-                  .build()
-          }
-          if (oldPosition > newPosition) {
-              navOptions = NavOptions.Builder()
-                  .setLaunchSingleTop(true)
-                  .setEnterAnim(exitAnim)
-                  .setExitAnim(enterAnim)
-                  .setPopEnterAnim(popExitAnim)
-                  .setPopExitAnim(popEnterAnim)
-                  .build()
-          }
-          oldPosition = newPosition
-          return navOptions
-      }*/
+    override fun initView() {
+        val mainPagerAdapter by lazy {
+            MainPagerAdapter(supportFragmentManager, lifecycle).apply {
+                addFragment(cameraFragment, "Camera", CAMERA_POSITION)
+                addFragment(mainFragment, "Main", MAIN_POSITION)
+                addFragment(dashboardFragment, "Dashboard", DASHBOARD_POSITION)
+            }
+        }
+        binding.viewpager.apply {
+            offscreenPageLimit = mainPagerAdapter.itemCount
+            adapter = mainPagerAdapter
+            post {
+                currentItem = MAIN_POSITION
+            }
+        }
+    }
+
+    override fun observerViewModel() {
+        observer(mainViewModel.getLiveMenu()) {
+            it?.let { isShowMenu ->
+                binding.viewpager.isUserInputEnabled = isShowMenu
+            }
+        }
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         return currentNavController?.value?.navigateUp() ?: false
-    }
-
-    private fun setupBottomNavigationBar() {
-        navGraphIds = listOf(R.navigation.nav_home, R.navigation.nav_collection, R.navigation.nav_setting)
-        val controller = binding.bottomNav.setupWithNavController(
-            navGraphIds = navGraphIds,
-            fragmentManager = supportFragmentManager,
-            containerId = R.id.nav_host_container,
-            intent = intent
-        )
-        observer(controller) {
-            it?.let { navController ->
-                var newPosition = 0
-                val id = navController.graph.id
-                when (id) {
-                    R.id.nav_home -> {
-                        newPosition = 1
-                    }
-                    R.id.nav_collection -> {
-                        newPosition = 2
-                    }
-                    R.id.nav_setting -> {
-                        newPosition = 3
-                    }
-                }
-                setupActionBarWithNavController(navController)
-            }
-        }
-        currentNavController = controller
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
     }
 }

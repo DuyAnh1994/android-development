@@ -1,8 +1,7 @@
-package com.dev.anhnd.android_navigation_component.home
+package com.dev.anhnd.android_navigation_component.search
 
-import androidx.lifecycle.MutableLiveData
 import com.dev.anhnd.android_navigation_component.R
-import com.dev.anhnd.android_navigation_component.databinding.FragmentHomeBinding
+import com.dev.anhnd.android_navigation_component.databinding.FragmentSearchBinding
 import com.dev.anhnd.android_navigation_component.main.BaseMainFragment
 import com.dev.anhnd.mybase.utils.log.logd
 import dagger.hilt.android.AndroidEntryPoint
@@ -10,19 +9,18 @@ import dagger.hilt.android.WithFragmentBindings
 
 @AndroidEntryPoint
 @WithFragmentBindings
-class HomeFragment : BaseMainFragment<FragmentHomeBinding>() {
+class SearchFragment : BaseMainFragment<FragmentSearchBinding>() {
 
-    private val TAG = HomeFragment::class.java.simpleName
-    private var count = MutableLiveData(0)
+    private val TAG = SearchFragment::class.java.simpleName
 
-    override fun getLayoutId() = R.layout.fragment_home
+    override fun getLayoutId(): Int = R.layout.fragment_search
 
     override fun setup() {
         logd("setup: ")
     }
 
     override fun initBinding() {
-        binding.count = count
+
     }
 
     override fun initView() {
@@ -30,17 +28,13 @@ class HomeFragment : BaseMainFragment<FragmentHomeBinding>() {
     }
 
     override fun observerViewModel() {
-
     }
 
     override fun onViewClick(viewId: Int) {
         when (viewId) {
             R.id.btnAbout -> {
                 mainViewModel.hideMenu()
-                navigateTo(R.id.action_homeFragment_to_nav_graph)
-            }
-            R.id.btnCount -> {
-                count.value = count.value?.plus(1)
+                navigateTo(R.id.action_searchFragment_to_nav_graph)
             }
         }
     }

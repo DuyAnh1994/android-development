@@ -24,14 +24,6 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
 
     //region Properties
     /**
-     * Instance of Activity owner
-     */
-    @Suppress("UNCHECKED_CAST")
-    val activityOwner by lazy {
-        requireActivity()
-    }
-
-    /**
      * Binding view
      */
     protected lateinit var binding: DB
@@ -58,7 +50,7 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         if (!::myInflater.isInitialized) {
-            myInflater = LayoutInflater.from(activityOwner)
+            myInflater = LayoutInflater.from(requireActivity())
         }
         binding = DataBindingUtil.inflate(myInflater, getLayoutId(), container, false)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -210,14 +202,14 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
      */
     fun backScreen(tag: String) {
         val backTag = if (tag.isEmpty()) javaClass.simpleName else tag
-        activityOwner.supportFragmentManager.popBackStack(
+        requireActivity().supportFragmentManager.popBackStack(
             backTag,
             FragmentManager.POP_BACK_STACK_INCLUSIVE
         )
     }
 
     private fun initScreenTransitionManager(): ScreenTransitionManageImp {
-        return ScreenTransitionManageImp(activityOwner.supportFragmentManager, getContainer())
+        return ScreenTransitionManageImp(requireActivity().supportFragmentManager, getContainer())
     }
 
     private fun setBackPressedDispatcher() {
@@ -226,7 +218,7 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
                 onBackPressed()
             }
         }
-        activityOwner.onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     private fun setStatusColor(color: Int = Color.BLACK, state: Boolean = true) {

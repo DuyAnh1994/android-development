@@ -1,32 +1,33 @@
 package com.dev.anhnd.android_navigation_component.about
 
-import android.os.Bundle
+import androidx.lifecycle.MutableLiveData
 import com.dev.anhnd.android_navigation_component.R
 import com.dev.anhnd.android_navigation_component.databinding.FragmentAboutBinding
-import com.dev.anhnd.android_navigation_component.main.MainViewModel
-import com.dev.anhnd.mybase.BaseFragment
-import com.dev.anhnd.mybase.utils.app.shareParentFragmentViewModels
+import com.dev.anhnd.android_navigation_component.main.BaseMainFragment
+import com.dev.anhnd.mybase.utils.log.logd
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
 
-class AboutFragment : BaseFragment<FragmentAboutBinding>() {
+@AndroidEntryPoint
+@WithFragmentBindings
+class AboutFragment : BaseMainFragment<FragmentAboutBinding>() {
 
     private val TAG = AboutFragment::class.java.simpleName
 
-    //    private val mainViewModel by activityViewModels<MainViewModel>()
-    private val mainViewModel by shareParentFragmentViewModels<MainViewModel>()
-
+    private var count = MutableLiveData(0)
 
     override fun getLayoutId(): Int = R.layout.fragment_about
 
     override fun setup() {
-
+        logd("setup: ")
     }
 
     override fun initBinding() {
         binding.mainViewModel = mainViewModel
+        binding.count = count
     }
 
     override fun initView() {
-
 
     }
 
@@ -36,7 +37,24 @@ class AboutFragment : BaseFragment<FragmentAboutBinding>() {
 
     override fun onViewClick(viewId: Int) {
         when (viewId) {
+            R.id.btnBack -> {
+                onBackPressed()
+            }
+            R.id.btnNext -> {
+//                navigateTo(R.id.action_aboutFragment_to_previewFragment)
+            }
+            R.id.btnCount -> {
+                count.value = count.value?.plus(1)
+            }
+            R.id.btnText -> {
+                mainViewModel.liveText.value = count.value.toString()
+            }
 
         }
+    }
+
+    override fun onBackPressed() {
+        mainViewModel.showMenu()
+        backScreen()
     }
 }

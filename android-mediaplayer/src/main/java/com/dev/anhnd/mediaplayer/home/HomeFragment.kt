@@ -56,6 +56,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun onBackPressed() {
-        activityOwner.finish()
+        requireActivity().finish()
     }
 }

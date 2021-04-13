@@ -1,17 +1,22 @@
 package com.dev.anhnd.android_navigation_component.collection
 
-import android.os.Bundle
 import com.dev.anhnd.android_navigation_component.R
 import com.dev.anhnd.android_navigation_component.databinding.FragmentCollectionBinding
-import com.dev.anhnd.mybase.BaseFragment
+import com.dev.anhnd.android_navigation_component.main.BaseMainFragment
+import com.dev.anhnd.mybase.utils.log.logd
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
 
-class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
+@AndroidEntryPoint
+@WithFragmentBindings
+class CollectionFragment : BaseMainFragment<FragmentCollectionBinding>() {
 
     private val TAG = CollectionFragment::class.java.simpleName
+
     override fun getLayoutId(): Int = R.layout.fragment_collection
 
     override fun setup() {
-
+        logd("setup: ")
     }
 
     override fun initBinding() {
@@ -27,9 +32,13 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>() {
 
     override fun onViewClick(viewId: Int) {
         when (viewId) {
-            R.id.constraint -> {
-                navigateTo(R.id.action_collectionFragment_to_previewFragment)
+            R.id.btnAbout -> {
+                mainViewModel.hideMenu()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        activityOwner.finish()
     }
 }

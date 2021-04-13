@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/home" />
 
     <item
-        android:id="@+id/nav_collection"
-        android:icon="@drawable/ic_collection"
-        android:title="Collection" />
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/nav_add"
+        android:icon="@drawable/ic_add"
+        android:title="@string/add" />
+
+    <item
+        android:id="@+id/nav_like"
+        android:icon="@drawable/ic_heart"
+        android:title="@string/like" />
 
     <item
         android:id="@+id/nav_setting"
         android:icon="@drawable/ic_settings"
-        android:title="Setting" />
+        android:title="@string/setting" />
 </menu>

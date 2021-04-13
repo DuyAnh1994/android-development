@@ -1,17 +1,18 @@
 package com.dev.anhnd.android_navigation_component.language
 
-import android.os.Bundle
+import androidx.fragment.app.activityViewModels
 import com.dev.anhnd.android_navigation_component.R
 import com.dev.anhnd.android_navigation_component.databinding.FragmentLanguageBinding
+import com.dev.anhnd.android_navigation_component.main.BaseMainFragment
 import com.dev.anhnd.android_navigation_component.main.MainViewModel
-import com.dev.anhnd.mybase.BaseFragment
-import com.dev.anhnd.mybase.utils.app.shareParentFragmentViewModels
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
 
-class LanguageFragment : BaseFragment<FragmentLanguageBinding>() {
+@AndroidEntryPoint
+@WithFragmentBindings
+class LanguageFragment : BaseMainFragment<FragmentLanguageBinding>() {
 
     private val TAG = LanguageFragment::class.java.simpleName
-//    private val mainViewModel by activityViewModels<MainViewModel>()
-    private val mainViewModel by shareParentFragmentViewModels<MainViewModel>()
 
     override fun getLayoutId(): Int = R.layout.fragment_language
 
@@ -32,7 +33,13 @@ class LanguageFragment : BaseFragment<FragmentLanguageBinding>() {
 
     override fun onViewClick(viewId: Int) {
         when (viewId) {
-
+            R.id.btnBack -> {
+                onBackPressed()
+            }
         }
+    }
+
+    override fun onBackPressed() {
+        backScreen()
     }
 }

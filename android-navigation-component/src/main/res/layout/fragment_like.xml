@@ -6,16 +6,23 @@
 
         <import type="android.view.View.OnClickListener" />
 
+        <import type="com.dev.anhnd.android_navigation_component.main.MainViewModel" />
+
         <variable
             name="viewListener"
             type="OnClickListener" />
+
+        <variable
+            name="mainViewModel"
+            type="MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint"
+        android:id="@+id/dashboardRoot"
+        deBounceClick="@{viewListener::onClick}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F5FDA7">
+        android:background="#F68460">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAbout"

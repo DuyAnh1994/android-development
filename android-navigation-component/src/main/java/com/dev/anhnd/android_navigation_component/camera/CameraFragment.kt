@@ -1,0 +1,39 @@
+package com.dev.anhnd.android_navigation_component.camera
+
+import com.dev.anhnd.android_navigation_component.R
+import com.dev.anhnd.android_navigation_component.databinding.FragmentCameraBinding
+import com.dev.anhnd.android_navigation_component.databinding.FragmentDashboardBinding
+import com.dev.anhnd.android_navigation_component.main.BaseMainFragment
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
+
+@AndroidEntryPoint
+@WithFragmentBindings
+class CameraFragment : BaseMainFragment<FragmentCameraBinding>() {
+
+    private val TAG = CameraFragment::class.java.simpleName
+
+
+    override fun getLayoutId(): Int = R.layout.fragment_camera
+
+    override fun setup() {
+
+    }
+
+    override fun initBinding() {
+        binding.mainViewModel = mainViewModel
+    }
+
+    override fun initView() {
+
+
+    }
+
+    override fun observerViewModel() {
+
+    }
+
+    override fun onViewClick(viewId: Int) {
+
+    }
+}

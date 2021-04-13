@@ -1,19 +1,18 @@
 package com.dev.anhnd.android_navigation_component.preview
 
-import android.os.Bundle
+import androidx.fragment.app.activityViewModels
 import com.dev.anhnd.android_navigation_component.R
 import com.dev.anhnd.android_navigation_component.databinding.FragmentPreviewBinding
+import com.dev.anhnd.android_navigation_component.main.BaseMainFragment
 import com.dev.anhnd.android_navigation_component.main.MainViewModel
-import com.dev.anhnd.mybase.BaseFragment
-import com.dev.anhnd.mybase.utils.app.shareParentFragmentViewModels
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
 
-class PreviewFragment : BaseFragment<FragmentPreviewBinding>() {
+@AndroidEntryPoint
+@WithFragmentBindings
+class PreviewFragment : BaseMainFragment<FragmentPreviewBinding>() {
 
     private val TAG = PreviewFragment::class.java.simpleName
-
-//        private val mainViewModel by activityViewModels<MainViewModel>()
-    private val mainViewModel by shareParentFragmentViewModels<MainViewModel>()
-
 
     override fun getLayoutId(): Int = R.layout.fragment_preview
 
@@ -33,12 +32,16 @@ class PreviewFragment : BaseFragment<FragmentPreviewBinding>() {
 
     override fun onViewClick(viewId: Int) {
         when (viewId) {
-
+            R.id.btnBack -> {
+                onBackPressed()
+            }
+            R.id.btnNext -> {
+//                navigateTo(R.id.action_previewFragment_to_languageFragment)
+            }
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mainViewModel
+    override fun onBackPressed() {
+        backScreen()
     }
 }

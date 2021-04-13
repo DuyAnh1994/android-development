@@ -62,7 +62,7 @@ class NationalFragment : BaseFragment<FragmentNationalBinding>() {
     }
 
     override fun onBackPressed() {
-        (activityOwner as MainActivity).finish()
+        requireActivity().finish()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View.OnClickListener" />
+
+        <import type="com.dev.anhnd.android_navigation_component.main.MainViewModel" />
+
+        <variable
+            name="viewListener"
+            type="OnClickListener" />
+
+        <variable
+            name="mainViewModel"
+            type="MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dashboardRoot"
+        deBounceClick="@{viewListener::onClick}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B3F864">
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
