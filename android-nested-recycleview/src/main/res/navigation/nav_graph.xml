@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.dev.anhnd.android_nested_recycleview.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_nationFragment"
+            app:destination="@id/nationFragment"
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nationFragment"
+        android:name="com.dev.anhnd.android_nested_recycleview.ui.nation.NationFragment"
+        android:label="NationFragment"
+        tools:layout="@layout/fragment_nation" />
+</navigation>

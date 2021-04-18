@@ -1,3 +1,5 @@
+include ':android-nested-recycleview'
+include ':android-motion'
 include ':android-background-task'
 include ':android-web-service'
 include ':android-web-view'

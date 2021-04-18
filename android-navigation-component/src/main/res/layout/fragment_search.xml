@@ -21,6 +21,7 @@
             android:id="@+id/btnAbout"
             deBounceClick="@{viewListener::onClick}"
             android:layout_width="wrap_content"
+            android:textAllCaps="false"
             android:layout_height="wrap_content"
             android:text="@string/about"
             app:layout_constraintBottom_toBottomOf="parent"
