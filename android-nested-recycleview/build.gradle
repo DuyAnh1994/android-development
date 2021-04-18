@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -53,6 +55,7 @@ dependencies {
     implementation rootProject.ext.androidXDependencies.recyclerview
     implementation rootProject.ext.androidXDependencies.viewModel
     implementation rootProject.ext.androidXDependencies.LiveData
+    implementation rootProject.ext.androidXDependencies.SavedStateViewModel
     implementation rootProject.ext.androidXDependencies.navigationFragment
     implementation rootProject.ext.androidXDependencies.navigationUI
 

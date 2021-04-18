@@ -135,7 +135,9 @@ abstract class BaseDialog<BD : ViewDataBinding> : DialogFragment(), BaseView, Vi
         dismissListener?.onDismiss(dialog)
     }
 
-    protected abstract fun getRootViewGroup(): ViewGroup
+    open fun getRootViewGroup(): ViewGroup? {
+        return null
+    }
 
     /**
      * Must set id of parent view dialog is " backgroundDialog "
@@ -222,7 +224,7 @@ abstract class BaseDialog<BD : ViewDataBinding> : DialogFragment(), BaseView, Vi
     }
 
     private fun initAnimation() {
-        getRootViewGroup().let {
+        getRootViewGroup()?.let {
             animateDialog(it)
         }
     }

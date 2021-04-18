@@ -17,19 +17,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initView() {
-        /*binding.carousel.setAdapter(object : Carousel.Adapter {
-            override fun count(): Int {
-                return 5
-            }
 
-            override fun populate(view: View?, index: Int) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onNewItem(index: Int) {
-                TODO("Not yet implemented")
-            }
-        })*/
     }
 
     override fun observerViewModel() {

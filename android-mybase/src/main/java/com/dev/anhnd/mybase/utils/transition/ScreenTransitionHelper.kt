@@ -11,8 +11,14 @@ interface ScreenTransitionHelper {
 
     fun transitionTo(
         fragment: Fragment,
-        @AnimatorRes @AnimRes enter: Int = android.R.anim.fade_in,
-        @AnimatorRes @AnimRes exist: Int = android.R.anim.fade_out
+        @AnimatorRes @AnimRes enter: Int,
+        @AnimatorRes @AnimRes exist: Int,
+        @AnimatorRes @AnimRes popEnter: Int,
+        @AnimatorRes @AnimRes popExit: Int
+        /*@AnimatorRes @AnimRes enter: Int = android.R.anim.fade_in,
+        @AnimatorRes @AnimRes exist: Int = android.R.anim.fade_out,
+        @AnimatorRes @AnimRes popEnter: Int = android.R.anim.fade_in,
+        @AnimatorRes @AnimRes popExit: Int = android.R.anim.fade_out*/
     )
 
     fun transitionTo(

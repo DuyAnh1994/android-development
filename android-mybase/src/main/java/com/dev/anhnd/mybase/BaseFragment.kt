@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.AnimRes
+import androidx.annotation.AnimatorRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -23,6 +25,14 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
     }
 
     //region Properties
+
+    /**
+     * Instance base activity
+     */
+    private val baseActivity by lazy {
+        requireActivity() as BaseActivity<*>
+    }
+
     /**
      * Binding view
      */
@@ -137,6 +147,17 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), BaseView, View.O
      */
     open fun onBackPressed() {
 
+    }
+
+    /**
+     *
+     */
+    fun transitionTo(fragment: Fragment,
+                     @AnimatorRes @AnimRes enter: Int = android.R.anim.fade_in,
+                     @AnimatorRes @AnimRes exist: Int = android.R.anim.fade_out,
+                     @AnimatorRes @AnimRes popEnter: Int = android.R.anim.fade_in,
+                     @AnimatorRes @AnimRes popExit: Int = android.R.anim.fade_out) {
+        baseActivity.transitionTo(fragment, enter, exist, popEnter, popExit)
     }
 
     /**

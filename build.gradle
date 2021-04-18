@@ -3,7 +3,7 @@
 apply from: 'dependencies.gradle'
 
 buildscript {
-    def gradleVersion = "4.1.3"
+    def gradleVersion = '4.2.0'
     def kotlinVersion = "1.4.32"
     def hiltVersion = "2.33-beta"
     repositories {

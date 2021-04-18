@@ -10,11 +10,15 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.InflateException
 import android.view.View
+import androidx.annotation.AnimRes
+import androidx.annotation.AnimatorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import com.dev.anhnd.mybase.utils.app.openAppSetting
 import com.dev.anhnd.mybase.utils.log.LogDebug
+import com.dev.anhnd.mybase.utils.transition.ScreenTransitionManageImp
 
 abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseView {
 
@@ -25,6 +29,7 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseVie
     }
 
     protected lateinit var binding: DB
+    lateinit var screenTransitionManageImp: ScreenTransitionManageImp
     private var onAllow: (() -> Unit)? = null
     private var onDenied: (() -> Unit)? = null
     private var safeAction = false
@@ -47,6 +52,7 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseVie
             }
             binding = DataBindingUtil.setContentView(this, getLayoutId())
             binding.lifecycleOwner = this
+            screenTransitionManageImp = initScreenTransitionManager()
             initBinding()
             initView()
             observerViewModel()
@@ -88,6 +94,10 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseVie
      * @return just only portrait
      */
     protected open fun isOnlyPortraitScreen() = true
+
+    open fun getContainer(): Int {
+        return -1
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -131,6 +141,14 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseVie
             }
         }
         return true
+    }
+
+    fun transitionTo(fragment: Fragment,
+                     @AnimatorRes @AnimRes enter: Int = android.R.anim.fade_in,
+                     @AnimatorRes @AnimRes exist: Int = android.R.anim.fade_out,
+                     @AnimatorRes @AnimRes popEnter: Int = android.R.anim.fade_in,
+                     @AnimatorRes @AnimRes popExit: Int = android.R.anim.fade_out) {
+        screenTransitionManageImp.transitionTo(fragment, enter, exist, popEnter, popExit)
     }
 
     /**
@@ -186,6 +204,10 @@ abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity(), BaseVie
             e.printStackTrace()
             LogDebug.e(TAG, "${e.message}")
         }
+    }
+
+    private fun initScreenTransitionManager(): ScreenTransitionManageImp {
+        return ScreenTransitionManageImp(supportFragmentManager, getContainer())
     }
 }
 

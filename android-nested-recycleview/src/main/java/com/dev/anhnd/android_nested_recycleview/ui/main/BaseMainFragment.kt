@@ -1,6 +1,9 @@
 package com.dev.anhnd.android_nested_recycleview.ui.main
 
+import androidx.annotation.AnimRes
+import androidx.annotation.AnimatorRes
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.dev.anhnd.mybase.BaseFragment
 

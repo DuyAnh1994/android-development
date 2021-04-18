@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">android-note-todos</string>
+    <string name="home_fragment">HomeFragment</string>
+    <string name="create_note_fragment">CreateNoteFragment</string>
+</resources>

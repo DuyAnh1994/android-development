@@ -1,10 +1,7 @@
 package com.dev.anhnd.android_mvvm_di_hilt.data.repository
 
-import com.dev.anhnd.android_mvvm_di_hilt.data.source.local.entity.Notes
 import com.dev.anhnd.android_mvvm_di_hilt.data.source.local.dao.NotesDao
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityRetainedComponent
+import com.dev.anhnd.android_mvvm_di_hilt.data.source.local.entity.Notes
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

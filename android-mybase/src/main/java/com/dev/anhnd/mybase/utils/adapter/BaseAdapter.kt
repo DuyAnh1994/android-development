@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dev.anhnd.mybase.BR
+import com.dev.anhnd.mybase.databinding.LayoutDefaultBinding
 import com.dev.anhnd.mybase.utils.adapter.touch.*
 import com.dev.anhnd.mybase.utils.adapter.viewholder.BaseDiffUtilCallback
 import com.dev.anhnd.mybase.utils.adapter.viewholder.BaseViewHolder

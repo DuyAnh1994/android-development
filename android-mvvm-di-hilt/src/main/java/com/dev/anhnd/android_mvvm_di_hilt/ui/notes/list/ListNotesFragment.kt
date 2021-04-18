@@ -21,7 +21,9 @@ class ListNotesFragment : BaseFragment<FragmentListNotesBinding>() {
         NotesAdapter().apply {
             listener = object : ListNotesListener {
                 override fun onClickItem(position: Int, item: Notes) {
-                    select(item)
+//                    select(item)
+                    mainViewModel.note.value = item
+                    navigateTo(R.id.action_listNotesFragment_to_NotesDetailFragment)
                 }
 
                 override fun onLongClickItem(position: Int, item: Notes): Boolean {

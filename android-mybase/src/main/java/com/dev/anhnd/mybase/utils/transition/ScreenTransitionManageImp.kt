@@ -16,12 +16,15 @@ class ScreenTransitionManageImp(
     override fun transitionTo(
         fragment: Fragment,
         @AnimatorRes @AnimRes enter: Int,
-        @AnimatorRes @AnimRes exist: Int
+        @AnimatorRes @AnimRes exist: Int,
+        @AnimatorRes @AnimRes popEnter: Int,
+        @AnimatorRes @AnimRes popExit: Int
     ) {
         try {
             val tag = fragment::class.java.simpleName
             fragmentManager.beginTransaction().apply {
-                setCustomAnimations(enter, exist, enter, exist)
+                setCustomAnimations(enter, exist, popEnter, popExit)
+//                replace(layoutContainer, fragment, tag)
                 add(layoutContainer, fragment, tag)
                 addToBackStack(tag)
                 commit()

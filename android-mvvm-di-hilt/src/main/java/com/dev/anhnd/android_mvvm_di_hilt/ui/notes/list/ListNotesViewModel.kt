@@ -15,7 +15,7 @@ class ListNotesViewModel @Inject constructor(
     private val notesRepository: NotesRepository
 ) : BaseViewModel() {
 
-    val notes = notesRepository.getAllNotes().asLiveData()
+    val notes = notesRepository.getAllNotes()
 
     fun delete(note: Notes) {
         viewModelDoJob(

@@ -3,7 +3,9 @@ package com.dev.anhnd.android_nested_recycleview.ui.nation
 import com.dev.anhnd.android_nested_recycleview.R
 import com.dev.anhnd.android_nested_recycleview.databinding.FragmentNationBinding
 import com.dev.anhnd.android_nested_recycleview.ui.main.BaseMainFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NationFragment : BaseMainFragment<FragmentNationBinding>() {
 
 
@@ -32,5 +34,6 @@ class NationFragment : BaseMainFragment<FragmentNationBinding>() {
 
     override fun onBackPressed() {
         backScreen()
+//        screenTransitionManageImp.backScreen()
     }
 }

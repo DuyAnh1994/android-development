@@ -4,8 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import com.dev.anhnd.android_nested_recycleview.model.Nation
 import com.dev.anhnd.mybase.BaseViewModel
 import com.dev.anhnd.mybase.utils.app.asLiveData
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel : BaseViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor() : BaseViewModel() {
 
 
     private val _nation = MutableLiveData(Nation())
