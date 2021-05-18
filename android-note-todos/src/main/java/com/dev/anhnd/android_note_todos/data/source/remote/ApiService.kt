@@ -5,11 +5,13 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    @GET("/note/findAll")
+    @GET("/note/")
     suspend fun findAll(): MutableList<Note>
+//    suspend fun findAll(): BaseResponse<MutableList<Note>>
 
-    @GET("/note/findById/")
-    suspend fun findById(@Query("id") id: String): Note
+    @GET("/note/{id}")
+    suspend fun findById(@Path("id") id: String): Note
+//    suspend fun findById(@Query("id") id: String): Note
 
     @POST("/note/create")
     suspend fun create(@Body note: Note): Note

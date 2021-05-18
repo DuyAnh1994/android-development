@@ -1,5 +1,6 @@
 package com.dev.anhnd.android_mvvm_di_hilt.data.source.local.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.dev.anhnd.android_mvvm_di_hilt.data.source.local.entity.Notes
 import kotlinx.coroutines.flow.Flow
@@ -18,6 +19,7 @@ interface NotesDao {
 
     @Query("SELECT * FROM notes_table")
     fun getAllNotes(): Flow<MutableList<Notes>>
+//    fun getAllNotes(): LiveData<MutableList<Notes>>
 
     @Query("SELECT * FROM notes_table WHERE title = :title")
     fun getNotesByTitle(title: String): Flow<List<Notes>>

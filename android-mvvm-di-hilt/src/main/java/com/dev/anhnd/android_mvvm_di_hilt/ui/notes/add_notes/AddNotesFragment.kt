@@ -31,7 +31,9 @@ class AddNotesFragment : BaseFragment<FragmentAddNotesBinding>() {
     override fun onViewClick(viewId: Int) {
         when (viewId) {
             R.id.btnInsert -> {
-                viewModel.addNotes(Notes(title = viewModel.liveTextTitle.value!!, content = viewModel.liveTextContent.value!!)) {
+                viewModel.addNotes(Notes(
+                        title = viewModel.liveTextTitle.value!!,
+                        content = viewModel.liveTextContent.value!!)) {
                     hideKeyBoard(binding.edtTitle)
                     hideKeyBoard(binding.edtContent)
                     popBackStack(R.id.listNotesFragment)

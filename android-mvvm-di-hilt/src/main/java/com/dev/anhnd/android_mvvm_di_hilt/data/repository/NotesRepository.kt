@@ -1,5 +1,6 @@
 package com.dev.anhnd.android_mvvm_di_hilt.data.repository
 
+import androidx.lifecycle.LiveData
 import com.dev.anhnd.android_mvvm_di_hilt.data.source.local.dao.NotesDao
 import com.dev.anhnd.android_mvvm_di_hilt.data.source.local.entity.Notes
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +15,7 @@ class NotesRepository @Inject constructor(private val notesDao: NotesDao) {
     fun delete(notes: Notes) = notesDao.delete(notes)
 
     fun getAllNotes(): Flow<MutableList<Notes>> = notesDao.getAllNotes()
+//    fun getAllNotes(): LiveData<MutableList<Notes>> = notesDao.getAllNotes()
 
     fun getNotesByTitle(title: String): Flow<List<Notes>> = notesDao.getNotesByTitle(title)
 }

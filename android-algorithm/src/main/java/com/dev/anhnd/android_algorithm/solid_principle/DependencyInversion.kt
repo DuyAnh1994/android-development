@@ -1,3 +1,4 @@
+
 package com.dev.anhnd.android_algorithm.solid_principle
 
 /**
@@ -15,10 +16,14 @@ package com.dev.anhnd.android_algorithm.solid_principle
 
 
 fun main() {
-    val mySQL = MySQLConnection()
-    val mongodb = MongodbConnection()
-    DatabaseConfig(mySQL)
-    DatabaseConfig(mongodb)
+//    val mySQL = MySQLConnection()
+//    val mongodb = MongodbConnection()
+//    DatabaseConfig(mySQL)
+//    DatabaseConfig(mongodb)
+
+
+
+    println("abc")
 }
 
 interface DBConnect {

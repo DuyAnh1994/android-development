@@ -15,7 +15,8 @@ import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.*
 import com.dev.anhnd.mybase.BaseActivity
 import com.dev.anhnd.mybase.BasePreference
-import kotlin.reflect.KClass
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 
 
 private var appInstance: Application? = null
@@ -54,6 +55,12 @@ fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observ
             }
         }
     )
+}
+
+suspend fun <T> Flow<T>.onCollectPostValue(liveData: MutableLiveData<T>) {
+    this.collect {
+        liveData.postValue(it)
+    }
 }
 
 fun <T> MutableLiveData<T>.asLiveData() = this as LiveData<T>

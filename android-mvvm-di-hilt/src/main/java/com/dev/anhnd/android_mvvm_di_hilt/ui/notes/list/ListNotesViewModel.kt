@@ -1,7 +1,5 @@
 package com.dev.anhnd.android_mvvm_di_hilt.ui.notes.list
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import com.dev.anhnd.android_mvvm_di_hilt.data.repository.NotesRepository
 import com.dev.anhnd.android_mvvm_di_hilt.data.source.local.entity.Notes
@@ -15,7 +13,7 @@ class ListNotesViewModel @Inject constructor(
     private val notesRepository: NotesRepository
 ) : BaseViewModel() {
 
-    val notes = notesRepository.getAllNotes()
+    val notes = notesRepository.getAllNotes().asLiveData()
 
     fun delete(note: Notes) {
         viewModelDoJob(

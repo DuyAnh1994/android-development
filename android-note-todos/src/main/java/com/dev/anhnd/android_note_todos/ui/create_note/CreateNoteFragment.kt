@@ -4,11 +4,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.dev.anhnd.android_note_todos.R
 import com.dev.anhnd.android_note_todos.databinding.FragmentCreateNoteBinding
-import com.dev.anhnd.android_note_todos.databinding.FragmentHomeBinding
-import com.dev.anhnd.android_note_todos.ui.home.HomeViewModel
 import com.dev.anhnd.android_note_todos.ui.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.observer
+import com.dev.anhnd.mybase.utils.clean_architecture.data
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +30,9 @@ class CreateNoteFragment : BaseFragment<FragmentCreateNoteBinding>() {
     }
 
     override fun observerViewModel() {
-
+        observer(mainViewModel.note) {
+            binding.tvDetail.text = it?.data.toString()
+        }
     }
 
     override fun onViewClick(viewId: Int) {

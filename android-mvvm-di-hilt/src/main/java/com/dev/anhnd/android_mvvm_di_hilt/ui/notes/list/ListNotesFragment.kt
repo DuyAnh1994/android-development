@@ -10,6 +10,7 @@ import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.observer
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.WithFragmentBindings
+import java.lang.RuntimeException
 
 @AndroidEntryPoint
 @WithFragmentBindings
@@ -56,6 +57,7 @@ class ListNotesFragment : BaseFragment<FragmentListNotesBinding>() {
         when (viewId) {
             R.id.btnAddNotes -> {
                 navigateTo(R.id.action_listNotesFragment_to_addNotesFragment)
+//                throw RuntimeException("test")
             }
         }
     }

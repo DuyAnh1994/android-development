@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "86473648562",
+    "project_id": "android-development-c3b3f",
+    "storage_bucket": "android-development-c3b3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:86473648562:android:10adf062ce8d7c840bdcab",
+        "android_client_info": {
+          "package_name": "com.dev.anhnd.android_mvvm_di_hilt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "86473648562-5jhe1hgd5bibl27qoja7r2ojk4ac4pv8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0QfVYEM3fjh9H5wD2-YVPLdqShgrUzhk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "86473648562-5jhe1hgd5bibl27qoja7r2ojk4ac4pv8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

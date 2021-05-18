@@ -22,7 +22,7 @@ class AppPlayer : LifecycleObserver {
 
     companion object {
         private val TAG = AppPlayer::class.java.simpleName
-        var URI_AUTHORITY = "${BuildConfig.APPLICATION_ID}.provider"
+        var URI_AUTHORITY = "${BuildConfig.LIBRARY_PACKAGE_NAME}.provider"
     }
 
     var isReversedRanger = false

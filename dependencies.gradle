@@ -185,11 +185,31 @@ ext {
     /**
      * Dimension
      */
-
     def sdpVersion = "1.0.6"
     def sspVersion = "1.0.6"
     dimenDependencies = [
             "sdp": "com.intuit.sdp:sdp-android:$sdpVersion",
             "ssp": "com.intuit.ssp:ssp-android:$sspVersion"
     ]
+
+    /**
+     * Firebase
+     */
+    def bomVersion = "28.0.1"
+    def analyticsVersion = "19.0.0"
+    def crashlyticsKTXVersion = "18.0.0"
+    def crashlyticsNDKVersion = "18.0.0"
+    firebaseDependencies = [
+            "bom": "com.google.firebase:firebase-bom:$bomVersion",
+            "analytics"   : "com.google.firebase:firebase-analytics-ktx:$analyticsVersion",
+            "crashlyticsKTX"   : "com.google.firebase:firebase-crashlytics-ktx:$crashlyticsKTXVersion",
+//            "crashlyticsNDK"   : "com.google.firebase:firebase-crashlytics-ndk:18.0.0:$crashlyticsNDKVersion"
+    ]
+
+    def sentryVersion = "4.3.0"
+    sentryDependencies = [
+            "sentry" : "io.sentry:sentry-android:$sentryVersion"
+    ]
+
+
 }

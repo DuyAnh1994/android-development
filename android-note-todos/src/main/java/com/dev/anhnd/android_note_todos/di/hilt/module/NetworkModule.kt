@@ -12,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -21,8 +22,8 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideBaseUrl(): String {
-//        return "https://nodejs-note-todos.herokuapp.com"
-        return "http://192.168.1.102:3000"
+        return "https://nodejs-note-todos.herokuapp.com"
+//        return "http://192.168.1.102:3000"
     }
 
     @Provides
@@ -62,3 +63,8 @@ class NetworkModule {
         return retrofit.create(ApiService::class.java)
     }
 }
+
+
+//@Retention(AnnotationRetention.BINARY)
+//@Qualifier
+//annotation class IoDispatcher

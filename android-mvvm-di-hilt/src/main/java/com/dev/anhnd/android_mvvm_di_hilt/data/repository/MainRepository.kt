@@ -1,5 +1,6 @@
 package com.dev.anhnd.android_mvvm_di_hilt.data.repository
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.dev.anhnd.android_mvvm_di_hilt.data.model.User
 import com.dev.anhnd.android_mvvm_di_hilt.data.source.remote.ApiService
@@ -11,6 +12,7 @@ import javax.inject.Inject
 
 class MainRepository @Inject constructor(private val service: ApiService) {
 
+    private val TAG = MainRepository::class.java.simpleName
 //    val users = MutableLiveData<Event<List<User>>>()
 
 //    suspend fun getUsers(hideLoading:()->Unit) {

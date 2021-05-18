@@ -8,11 +8,13 @@ import com.dev.anhnd.android_note_todos.databinding.FragmentHomeBinding
 import com.dev.anhnd.android_note_todos.ui.main.MainViewModel
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.observer
+import com.dev.anhnd.mybase.utils.clean_architecture.data
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
+    private val TAG = HomeFragment::class.java.simpleName
     private val mainViewModel by activityViewModels<MainViewModel>()
     private val viewModelF by viewModels<HomeViewModel>()
     private val adapter by lazy {
@@ -51,13 +53,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun observerViewModel() {
-        observer(viewModelF.notes) { notes ->
-            adapter.submitList(notes)
+        observer(viewModelF.notes) {
+            adapter.submitList(it?.data)
         }
     }
 
     override fun onViewClick(viewId: Int) {
 
     }
-
 }
