@@ -14,3 +14,5 @@ include ':android-navigation-component'
 include ':android-mvvm'
 include ':android-mediaplayer'
 rootProject.name = "AndroidDevelopment"
+include ':android-aidl-server'
+include ':android-aidl-client'

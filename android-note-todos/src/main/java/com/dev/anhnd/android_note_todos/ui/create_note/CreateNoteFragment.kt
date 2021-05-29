@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CreateNoteFragment : BaseFragment<FragmentCreateNoteBinding>() {
 
+    private val TAG = CreateNoteFragment::class.java.simpleName
     private val mainViewModel by activityViewModels<MainViewModel>()
     private val viewModelF by viewModels<CreateNoteViewModel>()
 

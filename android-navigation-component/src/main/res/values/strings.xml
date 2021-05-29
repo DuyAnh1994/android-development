@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">android-navigation-component</string>
-    <string name="about">About</string>
+    <string name="app_name" translatable="false">android-navigation-component</string>
+    <string name="about" translatable="false">About</string>
     <string name="next">Next</string>
-    <string name="home">Home</string>
+    <string name="home" translatable="false">Home</string>
     <string name="search">Search</string>
     <string name="collection">Collection</string>
-    <string name="setting">Setting</string>
+    <string name="setting" translatable="false">Setting</string>
     <string name="add">Add</string>
     <string name="like">Like</string>
 </resources>
