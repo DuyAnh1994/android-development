@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+<!--    <navigation app:graph="@navigation/nav_graph_sub" />-->
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.dev.anhnd.android_motion.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.dev.anhnd.android_motion.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_fourFragment"
+            app:destination="@id/fourFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.dev.anhnd.android_motion.FirstFragment"
+        android:label="FirstFragment"
+        tools:layout="@layout/fragment_first" />
+
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.dev.anhnd.android_motion.SecondFragment"
+        android:label="SecondFragment"
+        tools:layout="@layout/fragment_second" />
+
+    <fragment
+        android:id="@+id/fourFragment"
+        android:name="com.dev.anhnd.android_motion.FourFragment"
+        android:label="FourFragment"
+        tools:layout="@layout/fragment_four" />
+
+</navigation>

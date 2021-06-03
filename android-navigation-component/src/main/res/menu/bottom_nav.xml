@@ -11,9 +11,9 @@
         android:icon="@drawable/ic_search"
         android:title="@string/search" />
 
-    <item
-        android:id="@+id/nav_add"
-        android:title="@string/add" />
+<!--    <item-->
+<!--        android:id="@+id/nav_add"-->
+<!--        android:title="@string/add" />-->
 <!--        android:icon="@drawable/ic_add"-->
 
     <item

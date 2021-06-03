@@ -39,7 +39,7 @@ class MainFragment : BaseMainFragment<FragmentMainBinding>() {
         val navGraphIds = listOf(
             R.navigation.nav_home,
             R.navigation.nav_search,
-            R.navigation.nav_add,
+//            R.navigation.nav_add,
             R.navigation.nav_like,
             R.navigation.nav_setting
         )

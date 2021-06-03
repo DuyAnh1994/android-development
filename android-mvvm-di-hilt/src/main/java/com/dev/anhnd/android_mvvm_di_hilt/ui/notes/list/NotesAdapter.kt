@@ -4,6 +4,7 @@ import com.dev.anhnd.android_mvvm_di_hilt.R
 import com.dev.anhnd.android_mvvm_di_hilt.data.source.local.entity.Notes
 import com.dev.anhnd.mybase.utils.adapter.BaseAdapter
 import com.dev.anhnd.mybase.utils.adapter.touch.ItemTouchSelect
+import com.dev.anhnd.mybase.utils.adapter.touch.ItemTouchSwipe
 import com.dev.anhnd.mybase.utils.adapter.touch.SelectedMode
 
 @ItemTouchSelect(mode = SelectedMode.MULTIPLE_SELECT)

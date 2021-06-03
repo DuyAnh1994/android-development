@@ -1,10 +1,10 @@
 package com.dev.anhnd.android_viewpager.home
 
-import android.os.Bundle
 import com.dev.anhnd.android_viewpager.R
 import com.dev.anhnd.android_viewpager.about.AboutFragment
 import com.dev.anhnd.android_viewpager.collection.CollectionFragment
 import com.dev.anhnd.android_viewpager.databinding.FragmentHomeBinding
+import com.dev.anhnd.android_viewpager.language.LanguageFragment
 import com.dev.anhnd.android_viewpager.setting.SettingFragment
 import com.dev.anhnd.mybase.BaseFragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -15,20 +15,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         private val TAG = HomeFragment::class.java.simpleName
         private const val ABOUT_POSITION = 0
         private const val COLLECTION_POSITION = 1
-        private const val SETTING_POSITION = 2
+        private const val LANGUAGE_POSITION = 2
+        private const val SETTING_POSITION = 3
     }
 
     private val aboutFragment = AboutFragment()
     private val collectionFragment = CollectionFragment()
+    private val languageFragment = LanguageFragment()
     private val settingFragment = SettingFragment()
 
-    private val homeViewPagerAdapter by lazy {
+    /*private val homeViewPagerAdapter by lazy {
         HomePagerAdapter(childFragmentManager, lifecycle).apply {
             addFragment(aboutFragment, "About", ABOUT_POSITION)
             addFragment(collectionFragment, "Collection", COLLECTION_POSITION)
+            addFragment(languageFragment, "Language", LANGUAGE_POSITION)
             addFragment(settingFragment, "Setting", SETTING_POSITION)
         }
-    }
+    }*/
 
     override fun getLayoutId(): Int = R.layout.fragment_home
 
@@ -45,21 +48,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             HomePagerAdapter(childFragmentManager, lifecycle).apply {
                 addFragment(aboutFragment, "About", ABOUT_POSITION)
                 addFragment(collectionFragment, "Collection", COLLECTION_POSITION)
+                addFragment(languageFragment, "Language", LANGUAGE_POSITION)
                 addFragment(settingFragment, "Setting", SETTING_POSITION)
             }
         }
         binding.viewpager.apply {
+            isUserInputEnabled = false
+            setPageTransformer(null)
             offscreenPageLimit = homeViewPagerAdapter.itemCount
             currentItem = ABOUT_POSITION
             adapter = homeViewPagerAdapter
         }
         TabLayoutMediator(binding.tabLayout, binding.viewpager) { tab, position ->
             tab.text = homeViewPagerAdapter.titles[position]
-            binding.viewpager.setCurrentItem(tab.position, true)
+            binding.viewpager.setCurrentItem(tab.position, false)
         }.attach()
     }
 
-    fun getViewPager()  = binding.viewpager
+    fun getViewPager() = binding.viewpager
 
     override fun observerViewModel() {
 

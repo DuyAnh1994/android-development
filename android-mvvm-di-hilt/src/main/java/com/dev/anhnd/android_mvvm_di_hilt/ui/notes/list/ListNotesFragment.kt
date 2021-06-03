@@ -1,5 +1,6 @@
 package com.dev.anhnd.android_mvvm_di_hilt.ui.notes.list
 
+import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.dev.anhnd.android_mvvm_di_hilt.R
@@ -16,6 +17,7 @@ import java.lang.RuntimeException
 @WithFragmentBindings
 class ListNotesFragment : BaseFragment<FragmentListNotesBinding>() {
 
+    private val TAG = ListNotesFragment::class.java.simpleName
     private val mainViewModel by activityViewModels<MainViewModel>()
     private val viewModel by viewModels<ListNotesViewModel>()
     private val adapter by lazy {
@@ -49,6 +51,9 @@ class ListNotesFragment : BaseFragment<FragmentListNotesBinding>() {
 
     override fun observerViewModel() {
         observer(viewModel.notes) {
+            it?.forEach {
+                Log.d(TAG, "observerViewModel: ${it.title}")
+            }
             adapter.submitList(it)
         }
     }

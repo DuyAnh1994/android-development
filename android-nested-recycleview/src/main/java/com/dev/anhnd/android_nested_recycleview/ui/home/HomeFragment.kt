@@ -20,7 +20,6 @@ class HomeFragment : BaseMainFragment<FragmentHomeBinding>() {
         ContinentsAdapter().apply {
             listener = object : NationListener {
                 override fun onNation(childPosition: Int, nation: Nation) {
-                    mainViewModel.setNation(nation)
                     /*transitionTo(
                         NationFragment(),
                         R.anim.slide_enter_left_to_right,
@@ -28,6 +27,10 @@ class HomeFragment : BaseMainFragment<FragmentHomeBinding>() {
                         R.anim.slide_pop_enter_right_to_left,
                         R.anim.slide_pop_exit_left_to_right,
                     )*/
+
+
+
+                    mainViewModel.setNation(nation)
                     navigateTo(R.id.action_homeFragment_to_nationDialog)
                 }
             }

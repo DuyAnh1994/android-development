@@ -8,7 +8,9 @@ import com.dev.anhnd.android_nested_recycleview.R
 import com.dev.anhnd.android_nested_recycleview.databinding.DialogNationBinding
 import com.dev.anhnd.android_nested_recycleview.ui.main.MainViewModel
 import com.dev.anhnd.mybase.BaseDialog
+import com.dev.anhnd.mybase.utils.app.observer
 import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.ext.android.bind
 
 @AndroidEntryPoint
 class NationDialog : BaseDialog<DialogNationBinding>() {
@@ -28,7 +30,11 @@ class NationDialog : BaseDialog<DialogNationBinding>() {
     }
 
     override fun initView() {
-
+        mainViewModel.nation.observe(viewLifecycleOwner) {
+            it?.let { nation ->
+                binding.tvName.text = nation.name
+            }
+        }
     }
 
     override fun onViewClick(viewId: Int) {

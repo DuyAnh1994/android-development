@@ -11,11 +11,16 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor() : BaseViewModel() {
 
 
-    private val _nation = MutableLiveData(Nation())
+//    private val _nation = MutableLiveData(Nation())
+//
+////    val nation = _nation.asLiveData()
 
-    val nation = _nation.asLiveData()
+
+
+
+    val nation = MutableLiveData(Nation())
 
     fun setNation(nation: Nation) {
-        _nation.value = nation
+        this.nation.value = nation
     }
 }

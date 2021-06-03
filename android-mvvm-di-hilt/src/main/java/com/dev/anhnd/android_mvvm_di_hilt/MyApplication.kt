@@ -6,6 +6,9 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class MyApplication : BaseApplication() {
 
+
+    private var a : String = ""
+
     override fun setUp() {
 
     }
