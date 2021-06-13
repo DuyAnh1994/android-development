@@ -2,13 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
+        android:menuCategory="secondary"
         android:title="@string/home" />
 
     <item
-        android:id="@+id/nav_search"
+        android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search"
+        android:menuCategory="secondary"
         android:title="@string/search" />
 
 <!--    <item-->
@@ -17,12 +19,14 @@
 <!--        android:icon="@drawable/ic_add"-->
 
     <item
-        android:id="@+id/nav_like"
+        android:id="@+id/likeFragment"
         android:icon="@drawable/ic_heart"
+        android:menuCategory="secondary"
         android:title="@string/like" />
 
     <item
-        android:id="@+id/nav_setting"
+        android:id="@+id/settingFragment"
         android:icon="@drawable/ic_settings"
+        android:menuCategory="secondary"
         android:title="@string/setting" />
 </menu>

@@ -1,8 +1,11 @@
 package com.dev.anhnd.android_navigation_component.main
 
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.dev.anhnd.android_navigation_component.R
 import com.dev.anhnd.android_navigation_component.camera.CameraFragment
 import com.dev.anhnd.android_navigation_component.dashboard.DashboardFragment
@@ -42,11 +45,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 addFragment(dashboardFragment, "Dashboard", DASHBOARD_POSITION)
             }
         }
-        binding.viewpager.apply {
-            offscreenPageLimit = mainPagerAdapter.itemCount
-            adapter = mainPagerAdapter
-            post {
-                currentItem = MAIN_POSITION
+//        binding.viewpager.apply {
+//            offscreenPageLimit = mainPagerAdapter.itemCount
+//            adapter = mainPagerAdapter
+//            post {
+//                currentItem = MAIN_POSITION
+//            }
+//        }
+
+        binding.bottomNav.apply {
+            setupWithNavController(getMainNavController())
+            setOnNavigationItemSelectedListener {
+                if (getMainNavController().graph.findNode(it.itemId) != null) {
+                    getMainNavController().navigate(it.itemId)
+                    val size = getMainNavController().graph
+                    Log.d(TAG, "initView: ")
+                    return@setOnNavigationItemSelectedListener true
+                }
+                false
             }
         }
     }
@@ -54,12 +70,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun observerViewModel() {
         observer(mainViewModel.getLiveMenu()) {
             it?.let { isShowMenu ->
-                binding.viewpager.isUserInputEnabled = isShowMenu
+//                binding.viewpager.isUserInputEnabled = isShowMenu
             }
         }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return currentNavController?.value?.navigateUp() ?: false
+    }
+
+
+    private fun getMainNavController(): NavController {
+        return findNavController(R.id.nav_host_main)
     }
 }

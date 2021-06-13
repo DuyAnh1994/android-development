@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">android-multi-viewholder-recyelview</string>
+    <string name="like">Like</string>
+    <string name="_48">48</string>
+    <string name="post">Post</string>
+    <string name="follower">Follower</string>
+    <string name="following">Following</string>
+</resources>
