@@ -1,3 +1,4 @@
+rootProject.name = "AndroidDevelopment"
 include ':android-note-todos'
 include ':android-nested-recycleview'
 include ':android-motion'
@@ -16,4 +17,4 @@ include ':android-mediaplayer'
 include ':android-aidl-server'
 include ':android-aidl-client'
 include ':android-multi-viewholder-recyelview'
-rootProject.name = "AndroidDevelopment"
+include ':android-bottom-navigation-view'

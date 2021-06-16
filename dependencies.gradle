@@ -36,11 +36,11 @@ ext {
     /**
      * androidX
      */
-    def recyclerViewVersion = "1.2.0-alpha03"
-    def roomVersion = "2.2.6"
-    def lifecycleVersion = "2.3.0"
-    def navigationVersion = "2.3.4"
-    def pagingVersion = "2.1.2"
+    def recyclerViewVersion = "1.2.1"
+    def roomVersion = "2.3.0"
+    def lifecycleVersion = "2.3.1"
+    def navigationVersion = "2.4.0-alpha01"
+    def pagingVersion = "3.0.0"
     def viewPagerVersion = "1.0.0"
     def cameraXVersion = "1.1.0-alpha02"
     def cameraViewVersion = "1.0.0-alpha20"
@@ -109,7 +109,7 @@ ext {
      * Network
      */
     def retrofitVersion = "2.9.0"
-    def okhttpLoggingVersion = "4.7.2"
+    def okhttpLoggingVersion = "4.9.1"
     def converterMoshiVersion = "2.6.2"
     networkDependencies = [
             "retrofit"              : "com.squareup.retrofit2:retrofit:$retrofitVersion",
@@ -122,7 +122,7 @@ ext {
     /**
      * Gson
      */
-    def gsonVersion = "2.8.6"
+    def gsonVersion = "2.8.7"
     gsonDependencies = [
             "gson": "com.google.code.gson:gson:$gsonVersion"
     ]
@@ -177,7 +177,7 @@ ext {
     /**
      * Exo-player
      */
-    def exoPlayerVersion = "2.13.2"
+    def exoPlayerVersion = "2.14.1"
     exoPlayerDependencies = [
             "exoplayer": "com.google.android.exoplayer:exoplayer:$exoPlayerVersion"
     ]
@@ -200,16 +200,23 @@ ext {
     def crashlyticsKTXVersion = "18.0.0"
     def crashlyticsNDKVersion = "18.0.0"
     firebaseDependencies = [
-            "bom": "com.google.firebase:firebase-bom:$bomVersion",
-            "analytics"   : "com.google.firebase:firebase-analytics-ktx:$analyticsVersion",
-            "crashlyticsKTX"   : "com.google.firebase:firebase-crashlytics-ktx:$crashlyticsKTXVersion",
+            "bom"           : "com.google.firebase:firebase-bom:$bomVersion",
+            "analytics"     : "com.google.firebase:firebase-analytics-ktx:$analyticsVersion",
+            "crashlyticsKTX": "com.google.firebase:firebase-crashlytics-ktx:$crashlyticsKTXVersion",
 //            "crashlyticsNDK"   : "com.google.firebase:firebase-crashlytics-ndk:18.0.0:$crashlyticsNDKVersion"
     ]
 
     def sentryVersion = "4.3.0"
     sentryDependencies = [
-            "sentry" : "io.sentry:sentry-android:$sentryVersion"
+            "sentry": "io.sentry:sentry-android:$sentryVersion"
     ]
 
 
+    /**
+     * Eventbus
+     */
+    def eventbusVersion = "3.2.0"
+    eventbusDependencies = [
+            "eventbus": "org.greenrobot:eventbus:$eventbusVersion"
+    ]
 }

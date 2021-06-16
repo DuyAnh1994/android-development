@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <include app:graph="@navigation/home" />
+    <include app:graph="@navigation/list" />
+    <include app:graph="@navigation/form" />
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.dev.anhnd.android_bottom_navigation_view.ui.splash.SplashFragment"
+        android:label="@string/label_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_splashFragment_to_list"
+            app:destination="@id/list" />
+        <action
+            android:id="@+id/action_splashFragment_to_form"
+            app:destination="@id/form" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.dev.anhnd.android_bottom_navigation_view.ui.setting.SettingFragment"
+        android:label="@string/label_setting"
+        tools:layout="@layout/fragment_setting" />
+
+    <action
+        android:id="@+id/action_to_settingFragment"
+        app:destination="@id/settingFragment" />
+
+</navigation>

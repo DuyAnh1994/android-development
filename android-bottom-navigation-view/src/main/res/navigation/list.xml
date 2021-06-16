@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
+    app:startDestination="@+id/leaderboardFragment">
+
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.dev.anhnd.android_bottom_navigation_view.ui.list.leaderboard.LeaderboardFragment"
+        android:label="@string/label_list"
+        tools:layout="@layout/fragment_leaderboard">
+        <action
+            android:id="@+id/action_leaderboardFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.dev.anhnd.android_bottom_navigation_view.ui.list.userprofile.UserProfileFragment"
+        android:label="@string/label_detail"
+        tools:layout="@layout/fragment_user_profile">
+        <deepLink
+            android:id="@+id/deepLink"
+            android:autoVerify="true"
+            app:uri="www.example.com/user/{userName}" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+    </fragment>
+</navigation>

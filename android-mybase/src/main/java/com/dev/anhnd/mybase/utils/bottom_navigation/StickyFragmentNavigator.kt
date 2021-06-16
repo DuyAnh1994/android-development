@@ -37,9 +37,9 @@ class StickyFragmentNavigator(
         return super.onSaveState()
     }
 
-    override fun onRestoreState(savedState: Bundle?) {
-        super.onRestoreState(savedState)
-    }
+//    override fun onRestoreState(savedState: Bundle?) {
+//        super.onRestoreState(savedState)
+//    }
 
     override fun instantiateFragment(context: Context, fragmentManager: FragmentManager, className: String, args: Bundle?): Fragment {
         return super.instantiateFragment(context, fragmentManager, className, args)

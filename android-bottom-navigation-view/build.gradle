@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 
 android {
@@ -9,7 +8,7 @@ android {
     buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
-        applicationId "com.dev.anhnd.android_algorithm"
+        applicationId "com.dev.anhnd.android_bottom_navigation_view"
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
         versionCode 1
@@ -31,10 +30,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
         viewBinding = true
+    }
+
+    //kotlin DSL
+    configurations.all() {
+        resolutionStrategy.force "org.antlr:antlr4-runtime:4.7.1"
+        resolutionStrategy.force "org.antlr:antlr4-tool:4.7.1"
     }
 }
 
@@ -49,6 +53,13 @@ dependencies {
     implementation rootProject.ext.constraintLayoutDependency
     implementation rootProject.ext.materialDependency
 
-    implementation rootProject.ext.coroutinesDependencies.core
-    implementation rootProject.ext.coroutinesDependencies.android
+    implementation project(':android-mybase')
+
+    implementation rootProject.ext.dimenDependencies.sdp
+    implementation rootProject.ext.dimenDependencies.ssp
+    implementation rootProject.ext.androidXDependencies.viewModel
+    implementation rootProject.ext.androidXDependencies.LiveData
+    implementation rootProject.ext.androidXDependencies.navigationFragment
+    implementation rootProject.ext.androidXDependencies.navigationUI
+    implementation rootProject.ext.eventbusDependencies.eventbus
 }

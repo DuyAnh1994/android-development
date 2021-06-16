@@ -17,7 +17,7 @@ class KeepStateNavigator(
     private val containerId: Int
 ) : FragmentNavigator(context, manager, containerId) {
 
-    var state = StateAnim.LEFT_TO_RIGHT
+    var stateAnim = StateAnim.LEFT_TO_RIGHT
     private val enterAnim = R.anim.slide_exit_right_to_left
     private val exitAnim = R.anim.slide_enter_left_to_right
     private val popEnterAnim = R.anim.slide_pop_exit_left_to_right
@@ -36,9 +36,9 @@ class KeepStateNavigator(
         } else {
             initialNavigate = true
         }
-        if (state == StateAnim.LEFT_TO_RIGHT) {
+        if (stateAnim == StateAnim.LEFT_TO_RIGHT) {
             transaction.setCustomAnimations(exitAnim, enterAnim, popExitAnim, popEnterAnim)
-        } else if (state == StateAnim.RIGHT_TO_LEFT) {
+        } else if (stateAnim == StateAnim.RIGHT_TO_LEFT) {
             transaction.setCustomAnimations(enterAnim, exitAnim, popEnterAnim, popExitAnim)
         }
         var fragment = manager.findFragmentByTag(tag)

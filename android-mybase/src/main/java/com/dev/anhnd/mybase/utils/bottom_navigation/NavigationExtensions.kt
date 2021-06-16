@@ -191,7 +191,8 @@ private fun BottomNavigationView.setupItemReselected(
         val navController = selectedFragment.navController
         // Pop the back stack to the start destination of the current navController graph
         navController.popBackStack(
-            navController.graph.startDestination, false
+            // TODO: 16/06/2021 cần fix lại , lí do: cập nhât phiên bản navigation component từ  2.3.4 -> 2.4.0-alpha01
+//            navController.graph.startDestination, false
         )
     }
 }
