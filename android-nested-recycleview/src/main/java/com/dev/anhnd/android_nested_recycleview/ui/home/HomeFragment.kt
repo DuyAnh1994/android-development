@@ -1,14 +1,16 @@
 package com.dev.anhnd.android_nested_recycleview.ui.home
 
 import android.os.Bundle
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
 import com.dev.anhnd.android_nested_recycleview.R
 import com.dev.anhnd.android_nested_recycleview.databinding.FragmentHomeBinding
 import com.dev.anhnd.android_nested_recycleview.model.Nation
 import com.dev.anhnd.android_nested_recycleview.ui.main.BaseMainFragment
+import com.dev.anhnd.android_nested_recycleview.utils.MessageEvent
 import com.dev.anhnd.mybase.utils.app.observer
 import dagger.hilt.android.AndroidEntryPoint
+import org.greenrobot.eventbus.EventBus
 
 @AndroidEntryPoint
 class HomeFragment : BaseMainFragment<FragmentHomeBinding>() {
@@ -27,11 +29,14 @@ class HomeFragment : BaseMainFragment<FragmentHomeBinding>() {
                         R.anim.slide_pop_enter_right_to_left,
                         R.anim.slide_pop_exit_left_to_right,
                     )*/
-
-
-
-                    mainViewModel.setNation(nation)
-                    navigateTo(R.id.action_homeFragment_to_nationDialog)
+//                    mainViewModel.setNation(nation)
+                    val obj = MessageEvent().apply {
+                        data = nation
+                    }
+                    EventBus.getDefault().postSticky(obj)
+                    val map = mutableMapOf<String, String>()
+                    val bundle = bundleOf("key" to map)
+                    navigateTo(R.id.action_homeFragment_to_nationFragment, bundle)
                 }
             }
         }

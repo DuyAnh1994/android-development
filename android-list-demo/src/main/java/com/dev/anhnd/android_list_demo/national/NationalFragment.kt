@@ -1,10 +1,8 @@
 package com.dev.anhnd.android_list_demo.national
 
-import android.os.Bundle
 import android.view.MenuItem
 import com.dev.anhnd.android_list_demo.R
 import com.dev.anhnd.android_list_demo.databinding.FragmentNationalBinding
-import com.dev.anhnd.android_list_demo.main.MainActivity
 import com.dev.anhnd.mybase.BaseFragment
 import com.dev.anhnd.mybase.utils.app.observer
 import com.dev.anhnd.mybase.utils.log.logd
@@ -99,7 +97,9 @@ class NationalFragment : BaseFragment<FragmentNationalBinding>() {
                             viewModelF.remove(it)
                         }
                         adapter.clearAll()
-                        viewModelF.postSelf()
+                        viewModelF.postSelf(onSuccess = { a, b ->
+
+                        })
                     }
                 }
                 true

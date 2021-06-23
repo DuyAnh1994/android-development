@@ -19,7 +19,7 @@ class NationalViewModel : ViewModel() {
         liveNationals.value?.remove(national)
     }
 
-    fun postSelf() {
+    fun postSelf(onSuccess : (a: Int, b: Boolean) -> Unit) {
         liveNationals.postSelf()
     }
 }

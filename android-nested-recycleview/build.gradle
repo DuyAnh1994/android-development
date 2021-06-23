@@ -93,4 +93,7 @@ dependencies {
     implementation "com.theapache64.twinkill:logger:$twinkill_version"
     implementation "com.theapache64.twinkill:network:$twinkill_version"
     implementation "com.theapache64.twinkill:google_sans:$twinkill_version"
+
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
 }

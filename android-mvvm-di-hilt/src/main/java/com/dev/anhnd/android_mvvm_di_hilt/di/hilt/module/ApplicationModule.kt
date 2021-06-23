@@ -21,7 +21,7 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideBaseUrl(): String {
-        return "https://"
+        return "http://192.168.1.102:3000"
     }
 
     @Provides
